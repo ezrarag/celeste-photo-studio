@@ -529,5 +529,198 @@
     });
   </script>
 
+  <!-- Floating Visual Feedback Widget Container -->
+  <div id="visualFeedbackContainer" style="display: none;">
+    <button id="vfTriggerBtn" style="position: fixed; bottom: 25px; right: 25px; z-index: 10000; background: #d4af37; color: #0f1115; border: none; padding: 11px 20px; border-radius: 30px; font-weight: 600; font-size: 13px; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px;">
+      📷 Visual Feedback
+    </button>
+
+    <div id="vfInspectorBanner" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #d4af37; color: #0f1115; padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 13px; z-index: 10001; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+      🎯 Click any element on the page to capture visual feedback
+    </div>
+
+    <div id="vfHighlightBox" style="position: fixed; pointer-events: none; z-index: 10000; border: 2px dashed #d4af37; background: rgba(212, 175, 55, 0.15); border-radius: 4px; display: none; transition: all 0.05s ease;"></div>
+
+    <div id="vfModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px); z-index: 10002; align-items: center; justify-content: center; padding: 20px;">
+      <div style="background: #181a20; border: 1px solid #2a2d36; border-radius: 12px; max-width: 520px; width: 100%; padding: 24px; color: #f0f2f5; box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid #2a2d36; padding-bottom: 12px;">
+          <h3 style="font-family: 'Bodoni Moda', serif; font-size: 18px; color: #d4af37; margin: 0;">Submit Visual Feedback</h3>
+          <button id="vfModalClose" style="background: none; border: none; color: #9ba3af; font-size: 20px; cursor: pointer;">&times;</button>
+        </div>
+
+        <div style="font-family: monospace; font-size: 11px; background: #0f1115; border: 1px solid #2a2d36; color: #d4af37; padding: 6px 10px; border-radius: 4px; margin-bottom: 12px;" id="vfTargetBadge">
+          Target: body
+        </div>
+
+        <div style="margin-bottom: 16px; max-height: 180px; overflow: hidden; border-radius: 6px; border: 1px solid #2a2d36; background: #000; display: flex; align-items: center; justify-content: center;">
+          <img id="vfScreenshotPreview" style="max-width: 100%; max-height: 180px; object-fit: contain;" src="" alt="Screenshot preview" />
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 12px; font-weight: 600; color: #9ba3af; margin-bottom: 6px;">Your Comment / Issue Description *</label>
+          <textarea id="vfCommentInput" style="width: 100%; background: #0f1115; border: 1px solid #2a2d36; color: #f0f2f5; padding: 10px; border-radius: 6px; font-size: 13px; font-family: inherit; min-height: 80px; resize: vertical;" placeholder="Describe what you see or what needs to be changed..."></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button id="vfModalCancel" style="background: transparent; border: 1px solid #2a2d36; color: #f0f2f5; padding: 8px 16px; border-radius: 6px; font-size: 13px; cursor: pointer;">Cancel</button>
+          <button id="vfModalSubmit" style="background: #d4af37; color: #0f1115; border: none; padding: 8px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;">Submit Feedback</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { subscribeToAuthState, addFeedbackToFirestore } from '/src/firebase.js';
+
+    const vfContainer = document.getElementById('visualFeedbackContainer');
+    const vfTriggerBtn = document.getElementById('vfTriggerBtn');
+    const vfInspectorBanner = document.getElementById('vfInspectorBanner');
+    const vfHighlightBox = document.getElementById('vfHighlightBox');
+    const vfModal = document.getElementById('vfModal');
+    const vfModalClose = document.getElementById('vfModalClose');
+    const vfModalCancel = document.getElementById('vfModalCancel');
+    const vfModalSubmit = document.getElementById('vfModalSubmit');
+    const vfTargetBadge = document.getElementById('vfTargetBadge');
+    const vfScreenshotPreview = document.getElementById('vfScreenshotPreview');
+    const vfCommentInput = document.getElementById('vfCommentInput');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const isReviewMode = urlParams.get('review') === 'true';
+
+    // Activate only if ?review=true in URL or signed-in as admin
+    function updateWidgetVisibility(user) {
+      if (isReviewMode || user) {
+        vfContainer.style.display = 'block';
+      } else {
+        vfContainer.style.display = 'none';
+      }
+    }
+
+    subscribeToAuthState((user) => {
+      updateWidgetVisibility(user);
+    });
+    if (isReviewMode) updateWidgetVisibility(null);
+
+    // Dynamic html2canvas Loader
+    function loadHtml2Canvas() {
+      return new Promise((resolve, reject) => {
+        if (window.html2canvas) return resolve(window.html2canvas);
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+        script.onload = () => resolve(window.html2canvas);
+        script.onerror = () => reject(new Error('Could not load html2canvas CDN'));
+        document.head.appendChild(script);
+      });
+    }
+
+    let isInspecting = false;
+    let selectedSelector = 'body';
+    let capturedBase64 = null;
+    let targetElementRef = null;
+
+    // Hover Inspector & Capture Logic
+    vfTriggerBtn.addEventListener('click', () => {
+      vfContainer.style.display = 'none';
+      isInspecting = true;
+      vfInspectorBanner.style.display = 'block';
+
+      function onHover(e) {
+        if (!isInspecting) return;
+        const el = e.target;
+        if (!el || el.closest('#visualFeedbackContainer')) return;
+        const rect = el.getBoundingClientRect();
+        vfHighlightBox.style.left = rect.left + 'px';
+        vfHighlightBox.style.top = rect.top + 'px';
+        vfHighlightBox.style.width = rect.width + 'px';
+        vfHighlightBox.style.height = rect.height + 'px';
+        vfHighlightBox.style.display = 'block';
+      }
+
+      async function onClick(e) {
+        if (!isInspecting) return;
+        const el = e.target;
+        if (!el || el.closest('#visualFeedbackContainer')) return;
+        e.preventDefault();
+        e.stopPropagation();
+
+        isInspecting = false;
+        vfInspectorBanner.style.display = 'none';
+        vfHighlightBox.style.display = 'none';
+
+        window.removeEventListener('mousemove', onHover, true);
+        window.removeEventListener('click', onClick, true);
+
+        targetElementRef = el;
+        const tag = el.tagName.toLowerCase();
+        const id = el.id ? '#' + el.id : '';
+        const cls = el.className && typeof el.className === 'string' ? '.' + el.className.split(' ')[0] : '';
+        selectedSelector = `${tag}${id}${cls}`;
+        vfTargetBadge.innerText = 'Target: ' + selectedSelector;
+
+        // Take automatic screenshot using html2canvas
+        try {
+          await loadHtml2Canvas();
+          const targetToCapture = el || document.body;
+          const canvas = await window.html2canvas(targetToCapture, {
+            useCORS: true,
+            allowTaint: false,
+            logging: false
+          });
+          capturedBase64 = canvas.toDataURL('image/png');
+          vfScreenshotPreview.src = capturedBase64;
+        } catch (err) {
+          console.warn('Screenshot capture fallback:', err);
+          capturedBase64 = null;
+        }
+
+        vfContainer.style.display = 'block';
+        vfModal.style.display = 'flex';
+      }
+
+      window.addEventListener('mousemove', onHover, true);
+      window.addEventListener('click', onClick, true);
+    });
+
+    function closeModal() {
+      vfModal.style.display = 'none';
+      vfCommentInput.value = '';
+      capturedBase64 = null;
+    }
+
+    vfModalClose.addEventListener('click', closeModal);
+    vfModalCancel.addEventListener('click', closeModal);
+
+    // Save Record to Firestore Collection 'feedback'
+    vfModalSubmit.addEventListener('click', async () => {
+      const comment = vfCommentInput.value.trim();
+      if (!comment) {
+        alert('Please enter a brief description before submitting.');
+        return;
+      }
+
+      vfModalSubmit.disabled = true;
+      vfModalSubmit.innerText = 'Saving...';
+
+      try {
+        await addFeedbackToFirestore({
+          comment: comment,
+          screenshotBase64: capturedBase64,
+          targetElement: selectedSelector,
+          createdAt: new Date().toISOString(),
+          status: 'Open'
+        });
+
+        alert('✅ Feedback saved to Firestore!');
+        closeModal();
+      } catch (err) {
+        alert('Error saving feedback: ' + err.message);
+      } finally {
+        vfModalSubmit.disabled = false;
+        vfModalSubmit.innerText = 'Submit Feedback';
+      }
+    });
+  </script>
+
 </body>
 </html>
+

@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Feedback Portal UX Prototype | Celeste Photo Studio</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #121212;
+      --bg-alt: #181818;
+      --card-bg: #1e1e1e;
+      --card-border: #2e2e2e;
+      --card-hover: #262626;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dark: #6b7280;
+      --accent: #d4af37;
+      --accent-hover: #e5be47;
+      --accent-dim: rgba(212, 175, 55, 0.15);
+      --danger: #ef4444;
+      --danger-bg: rgba(239, 68, 68, 0.12);
+      --warning: #f59e0b;
+      --warning-bg: rgba(245, 158, 11, 0.12);
+      --success: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.12);
+      --info: #3b82f6;
+      --info-bg: rgba(59, 130, 246, 0.12);
+      --font-sans: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Prototype Concept Switcher Bar */
+    .prototype-bar {
+      background: linear-gradient(90deg, #1c1917 0%, #292524 100%);
+      border-bottom: 1px solid var(--accent);
+      padding: 0.65rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      font-size: 0.85rem;
+    }
+
+    .prototype-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .prototype-title span {
+      background: var(--accent);
+      color: #000;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .concept-switchers {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 4px;
+      border-radius: 20px;
+      border: 1px solid var(--card-border);
+    }
+
+    .concept-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 5px 14px;
+      border-radius: 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .concept-btn.active {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .concept-btn:hover:not(.active) {
+      color: var(--text);
+    }
+
+    /* Admin Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 2rem;
+      border-bottom: 1px solid var(--card-border);
+      background: var(--bg-alt);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    /* Concept A: Segmented Nav Tabs */
+    .nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--card-bg);
+      padding: 4px;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+    }
+
+    .nav-tab {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+    }
+
+    .nav-tab:hover:not(.active) {
+      color: var(--text);
+    }
+
+    .nav-tab.active {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .badge-count {
+      background: var(--danger);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 10px;
+      line-height: 1.2;
+    }
+
+    .nav-tab.active .badge-count {
+      background: #000;
+      color: var(--accent);
+    }
+
+    .user-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
+      background: #2a2a2a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* Main Content Wrapper */
+    .app-viewport {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .view-pane {
+      display: none;
+      flex: 1;
+      padding: 2rem;
+      max-width: 1300px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .view-pane.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Existing CMS Form Mockup */
+    .cms-mock-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-control {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 0.7rem 0.9rem;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-family: inherit;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .btn {
+      padding: 0.6rem 1.3rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Feedback Portal Layout (Concept A - Master/Detail) */
+    .feedback-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .stat-val {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text);
+      font-family: var(--font-serif);
+    }
+
+    .stat-lbl {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    /* Filters & Search */
+    .toolbar-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pill.active {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Master-Detail Split Container */
+    .master-detail-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 1.5rem;
+      flex: 1;
+      min-height: 520px;
+    }
+
+    @media (max-width: 900px) {
+      .master-detail-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Feedback Items List (Left Column) */
+    .feedback-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      max-height: 600px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .fb-item-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1rem 1.2rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      position: relative;
+    }
+
+    .fb-item-card:hover {
+      border-color: var(--text-muted);
+      transform: translateY(-1px);
+    }
+
+    .fb-item-card.selected {
+      border-color: var(--accent);
+      background: var(--card-hover);
+      box-shadow: 0 0 12px var(--accent-dim);
+    }
+
+    .fb-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .fb-author {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .fb-date {
+      font-size: 0.75rem;
+      color: var(--text-dark);
+    }
+
+    .fb-snippet {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 1.4;
+    }
+
+    .fb-tags {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .badge-urgency {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .badge-urgency.high {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .badge-urgency.medium {
+      background: var(--warning-bg);
+      color: var(--warning);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .badge-urgency.low {
+      background: var(--info-bg);
+      color: var(--info);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .badge-cat {
+      font-size: 0.7rem;
+      background: var(--bg);
+      color: var(--text-muted);
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid var(--card-border);
+    }
+
+    .badge-status {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-left: auto;
+    }
+
+    .badge-status.needs_action {
+      color: var(--warning);
+    }
+
+    .badge-status.reviewed {
+      color: var(--success);
+    }
+
+    .badge-status.open {
+      color: var(--info);
+    }
+
+    /* Detail View (Right Column) */
+    .feedback-detail-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      overflow-y: auto;
+      max-height: 600px;
+    }
+
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 1rem;
+    }
+
+    .detail-client-info h3 {
+      font-size: 1.2rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .detail-client-info p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .target-box {
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      padding: 0.8rem 1rem;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ai-summary-card {
+      background: rgba(212, 175, 55, 0.05);
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      padding: 1rem;
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .ai-summary-card h4 {
+      color: var(--accent);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feedback-body-text {
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      padding: 1.2rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .snapshot-preview-container {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      background: #000;
+      max-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .snapshot-preview-container img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .snapshot-crop-overlay {
+      position: absolute;
+      border: 2px dashed var(--accent);
+      background: rgba(212, 175, 55, 0.2);
+      top: 25%;
+      left: 20%;
+      width: 60%;
+      height: 50%;
+      pointer-events: none;
+      display: flex;
+      align-items: flex-end;
+      padding: 4px;
+    }
+
+    .snapshot-crop-overlay span {
+      background: var(--accent);
+      color: #000;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 2px;
+    }
+
+    /* Internal Notes Thread */
+    .internal-notes-section {
+      border-top: 1px solid var(--card-border);
+      padding-top: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .notes-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .note-bubble {
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      padding: 0.8rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+
+    .note-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+
+    .note-input-group {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+    }
+
+    .note-input {
+      flex: 1;
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 0.6rem 0.8rem;
+      color: var(--text);
+      font-size: 0.85rem;
+      font-family: inherit;
+    }
+
+    .note-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    /* Action Control Buttons */
+    .action-controls {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    /* Concept B: Slide-out Side Drawer Overlay */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(3px);
+      z-index: 500;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .drawer-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .side-drawer-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 460px;
+      max-width: 90vw;
+      background: var(--card-bg);
+      border-left: 1px solid var(--card-border);
+      z-index: 501;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .drawer-overlay.open .side-drawer-panel {
+      transform: translateX(0);
+    }
+
+    .drawer-header-bar {
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid var(--card-border);
+      background: var(--bg-alt);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .drawer-title {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    .drawer-close-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .drawer-body-content {
+      padding: 1.5rem;
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .floating-drawer-trigger {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 450;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s ease;
+      font-family: inherit;
+    }
+
+    .floating-drawer-trigger:hover {
+      transform: translateY(-2px) scale(1.04);
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+      background: var(--card-bg);
+      border: 1px solid var(--accent);
+      color: var(--text);
+      padding: 0.8rem 1.2rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Prototype Concept Switcher Bar -->
+  <div class="prototype-bar">
+    <div class="prototype-title">
+      <span>UX Prototype</span>
+      Celeste Photo Studio Admin — Client Feedback Review Visualizer
+    </div>
+    
+    <div class="concept-switchers">
+      <button id="btnConceptA" class="concept-btn active">Concept A: Segmented Tab View</button>
+      <button id="btnConceptB" class="concept-btn">Concept B: Split-Screen Side Drawer</button>
+    </div>
+  </div>
+
+  <!-- Admin Header -->
+  <header>
+    <a href="#" class="brand">Celeste <span>Studio</span> <small style="font-size:0.75rem; color:var(--text-muted); font-family:sans-serif;">| CMS Portal</small></a>
+
+    <!-- Navigation Tabs (Active in Concept A) -->
+    <nav id="topNavTabs" class="nav-tabs">
+      <button class="nav-tab" data-target="cmsPane">
+        ⚙️ Content Manager
+      </button>
+      <button class="nav-tab active" data-target="feedbackPane">
+        💬 Client Feedback <span id="unreadBadge" class="badge-count">3</span>
+      </button>
+    </nav>
+
+    <div class="user-controls">
+      <div class="user-avatar" title="Celeste Admin">CA</div>
+      <button class="btn btn-outline" style="font-size:0.75rem; padding:0.4rem 0.8rem;">Logout</button>
+    </div>
+  </header>
+
+  <!-- App Viewport Container -->
+  <div class="app-viewport">
+
+    <!-- PANE 1: Existing CMS Form (Simulated Content Manager) -->
+    <div id="cmsPane" class="view-pane">
+      <div class="cms-mock-container">
+        <h2 class="section-title">Portfolio & Content Manager</h2>
+        <p class="section-desc">Upload photos, edit copy, and manage studio service packages directly.</p>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Portfolio Title</label>
+            <input type="text" class="form-control" value="Estate Wedding • Paris" />
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select class="form-control">
+              <option>Weddings & Events</option>
+              <option>Portraiture</option>
+              <option>Commercial & Fashion</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Caption / Narrative</label>
+          <textarea class="form-control" rows="3">Captured at sunset on the Chateau grounds with natural lighting.</textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Upload New Photograph</label>
+          <div style="border: 2px dashed var(--card-border); padding: 2rem; text-align: center; border-radius: 6px; color: var(--text-muted); background: var(--bg);">
+            📸 Drag & drop image files here or click to browse
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.8rem;">
+          <button class="btn btn-outline">Discard Changes</button>
+          <button class="btn btn-primary">Save Content Updates</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE 2: Concept A — Tabbed Feedback & Review Portal -->
+    <div id="feedbackPane" class="view-pane active">
+      
+      <!-- Stats Header -->
+      <div class="feedback-stats-grid">
+        <div class="stat-card">
+          <span class="stat-val" id="statTotal">4</span>
+          <span class="stat-lbl">Total Feedback Notes</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-val" style="color: var(--warning);" id="statNeedsAction">2</span>
+          <span class="stat-lbl">Needs Action</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-val" style="color: var(--success);" id="statReviewed">1</span>
+          <span class="stat-lbl">Reviewed / Resolved</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-val" style="color: var(--accent);">7.8</span>
+          <span class="stat-lbl">Avg AI Pulse Score</span>
+        </div>
+      </div>
+
+      <!-- Toolbar & Status Filters -->
+      <div class="toolbar-row">
+        <div class="filter-pills" id="statusFilterPills">
+          <button class="pill active" data-filter="all">All Feedback</button>
+          <button class="pill" data-filter="needs_action">⚠️ Needs Action (2)</button>
+          <button class="pill" data-filter="open">💬 Open (1)</button>
+          <button class="pill" data-filter="reviewed">✅ Reviewed (1)</button>
+        </div>
+
+        <div style="font-size: 0.8rem; color: var(--text-muted);">
+          Showing <strong id="visibleCountText" style="color:var(--accent);">4</strong> feedback items
+        </div>
+      </div>
+
+      <!-- Master-Detail Split Screen -->
+      <div class="master-detail-grid">
+        
+        <!-- Left: Master Item Cards List -->
+        <div class="feedback-list" id="feedbackListContainer">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- Right: Feedback Detail & Action Drawer -->
+        <div class="feedback-detail-panel" id="detailPanel">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Concept B: Floating Side Drawer Overlay (Simulated Overlay Mode) -->
+  <div id="conceptBTrigger" class="floating-drawer-trigger" style="display: none;">
+    💬 Client Feedback (<span id="drawerCount">3</span>)
+  </div>
+
+  <div id="conceptBOverlay" class="drawer-overlay">
+    <div class="side-drawer-panel">
+      <div class="drawer-header-bar">
+        <span class="drawer-title">Client Feedback Drawer</span>
+        <button id="conceptBCloseBtn" class="drawer-close-btn">&times;</button>
+      </div>
+
+      <div class="drawer-body-content" id="conceptBBody">
+        <!-- Rendered in Concept B side-drawer mode -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive JavaScript Logic -->
+  <script>
+    (function () {
+      // 1. Mockup Feedback Dataset
+      const mockFeedbackData = [
+        {
+          id: 'fb-001',
+          clientName: 'Sarah Jenkins',
+          clientEmail: 'sarah.j@example.com',
+          date: '2026-08-23 14:10',
+          category: 'bug',
+          urgency: 'high',
+          pulseScore: 9,
+          status: 'needs_action',
+          rawText: "The 'Book Session' button on the mobile header is overlapping the studio logo when held in landscape orientation on iPhone 15 Pro.",
+          pageUrl: 'https://celeste-photo-studio.vercel.app/#portfolio',
+          elementSelector: '#headerBookBtn',
+          hasSnapshot: true,
+          aiSummary: 'Mobile viewport header button overlap issue on landscape orientation.',
+          aiSuggestedAction: 'Add padding-right or hide status badge on mobile landscape CSS media query.',
+          internalNotes: [
+            { author: 'Celeste Admin', date: '2026-08-23 15:00', text: 'Checked on test phone — confirmed. Needs CSS fix on @media (max-width: 768px).' }
+          ]
+        },
+        {
+          id: 'fb-002',
+          clientName: 'Marcus Vance',
+          clientEmail: 'marcus.vance@brandco.com',
+          date: '2026-08-22 09:45',
+          category: 'design',
+          urgency: 'medium',
+          pulseScore: 6,
+          status: 'open',
+          rawText: 'Can we make the gold accents slightly warmer on the portfolio cards? They look a little bright yellow on high-contrast OLED monitors.',
+          pageUrl: 'https://celeste-photo-studio.vercel.app/#portfolio',
+          elementSelector: '.gallery-card-1',
+          hasSnapshot: true,
+          aiSummary: 'Color contrast & tone adjustments for gold accents on portfolio cards.',
+          aiSuggestedAction: 'Adjust --accent hex from #d4af37 to a warmer champagne tone #c59b27.',
+          internalNotes: []
+        },
+        {
+          id: 'fb-003',
+          clientName: 'David Chen',
+          clientEmail: 'dchen@creativeagency.io',
+          date: '2026-08-21 17:30',
+          category: 'feature',
+          urgency: 'medium',
+          pulseScore: 7,
+          status: 'needs_action',
+          rawText: 'Would love an option to select multiple alternative session dates in step 2 of the intake booking form in case our first pick is taken.',
+          pageUrl: 'https://celeste-photo-studio.vercel.app/#booking',
+          elementSelector: '#sessionDate',
+          hasSnapshot: false,
+          aiSummary: 'Client feature request for multiple date selection in booking wizard.',
+          aiSuggestedAction: 'Add secondary date field into Step 2 of the booking intake form.',
+          internalNotes: [
+            { author: 'Celeste Admin', date: '2026-08-22 10:15', text: 'Great idea for commercial clients. Let us add a "Backup Date" input field.' }
+          ]
+        },
+        {
+          id: 'fb-004',
+          clientName: 'Elena Rostova',
+          clientEmail: 'elena@fashionmag.fr',
+          date: '2026-08-20 11:20',
+          category: 'content',
+          urgency: 'low',
+          pulseScore: 3,
+          status: 'reviewed',
+          rawText: 'Please update the bio text under "Editorial & Fashion Services" to mention our Paris estate shoots.',
+          pageUrl: 'https://celeste-photo-studio.vercel.app/#services',
+          elementSelector: '#services p',
+          hasSnapshot: false,
+          aiSummary: 'Copy update request for Editorial & Fashion service description.',
+          aiSuggestedAction: 'Update paragraph text in services section to include Paris estate shoots.',
+          internalNotes: [
+            { author: 'Celeste Admin', date: '2026-08-20 12:00', text: 'Done! Updated copy in CMS on Tuesday.' }
+          ]
+        }
+      ];
+
+      let selectedFbId = 'fb-001';
+      let activeFilter = 'all';
+      let activeConcept = 'A'; // 'A' or 'B'
+
+      // 2. Element References
+      const btnConceptA = document.getElementById('btnConceptA');
+      const btnConceptB = document.getElementById('btnConceptB');
+      const topNavTabs = document.getElementById('topNavTabs');
+      const cmsPane = document.getElementById('cmsPane');
+      const feedbackPane = document.getElementById('feedbackPane');
+      const feedbackListContainer = document.getElementById('feedbackListContainer');
+      const detailPanel = document.getElementById('detailPanel');
+
+      const conceptBTrigger = document.getElementById('conceptBTrigger');
+      const conceptBOverlay = document.getElementById('conceptBOverlay');
+      const conceptBCloseBtn = document.getElementById('conceptBCloseBtn');
+      const conceptBBody = document.getElementById('conceptBBody');
+
+      // 3. Concept Switcher Logic
+      btnConceptA.addEventListener('click', () => {
+        activeConcept = 'A';
+        btnConceptA.classList.add('active');
+        btnConceptB.classList.remove('active');
+        
+        topNavTabs.style.display = 'flex';
+        conceptBTrigger.style.display = 'none';
+        conceptBOverlay.classList.remove('open');
+
+        // Switch to Feedback Pane
+        switchTab('feedbackPane');
+      });
+
+      btnConceptB.addEventListener('click', () => {
+        activeConcept = 'B';
+        btnConceptB.classList.add('active');
+        btnConceptA.classList.remove('active');
+
+        topNavTabs.style.display = 'none';
+        conceptBTrigger.style.display = 'flex';
+
+        // Show CMS Pane on main view, with floating drawer trigger for Concept B
+        switchTab('cmsPane');
+        showToast('💡 Concept B Active: Click bottom-right "💬 Client Feedback" to open slide-out panel.');
+      });
+
+      // Concept B Side Drawer Triggers
+      conceptBTrigger.addEventListener('click', () => {
+        renderConceptBDrawer();
+        conceptBOverlay.classList.add('open');
+      });
+
+      conceptBCloseBtn.addEventListener('click', () => {
+        conceptBOverlay.classList.remove('open');
+      });
+
+      // 4. Tab Navigation Logic (Concept A)
+      const navTabButtons = document.querySelectorAll('.nav-tab');
+      navTabButtons.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = tab.getAttribute('data-target');
+          switchTab(target);
+        });
+      });
+
+      function switchTab(targetId) {
+        document.querySelectorAll('.nav-tab').forEach(t => {
+          if (t.getAttribute('data-target') === targetId) t.classList.add('active');
+          else t.classList.remove('active');
+        });
+
+        if (targetId === 'cmsPane') {
+          cmsPane.classList.add('active');
+          feedbackPane.classList.remove('active');
+        } else {
+          feedbackPane.classList.add('active');
+          cmsPane.classList.remove('active');
+          renderFeedbackPortal();
+        }
+      }
+
+      // 5. Status Filter Pills Logic
+      const filterPillBtns = document.querySelectorAll('#statusFilterPills .pill');
+      filterPillBtns.forEach(pill => {
+        pill.addEventListener('click', () => {
+          filterPillBtns.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          activeFilter = pill.getAttribute('data-filter');
+          renderFeedbackPortal();
+        });
+      });
+
+      // 6. Main Feedback Portal Renderer (Concept A)
+      function renderFeedbackPortal() {
+        const filtered = mockFeedbackData.filter(item => {
+          if (activeFilter === 'all') return true;
+          return item.status === activeFilter;
+        });
+
+        document.getElementById('visibleCountText').innerText = filtered.length;
+        document.getElementById('statTotal').innerText = mockFeedbackData.length;
+        document.getElementById('statNeedsAction').innerText = mockFeedbackData.filter(i => i.status === 'needs_action').length;
+        document.getElementById('statReviewed').innerText = mockFeedbackData.filter(i => i.status === 'reviewed').length;
+
+        // Render List Cards
+        feedbackListContainer.innerHTML = '';
+        if (filtered.length === 0) {
+          feedbackListContainer.innerHTML = '<div style="padding:2rem; text-align:center; color:var(--text-muted);">No feedback matching filter.</div>';
+        } else {
+          filtered.forEach(item => {
+            const card = document.createElement('div');
+            card.className = `fb-item-card ${item.id === selectedFbId ? 'selected' : ''}`;
+            card.addEventListener('click', () => {
+              selectedFbId = item.id;
+              renderFeedbackPortal();
+            });
+
+            card.innerHTML = `
+              <div class="fb-card-top">
+                <span class="fb-author">${escapeHtml(item.clientName)}</span>
+                <span class="fb-date">${escapeHtml(item.date)}</span>
+              </div>
+              <div class="fb-snippet">${escapeHtml(item.rawText)}</div>
+              <div class="fb-tags">
+                <span class="badge-urgency ${item.urgency}">${item.urgency}</span>
+                <span class="badge-cat">${item.category}</span>
+                <span class="badge-status ${item.status}">${item.status.replace('_', ' ')}</span>
+              </div>
+            `;
+            feedbackListContainer.appendChild(card);
+          });
+        }
+
+        // Render Detail Panel
+        const currentItem = mockFeedbackData.find(i => i.id === selectedFbId) || filtered[0] || mockFeedbackData[0];
+        if (currentItem) renderDetailPanel(currentItem);
+      }
+
+      // Render Detail View
+      function renderDetailPanel(item) {
+        detailPanel.innerHTML = `
+          <div class="detail-header">
+            <div class="detail-client-info">
+              <h3>${escapeHtml(item.clientName)}</h3>
+              <p>${escapeHtml(item.clientEmail)} • ${escapeHtml(item.date)}</p>
+            </div>
+            <div style="display:flex; gap:0.4rem;">
+              <span class="badge-urgency ${item.urgency}">Pulse Score: ${item.pulseScore}/10</span>
+              <span class="badge-status ${item.status}">${item.status.replace('_', ' ').toUpperCase()}</span>
+            </div>
+          </div>
+
+          <div class="target-box">
+            <span>🎯 Target Selector: ${escapeHtml(item.elementSelector)}</span>
+            <a href="${item.pageUrl}" target="_blank" style="color:var(--accent); text-decoration:none; font-size:0.75rem;">View Page ↗</a>
+          </div>
+
+          <div class="ai-summary-card">
+            <h4>🤖 AI Summary & Recommendation</h4>
+            <p><strong>Summary:</strong> ${escapeHtml(item.aiSummary)}</p>
+            <p><strong>Suggested Action:</strong> ${escapeHtml(item.aiSuggestedAction)}</p>
+          </div>
+
+          <div>
+            <label style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; display:block; margin-bottom:0.4rem;">Raw Feedback Note</label>
+            <div class="feedback-body-text">${escapeHtml(item.rawText)}</div>
+          </div>
+
+          ${item.hasSnapshot ? `
+            <div>
+              <label style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; display:block; margin-bottom:0.4rem;">Snapshot Preview</label>
+              <div class="snapshot-preview-container">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Captured view" />
+                <div class="snapshot-crop-overlay"><span>Target Region</span></div>
+              </div>
+            </div>
+          ` : ''}
+
+          <!-- Status Actions -->
+          <div>
+            <label style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; display:block; margin-bottom:0.4rem;">Update Status</label>
+            <div class="action-controls">
+              <button class="btn btn-primary" onclick="updateItemStatus('${item.id}', 'reviewed')">✅ Mark Reviewed</button>
+              <button class="btn btn-outline" onclick="updateItemStatus('${item.id}', 'needs_action')">⚠️ Mark Needs Action</button>
+              <button class="btn btn-outline" onclick="updateItemStatus('${item.id}', 'open')">💬 Mark Open</button>
+            </div>
+          </div>
+
+          <!-- Internal Team Notes -->
+          <div class="internal-notes-section">
+            <span class="notes-title">Studio Internal Notes (${item.internalNotes.length})</span>
+            
+            ${item.internalNotes.map(n => `
+              <div class="note-bubble">
+                <div class="note-meta">
+                  <span>${escapeHtml(n.author)}</span>
+                  <span>${escapeHtml(n.date)}</span>
+                </div>
+                <div>${escapeHtml(n.text)}</div>
+              </div>
+            `).join('')}
+
+            <div class="note-input-group">
+              <input type="text" id="newNoteInput" class="note-input" placeholder="Add an internal note for Celeste team..." />
+              <button class="btn btn-primary" style="font-size:0.8rem;" onclick="addInternalNote('${item.id}')">Post Note</button>
+            </div>
+          </div>
+        `;
+      }
+
+      // 7. Render Concept B (Side Drawer Panel View)
+      function renderConceptBDrawer() {
+        const item = mockFeedbackData.find(i => i.id === selectedFbId) || mockFeedbackData[0];
+        conceptBBody.innerHTML = `
+          <div style="background:var(--bg); padding:0.8rem; border-radius:6px; border:1px solid var(--card-border); font-size:0.8rem;">
+            <strong>Browsing Feedback (4 Items)</strong>
+            <div style="display:flex; gap:0.4rem; margin-top:0.4rem; overflow-x:auto;">
+              ${mockFeedbackData.map(i => `
+                <button onclick="selectConceptBItem('${i.id}')" class="pill ${i.id === item.id ? 'active' : ''}">${escapeHtml(i.clientName.split(' ')[0])}</button>
+              `).join('')}
+            </div>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h4 style="font-size:1.1rem; color:var(--text);">${escapeHtml(item.clientName)}</h4>
+            <span class="badge-urgency ${item.urgency}">${item.urgency} (${item.pulseScore}/10)</span>
+          </div>
+
+          <div style="font-size:0.8rem; color:var(--text-muted);">Submitted: ${item.date} • ${item.clientEmail}</div>
+
+          <div class="target-box" style="font-size:0.75rem;">
+            🎯 ${escapeHtml(item.elementSelector)}
+          </div>
+
+          <div class="ai-summary-card" style="font-size:0.8rem;">
+            🤖 <strong>AI Summary:</strong> ${escapeHtml(item.aiSummary)}
+          </div>
+
+          <div class="feedback-body-text" style="font-size:0.85rem;">
+            "${escapeHtml(item.rawText)}"
+          </div>
+
+          <div style="display:flex; gap:0.5rem;">
+            <button class="btn btn-primary" style="flex:1; font-size:0.8rem;" onclick="updateItemStatus('${item.id}', 'reviewed')">Mark Reviewed</button>
+            <button class="btn btn-outline" style="flex:1; font-size:0.8rem;" onclick="updateItemStatus('${item.id}', 'needs_action')">Needs Action</button>
+          </div>
+
+          <div class="internal-notes-section">
+            <span class="notes-title">Internal Notes</span>
+            ${item.internalNotes.map(n => `
+              <div class="note-bubble" style="font-size:0.8rem;">
+                <div class="note-meta"><span>${escapeHtml(n.author)}</span> <span>${escapeHtml(n.date)}</span></div>
+                <div>${escapeHtml(n.text)}</div>
+              </div>
+            `).join('')}
+            <div class="note-input-group">
+              <input type="text" id="conceptBNoteInput" class="note-input" placeholder="Add note..." />
+              <button class="btn btn-primary" style="font-size:0.8rem;" onclick="addInternalNote('${item.id}', 'conceptBNoteInput')">Post</button>
+            </div>
+          </div>
+        `;
+      }
+
+      // 8. Global State Mutators
+      window.selectConceptBItem = function (id) {
+        selectedFbId = id;
+        renderConceptBDrawer();
+      };
+
+      window.updateItemStatus = function (id, newStatus) {
+        const item = mockFeedbackData.find(i => i.id === id);
+        if (item) {
+          item.status = newStatus;
+          renderFeedbackPortal();
+          if (activeConcept === 'B') renderConceptBDrawer();
+          showToast(`Status updated to "${newStatus.replace('_', ' ').toUpperCase()}"`);
+        }
+      };
+
+      window.addInternalNote = function (id, inputId = 'newNoteInput') {
+        const input = document.getElementById(inputId);
+        if (!input) return;
+        const text = input.value.trim();
+        if (!text) return;
+
+        const item = mockFeedbackData.find(i => i.id === id);
+        if (item) {
+          const now = new Date().toISOString().replace('T', ' ').substring(0, 16);
+          item.internalNotes.push({
+            author: 'Celeste Admin',
+            date: now,
+            text: text
+          });
+          input.value = '';
+          renderFeedbackPortal();
+          if (activeConcept === 'B') renderConceptBDrawer();
+          showToast('💬 Internal studio note posted.');
+        }
+      };
+
+      // Toast Utility
+      function showToast(msg) {
+        const existing = document.querySelector('.toast-msg');
+        if (existing) existing.remove();
+
+        const toast = document.createElement('div');
+        toast.className = 'toast-msg';
+        toast.innerHTML = `💬 ${msg}`;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          toast.style.transition = 'opacity 0.3s ease';
+          setTimeout(() => toast.remove(), 300);
+        }, 3200);
+      }
+
+      function escapeHtml(str) {
+        return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      // Initial Render
+      renderFeedbackPortal();
+    })();
+  </script>
+</body>
+</html>

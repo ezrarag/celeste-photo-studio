@@ -11,7 +11,13 @@ import {
   doc, 
   getDoc, 
   setDoc, 
-  onSnapshot 
+  onSnapshot,
+  collection,
+  addDoc,
+  updateDoc,
+  query,
+  orderBy,
+  getDocs
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -118,3 +124,52 @@ export async function saveSiteContentToFirestore(data) {
     updatedAt: new Date().toISOString()
   }, { merge: true });
 }
+
+// Firestore Feedback Collection Helpers
+const FEEDBACK_COLLECTION = "feedback";
+
+export async function addFeedbackToFirestore({ comment, screenshotBase64, targetElement, createdAt, status = "Open" }) {
+  if (!isFirebaseConfigured || !db) {
+    console.warn("Firebase not configured. Feedback saved locally.");
+    return { id: "local-" + Date.now() };
+  }
+  const colRef = collection(db, FEEDBACK_COLLECTION);
+  const docRef = await addDoc(colRef, {
+    comment: comment || "",
+    screenshotBase64: screenshotBase64 || null,
+    targetElement: targetElement || "body",
+    createdAt: createdAt || new Date().toISOString(),
+    status: status || "Open"
+  });
+  return docRef;
+}
+
+export function subscribeToFeedback(callback) {
+  if (!isFirebaseConfigured || !db) return () => {};
+  try {
+    const colRef = collection(db, FEEDBACK_COLLECTION);
+    const q = query(colRef, orderBy("createdAt", "desc"));
+    return onSnapshot(q, (snapshot) => {
+      const docs = snapshot.docs.map(docSnap => ({
+        id: docSnap.id,
+        ...docSnap.data()
+      }));
+      callback(docs);
+    }, (err) => {
+      console.warn("Feedback snapshot error:", err);
+    });
+  } catch (e) {
+    console.warn("Feedback query error:", e);
+    return () => {};
+  }
+}
+
+export async function updateFeedbackStatusInFirestore(feedbackId, newStatus) {
+  if (!isFirebaseConfigured || !db) return;
+  const docRef = doc(db, FEEDBACK_COLLECTION, feedbackId);
+  await updateDoc(docRef, {
+    status: newStatus,
+    updatedAt: new Date().toISOString()
+  });
+}
+
