@@ -1,0 +1,4 @@
+docs
+scratch
+.env.local
+*.log
