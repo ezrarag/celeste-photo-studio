@@ -1,803 +1,528 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Celeste Photo Studio | Documentary & Fine Art Photography</title>
   <link rel="icon" href="/favicon.ico">
-  
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=JetBrains+Mono:wght@400;500&family=Jost:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
   <style>
-    /* ==========================================================================
-       OLD BASIC STYLING (COMMENTED OUT AS REQUESTED)
-       ==========================================================================
-    :root {
-      --bg: #0f1115;
-      --card-bg: #181a20;
-      --text: #f0f2f5;
-      --text-muted: #9ba3af;
-      --accent: #d4af37;
-      --border: #2a2d36;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --font-serif: "Georgia", "Cambria", serif;
-    }
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-    }
-    header { display: flex; justify-content: space-between; padding: 1.5rem 3rem; }
-    .hero { min-height: 80vh; text-align: center; }
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
-    ========================================================================== */
-
-    /* ==========================================================================
-       CELESTE FRONT END SWITCHER UI STYLING
-       ========================================================================== */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Jost", system-ui, -apple-system, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      transition: background-color 0.4s ease, color 0.4s ease;
-    }
-
-    a {
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    button {
-      font-family: inherit;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    @keyframes vfade {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: none; }
-    }
-
-    .preset-container {
-      animation: vfade 0.5s ease both;
-      min-height: 100vh;
-    }
-
-    /* --------------------------------------------------------------------------
-       PRESET 1: ETHEREAL EDITORIAL (Light / Warm Neutral)
-       -------------------------------------------------------------------------- */
-    body.theme-ethereal {
-      background: #f7f5f1;
-      color: #22242c;
-    }
-
-    .ethereal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 26px 48px;
-    }
-
-    .ethereal-logo {
-      font-family: 'Bodoni Moda', serif;
-      font-size: 15px;
-      letter-spacing: .34em;
-      text-transform: uppercase;
-      color: #22242c;
-      font-weight: 600;
-    }
-
-    .ethereal-nav {
-      display: flex;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .ethereal-nav a {
-      font-size: 12.5px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: #6b6f7d;
-    }
-
-    .ethereal-nav a:hover {
-      color: #8a6d1f;
-    }
-
-    .btn-ethereal-client {
-      background: none;
-      border: 1px solid #c9c3b8;
-      border-radius: 2px;
-      padding: 8px 16px;
-      font-size: 11px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: #22242c;
-    }
-
-    .btn-ethereal-client:hover {
-      background: #22242c;
-      color: #f7f5f1;
-      border-color: #22242c;
-    }
-
-    .ethereal-hero-grid {
-      display: grid;
-      grid-template-columns: 100px 1fr 92px;
-      gap: 0;
-      align-items: stretch;
-      padding: 0 48px;
-      min-height: 520px;
-    }
-
-    .ethereal-numbers {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      padding-top: 26px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      letter-spacing: .14em;
-      color: #a9a49a;
-    }
-
-    .ethereal-numbers .active {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      color: #22242c;
-    }
-
-    .ethereal-numbers .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #22242c;
-    }
-
-    .ethereal-hero-img-wrapper {
-      position: relative;
-      overflow: hidden;
-      border-radius: 2px;
-    }
-
-    .ethereal-hero-img-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 50% 30%;
-      display: block;
-      filter: saturate(.85) contrast(1.02);
-    }
-
-    .ethereal-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, #f7f5f1 0%, rgba(247,245,241,.45) 22%, rgba(247,245,241,0) 55%);
-    }
-
-    .ethereal-recent-strip {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 10px;
-      padding-left: 16px;
-    }
-
-    .ethereal-recent-strip img {
-      width: 56px;
-      height: 56px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 1px solid #c9c3b8;
-    }
-
-    .ethereal-vertical-text {
-      writing-mode: vertical-rl;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9.5px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: #a9a49a;
-      margin-top: 12px;
-    }
-
-    .ethereal-intro-section {
-      display: grid;
-      grid-template-columns: 1fr 300px 74px;
-      gap: 36px;
-      align-items: end;
-      padding: 34px 48px 64px;
-    }
-
-    .ethereal-title {
-      margin: 0;
-      font-family: 'Bodoni Moda', serif;
-      font-weight: 300;
-      font-size: clamp(44px, 7vw, 100px);
-      line-height: .9;
-      letter-spacing: .04em;
-      color: #22242c;
-      text-transform: uppercase;
-    }
-
-    .ethereal-title span {
-      color: #8a6d1f;
-    }
-
-    .ethereal-desc {
-      margin: 0;
-      font-size: 13.5px;
-      line-height: 1.75;
-      color: #6b6f7d;
-    }
-
-    .btn-circle-arrow {
-      width: 74px;
-      height: 74px;
-      border-radius: 50%;
-      border: 1px solid #22242c;
-      background: none;
-      color: #22242c;
-      font-size: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .btn-circle-arrow:hover {
-      background: #22242c;
-      color: #f7f5f1;
-    }
-
-    /* Work Section */
-    .ethereal-work-section {
-      background: #3a4054;
-      padding: 78px 48px 90px;
-      color: #e8e6e0;
-    }
-
-    .work-section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 40px;
-      margin-bottom: 44px;
-    }
-
-    .work-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: #a3a8b8;
-    }
-
-    .work-heading {
-      margin: 0;
-      font-family: 'Bodoni Moda', serif;
-      font-weight: 300;
-      font-size: clamp(38px, 5.2vw, 80px);
-      line-height: .92;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-    }
-
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
-      align-items: end;
-    }
-
-    .work-card {
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .work-card img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      display: block;
-      border-radius: 2px;
-    }
-
-    .work-card figcaption {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9.5px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: #a3a8b8;
-    }
-
-    /* Services Section */
-    .ethereal-services-section {
-      padding: 90px 48px;
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-
-    .services-header {
-      display: flex;
-      align-items: baseline;
-      gap: 18px;
-      padding-bottom: 26px;
-      border-bottom: 1px solid #ddd7cc;
-      margin-bottom: 0;
-    }
-
-    .services-title {
-      margin: 0;
-      font-family: 'Bodoni Moda', serif;
-      font-weight: 300;
-      font-size: clamp(30px, 3.6vw, 52px);
-      letter-spacing: .05em;
-      text-transform: uppercase;
-      color: #22242c;
-    }
-
-    .services-rate-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: #a9a49a;
-    }
-
-    .services-three-col {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-    }
-
-    .service-col {
-      padding: 34px;
-      border-right: 1px solid #ddd7cc;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .service-col:first-child { padding-left: 0; }
-    .service-col:last-child { border-right: none; padding-right: 0; }
-
-    .service-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      letter-spacing: .2em;
-      color: #a9a49a;
-    }
-
-    .service-col h3 {
-      margin: 0;
-      font-family: 'Bodoni Moda', serif;
-      font-weight: 400;
-      font-size: 24px;
-      color: #22242c;
-    }
-
-    .service-col p {
-      margin: 0;
-      font-size: 13.5px;
-      line-height: 1.75;
-      color: #6b6f7d;
-    }
-
-    /* Booking Form Section */
-    .ethereal-booking-section {
-      background: #3a4054;
-      color: #e8e6e0;
-      padding: 88px 48px;
-    }
-
-    .booking-grid {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    .booking-info h2 {
-      margin: 0;
-      font-family: 'Bodoni Moda', serif;
-      font-weight: 300;
-      font-size: clamp(32px, 4vw, 58px);
-      line-height: 1;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
-
-    .booking-form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .booking-form input,
-    .booking-form select,
-    .booking-form textarea {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.18);
-      padding: 13px 14px;
-      color: #e8e6e0;
-      font-family: inherit;
-      font-size: 13.5px;
-      border-radius: 2px;
-    }
-
-    .booking-form input:focus,
-    .booking-form select:focus,
-    .booking-form textarea:focus {
-      outline: none;
-      border-color: #8a6d1f;
-    }
-
-    .btn-submit-booking {
-      background: #e8e6e0;
-      border: 0;
-      border-radius: 2px;
-      padding: 15px;
-      font-size: 12px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: #22242c;
-      font-weight: 500;
-    }
-
-    .btn-submit-booking:hover {
-      background: #8a6d1f;
-      color: #fff;
-    }
-
-    /* Footer */
-    footer {
-      padding: 34px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: #a9a49a;
-    }
-
-    footer a {
-      color: inherit;
-    }
-
-    /* --------------------------------------------------------------------------
-       PRESET 2: CINEMATIC (Dark Theme)
-       -------------------------------------------------------------------------- */
-    body.theme-cinematic {
-      background: #0f1115;
-      color: #f0f2f5;
-    }
-
-    body.theme-cinematic .ethereal-header {
-      background: transparent;
-    }
-
-    body.theme-cinematic .ethereal-logo,
-    body.theme-cinematic .ethereal-title,
-    body.theme-cinematic .services-title {
-      color: #f0f2f5;
-    }
-
-    body.theme-cinematic .ethereal-nav a {
-      color: #9ba3af;
-    }
-
-    body.theme-cinematic .btn-ethereal-client {
-      border-color: #d4af37;
-      color: #d4af37;
-    }
-
-    body.theme-cinematic .btn-ethereal-client:hover {
-      background: #d4af37;
-      color: #0f1115;
-    }
-
-    body.theme-cinematic .ethereal-title span,
-    body.theme-cinematic .service-col h3 {
-      color: #d4af37;
-    }
-
-    body.theme-cinematic .ethereal-work-section,
-    body.theme-cinematic .ethereal-booking-section {
-      background: #181a20;
-      border-top: 1px solid #2a2d36;
-      border-bottom: 1px solid #2a2d36;
-    }
-
-    body.theme-cinematic .service-col {
-      border-color: #2a2d36;
-    }
-
-    /* --------------------------------------------------------------------------
-       FLOATING FRONT END SWITCHER BAR
-       -------------------------------------------------------------------------- */
-    .switcher-bar {
+    /* Base Styles & Keyframes from Celeste Front End Switcher */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #f7f5f1; font-family: "Jost", system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; margin: 0; }
+    a { color: #3a4054; text-decoration: none; transition: color 0.2s ease; }
+    a:hover { color: #8a6d1f; }
+    button { font-family: inherit; cursor: pointer; transition: all 0.2s ease; }
+    @keyframes vfade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+    /* Theme Containers */
+    .view-section { display: none; }
+    .view-section.active { display: block; animation: vfade .4s ease both; }
+    .preset-section { display: none; }
+    .preset-section.active { display: block; animation: vfade .5s ease both; }
+
+    /* Switcher Floating Bar */
+    .switcher-container {
       position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(20, 22, 28, 0.92);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(212, 175, 55, 0.4);
-      border-radius: 30px;
-      padding: 6px 10px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      padding: 0 20px 18px;
+      pointer-events: none;
+    }
+    .switcher-bar {
+      pointer-events: auto;
       display: flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      z-index: 9999;
+      background: rgba(15,17,21,.94);
+      backdrop-filter: blur(14px);
+      border: 1px solid #2a2d36;
+      border-radius: 40px;
+      padding: 8px 10px 8px 18px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.32);
+      flex-wrap: wrap;
+      justify-content: center;
     }
-
     .switcher-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      letter-spacing: .12em;
+      font-size: 9px;
+      letter-spacing: .2em;
       text-transform: uppercase;
-      color: #d4af37;
-      padding: 0 12px;
-      font-weight: 500;
+      color: #6d7480;
+      padding-right: 6px;
     }
-
-    .btn-preset {
-      background: transparent;
-      border: 1px solid transparent;
-      color: #9ba3af;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 11px;
-      letter-spacing: .08em;
-      font-weight: 500;
+    .sw-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: 0;
+      border-radius: 22px;
+      padding: 8px 13px;
+      font-size: 12px;
+      color: #e8e6e0;
     }
-
-    .btn-preset:hover {
-      color: #fff;
-    }
-
-    .btn-preset.active {
-      background: #d4af37;
-      color: #000;
-      font-weight: 600;
-    }
-
-    @media (max-width: 900px) {
-      .ethereal-hero-grid, .ethereal-intro-section, .booking-grid {
-        grid-template-columns: 1fr;
-        padding: 24px;
-      }
-      .ethereal-numbers, .ethereal-recent-strip { display: none; }
-      .services-three-col { grid-template-columns: 1fr; }
-      .service-col { border-right: none; border-bottom: 1px solid #ddd7cc; padding: 24px 0; }
-    }
+    .sw-btn:hover { background: #22242c; }
+    .sw-btn.active { background: #22242c; color: #fff; font-weight: 500; }
+    .sw-btn.active .dot { background: #d4af37; }
+    .sw-btn .dot { width: 6px; height: 6px; border-radius: 50%; background: transparent; display: inline-block; }
+    .sw-divider { width: 1px; height: 22px; background: #2a2d36; margin: 0 8px; }
+    .sw-btn-admin { background: #d4af37; border: 0; border-radius: 22px; padding: 8px 15px; font-size: 12px; color: #0f1115; font-weight: 500; }
+    .sw-btn-admin:hover { background: #e5be47; }
   </style>
 </head>
-<body class="theme-ethereal">
+<body>
 
-  <!-- ==================== FRONTEND PRESET 1: ETHEREAL EDITORIAL ==================== -->
-  <div class="preset-container">
+  <!-- ========================================================================== -->
+  <!-- PUBLIC SITE VIEW (contains Editorial, Cinematic, Archive, Portal presets)  -->
+  <!-- ========================================================================== -->
+  <div id="view-site" class="view-section active">
 
-    <!-- Header Navigation -->
-    <header class="ethereal-header">
-      <a href="#" class="ethereal-logo">Celeste</a>
-      <nav class="ethereal-nav">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#book">Book</a>
-        <a href="/admin.html" class="btn-ethereal-client">Admin Login</a>
-      </nav>
-    </header>
+    <!-- PRESET 1: ETHEREAL EDITORIAL -->
+    <div id="preset-ethereal" class="preset-section active" style="background:#f7f5f1; min-height:100vh; padding-bottom:96px">
+      <header style="display:flex;justify-content:space-between;align-items:center;padding:26px 48px">
+        <div style="font-family:'Bodoni Moda',serif;font-size:15px;letter-spacing:.34em;text-transform:uppercase;color:#22242c">Celeste</div>
+        <nav style="display:flex;gap:30px;align-items:center">
+          <a href="#work" style="font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Work</a>
+          <a href="#about" style="font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">About</a>
+          <a href="#services" style="font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Services</a>
+          <button class="nav-switch-shop" style="background:none;border:0;padding:0;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Prints</button>
+          <button class="nav-switch-client" style="background:none;border:1px solid #c9c3b8;border-radius:2px;padding:8px 16px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#22242c" onmouseover="this.style.background='#22242c';this.style.color='#f7f5f1';" onmouseout="this.style.background='none';this.style.color='#22242c';">Client Login</button>
+        </nav>
+      </header>
 
-    <!-- Main Hero Image Grid -->
-    <section class="ethereal-hero-grid">
-      <div class="ethereal-numbers">
-        <div>01</div>
-        <div class="active"><span class="dot"></span>02</div>
-        <div>03</div>
-        <div>04</div>
-        <div>05</div>
-      </div>
-
-      <div class="ethereal-hero-img-wrapper">
-        <img id="mainHeroImage" src="/images/hero.webp" alt="Celeste Photography">
-        <div class="ethereal-hero-overlay"></div>
-      </div>
-
-      <div class="ethereal-recent-strip">
-        <img src="/images/league.jpg" alt="Recent Frame 1">
-        <img src="/images/procession.jpg" alt="Recent Frame 2">
-        <img src="/images/demonstration.jpg" alt="Recent Frame 3">
-        <div class="ethereal-vertical-text">Recent frames</div>
-      </div>
-    </section>
-
-    <!-- Headline & Intro Paragraph -->
-    <section class="ethereal-intro-section">
-      <div>
-        <h1 class="ethereal-title" id="displayHeroTitle">Documentary<span>.</span></h1>
-      </div>
-      <div>
-        <p class="ethereal-desc" id="displayHeroDesc">
-          Sport, protest and public life — photographed as it happens, printed as it was seen. Booking sessions and assignments for 2026.
-        </p>
-      </div>
-      <div>
-        <a href="#book" class="btn-circle-arrow" title="Book a Session">↗</a>
-      </div>
-    </section>
-
-    <!-- Selected Work Section -->
-    <section id="work" class="ethereal-work-section">
-      <div class="work-section-header">
-        <div class="work-tag">Selected work<br>2024 – 2026</div>
-        <h2 class="work-heading">The Work</h2>
-      </div>
-
-      <div class="work-grid" id="displayPortfolioGrid">
-        <figure class="work-card">
-          <img src="/images/league.jpg" alt="Shawnee Park League">
-          <figcaption>Shawnee Park · League</figcaption>
-        </figure>
-        <figure class="work-card">
-          <img src="/images/procession.jpg" alt="Memorial Procession">
-          <figcaption>Memorial Procession</figcaption>
-        </figure>
-        <figure class="work-card">
-          <img src="/images/demonstration.jpg" alt="Riverfront Demonstration">
-          <figcaption>Riverfront · Demonstration</figcaption>
-        </figure>
-        <figure class="work-card">
-          <img src="/images/placard.jpg" alt="Main Street Placard">
-          <figcaption>Main Street · Placard</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Services & Rates Section -->
-    <section id="services" class="ethereal-services-section">
-      <div class="services-header">
-        <h2 class="services-title">Services</h2>
-        <span class="services-rate-tag">2026 rates</span>
-      </div>
-
-      <div class="services-three-col" id="displayServicesGrid">
-        <div class="service-col">
-          <div class="service-num">01</div>
-          <h3>Event &amp; Game Coverage</h3>
-          <p>Half or full event. Edited gallery in 72 hours, delivered to your own client area with download rights.</p>
+      <section style="display:grid;grid-template-columns:150px 1fr 92px;gap:0;align-items:stretch;padding:0 48px;min-height:560px">
+        <div style="display:flex;flex-direction:column;gap:14px;padding-top:26px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:#a9a49a">
+          <div>01</div>
+          <div style="display:flex;align-items:center;gap:9px;color:#22242c"><span style="width:6px;height:6px;border-radius:50%;background:#22242c"></span>02</div>
+          <div>03</div><div>04</div><div>05</div>
         </div>
-        <div class="service-col">
-          <div class="service-num">02</div>
-          <h3>Portrait Sessions</h3>
-          <p>Ninety minutes on location. Athletes, families, and personal branding. Twenty retouched frames.</p>
+        <div style="position:relative;overflow:hidden">
+          <img src="/images/hero.webp" alt="Friday night football" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block;filter:saturate(.78) contrast(1.03)">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,#f7f5f1 0%,rgba(247,245,241,.55) 22%,rgba(247,245,241,0) 55%)"></div>
         </div>
-        <div class="service-col">
-          <div class="service-num">03</div>
-          <h3>Editorial Assignment</h3>
-          <p>Day rate for newsrooms and organizations. Licensing quoted per use; archive access included.</p>
+        <div style="display:flex;flex-direction:column;justify-content:center;gap:10px;padding-left:16px">
+          <img src="/images/league.jpg" alt="" style="width:56px;height:56px;object-fit:cover;border-radius:50%">
+          <img src="/images/procession.jpg" alt="" style="width:56px;height:56px;object-fit:cover;border-radius:50%">
+          <img src="/images/demonstration.jpg" alt="" style="width:56px;height:56px;object-fit:cover;border-radius:50%">
+          <div style="writing-mode:vertical-rl;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#a9a49a;margin-top:12px">Recent frames</div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Booking Form Section -->
-    <section id="book" class="ethereal-booking-section">
-      <div class="booking-grid">
-        <div class="booking-info">
-          <div class="work-tag" style="margin-bottom: 12px;">Booking</div>
-          <h2>Start With The Date</h2>
-          <p style="margin-top: 18px; font-size: 14px; line-height: 1.8; color: #c3c7d1;">
-            Tell me what is happening and when. I reply within one business day with availability and a quote.
-          </p>
-          <div style="margin-top: 24px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #a3a8b8; display: flex; flex-direction: column; gap: 6px;">
-            <span id="displayContactEmail">hello@celestephoto.com</span>
-            <span id="displayContactPhone">(502) 234–5678</span>
+      <section style="display:grid;grid-template-columns:1fr 300px 74px;gap:36px;align-items:end;padding:34px 48px 64px">
+        <h1 id="ethereal-hero-title" style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:clamp(48px,7.4vw,112px);line-height:.9;letter-spacing:.04em;color:#22242c;text-transform:uppercase">Documentary<span style="color:#8a6d1f">.</span></h1>
+        <p id="ethereal-hero-desc" style="margin:0;font-size:13.5px;line-height:1.75;color:#6b6f7d;text-wrap:pretty">Sport, protest and public life in Louisville — photographed as it happens, printed as it was seen. Booking sessions and assignments for 2026.</p>
+        <button class="nav-scroll-book" style="width:74px;height:74px;border-radius:50%;border:1px solid #22242c;background:none;color:#22242c;font-size:19px" onmouseover="this.style.background='#22242c';this.style.color='#f7f5f1';" onmouseout="this.style.background='none';this.style.color='#22242c';">↗</button>
+      </section>
+
+      <!-- Work Section -->
+      <section id="work" style="background:#3a4054;padding:78px 48px 90px;color:#e8e6e0">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:44px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#a3a8b8">Selected work<br>2024 – 2026</div>
+          <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:clamp(40px,5.6vw,84px);line-height:.92;letter-spacing:.05em;text-transform:uppercase">The Work</h2>
+        </div>
+        <div id="ethereal-work-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:end">
+          <figure style="margin:0;display:flex;flex-direction:column;gap:10px"><img src="/images/league.jpg" alt="Outdoor league" style="width:100%;height:300px;object-fit:cover;display:block"><figcaption style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#a3a8b8">Shawnee Park · League</figcaption></figure>
+          <figure style="margin:0;display:flex;flex-direction:column;gap:10px"><img src="/images/procession.jpg" alt="Memorial procession" style="width:100%;height:360px;object-fit:cover;display:block"><figcaption style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#a3a8b8">Memorial procession</figcaption></figure>
+          <figure style="margin:0;display:flex;flex-direction:column;gap:10px"><img src="/images/demonstration.jpg" alt="Riverfront demonstration" style="width:100%;height:262px;object-fit:cover;display:block"><figcaption style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#a3a8b8">Riverfront · Demonstration</figcaption></figure>
+          <figure style="margin:0;display:flex;flex-direction:column;gap:10px"><img src="/images/placard.jpg" alt="Street placard" style="width:100%;height:330px;object-fit:cover;display:block"><figcaption style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#a3a8b8">Main Street · Placard</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- Shared Lower Stack: About & Services -->
+      <section id="about" style="display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;padding:96px 48px;max-width:1280px;margin:0 auto">
+        <img src="/images/demonstration.jpg" alt="Riverfront demonstration" style="width:100%;height:460px;object-fit:cover;display:block">
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#a9a49a">About</div>
+          <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:clamp(34px,4.4vw,64px);line-height:1;letter-spacing:.04em;text-transform:uppercase;color:#22242c">Close, quiet, and there early</h2>
+          <p style="margin:0;font-size:14.5px;line-height:1.85;color:#6b6f7d;text-wrap:pretty">I photograph the rooms and streets where a community decides things about itself: Friday-night sidelines, summer league courts, marches down Bardstown Road. The approach is documentary — no staging, minimal direction, available light wherever it can carry the frame.</p>
+          <p style="margin:0;font-size:14.5px;line-height:1.85;color:#6b6f7d;text-wrap:pretty">Assignment and editorial work for local press, teams, and organizers. Private sessions for families and athletes on the same terms: I stay out of the way and hand back the day as it looked.</p>
+        </div>
+      </section>
+
+      <section id="services" style="padding:0 48px 96px;max-width:1280px;margin:0 auto">
+        <div style="display:flex;align-items:baseline;gap:18px;padding-bottom:26px;border-bottom:1px solid #ddd7cc;margin-bottom:0">
+          <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:clamp(30px,3.6vw,52px);letter-spacing:.05em;text-transform:uppercase;color:#22242c">Services</h2>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#a9a49a">2026 rates</span>
+        </div>
+        <div id="ethereal-services-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0">
+          <div style="padding:34px 34px 34px 0;border-right:1px solid #ddd7cc;display:flex;flex-direction:column;gap:12px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#a9a49a">01</div>
+            <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:24px;color:#22242c">Event &amp; game coverage</h3>
+            <p style="margin:0;font-size:13.5px;line-height:1.75;color:#6b6f7d;text-wrap:pretty">Half or full event. Edited gallery in 72 hours, delivered to your own client area with download rights.</p>
+            <div style="margin-top:auto;padding-top:14px;font-size:13px;letter-spacing:.06em;color:#22242c">From $450</div>
+          </div>
+          <div style="padding:34px;border-right:1px solid #ddd7cc;display:flex;flex-direction:column;gap:12px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#a9a49a">02</div>
+            <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:24px;color:#22242c">Portrait sessions</h3>
+            <p style="margin:0;font-size:13.5px;line-height:1.75;color:#6b6f7d;text-wrap:pretty">Ninety minutes on location. Athletes, families, and personal branding. Twenty retouched frames.</p>
+            <div style="margin-top:auto;padding-top:14px;font-size:13px;letter-spacing:.06em;color:#22242c">From $325</div>
+          </div>
+          <div style="padding:34px 0 34px 34px;display:flex;flex-direction:column;gap:12px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#a9a49a">03</div>
+            <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:24px;color:#22242c">Editorial assignment</h3>
+            <p style="margin:0;font-size:13.5px;line-height:1.75;color:#6b6f7d;text-wrap:pretty">Day rate for newsrooms and organizations. Licensing quoted per use; archive access included.</p>
+            <div style="margin-top:auto;padding-top:14px;font-size:13px;letter-spacing:.06em;color:#22242c">Day rate $900</div>
           </div>
         </div>
+      </section>
 
-        <form class="booking-form" onsubmit="event.preventDefault(); alert('Booking request sent! Celeste will be in touch shortly.');">
-          <input type="text" placeholder="Your Name" required>
-          <input type="email" placeholder="Your Email Address" required>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-            <input type="text" placeholder="Desired Date" required>
-            <select required>
-              <option value="">Select Service</option>
-              <option value="event">Event Coverage</option>
-              <option value="portrait">Portrait Session</option>
-              <option value="editorial">Editorial Assignment</option>
-            </select>
+      <!-- Booking Section -->
+      <section id="book" style="background:#3a4054;color:#e8e6e0;padding:88px 48px">
+        <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#a3a8b8">Booking</div>
+            <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:clamp(32px,4vw,58px);line-height:1;letter-spacing:.04em;text-transform:uppercase">Start with the date</h2>
+            <p style="margin:0;font-size:14px;line-height:1.8;color:#c3c7d1;text-wrap:pretty">Tell me what is happening and when. I reply within one business day with availability and a quote.</p>
+            <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#a3a8b8;display:flex;flex-direction:column;gap:6px">
+              <span class="display-email">hello@celestephoto.com</span>
+              <span class="display-phone">(502) 234–5678</span>
+            </div>
           </div>
-          <textarea rows="4" placeholder="Tell us about your shoot details..." required></textarea>
-          <button type="submit" class="btn-submit-booking">Request A Date</button>
+          <form onsubmit="event.preventDefault();alert('Booking enquiry sent!');" style="display:flex;flex-direction:column;gap:14px">
+            <input type="text" placeholder="Name" required style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);padding:13px 14px;color:#e8e6e0;font-family:inherit;font-size:13.5px;border-radius:2px">
+            <input type="email" placeholder="Email" required style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);padding:13px 14px;color:#e8e6e0;font-family:inherit;font-size:13.5px;border-radius:2px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+              <input type="text" placeholder="Date" required style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);padding:13px 14px;color:#e8e6e0;font-family:inherit;font-size:13.5px;border-radius:2px">
+              <select required style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);padding:13px 14px;color:#e8e6e0;font-family:inherit;font-size:13.5px;border-radius:2px">
+                <option style="color:#000;">Event coverage</option><option style="color:#000;">Portrait session</option><option style="color:#000;">Editorial assignment</option>
+              </select>
+            </div>
+            <textarea rows="4" placeholder="What are we photographing?" required style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);padding:13px 14px;color:#e8e6e0;font-family:inherit;font-size:13.5px;border-radius:2px;resize:vertical"></textarea>
+            <button type="submit" style="background:#e8e6e0;border:0;border-radius:2px;padding:15px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#22242c;font-weight:500">Request a date</button>
+          </form>
+        </div>
+      </section>
+
+      <footer style="background:#f7f5f1;padding:34px 48px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#a9a49a">
+        <span class="display-footer-text">© 2026 Celeste Photo Studio</span>
+        <button class="nav-switch-client" style="background:none;border:0;padding:0;font-family:inherit;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#22242c">Client area</button>
+      </footer>
+    </div>
+
+    <!-- PRESET 2: CINEMATIC -->
+    <div id="preset-cinematic" class="preset-section" style="background:#0f1115;color:#f0f2f5;min-height:100vh;padding-bottom:96px">
+      <div style="position:relative;height:calc(100vh - 96px);min-height:600px;overflow:hidden">
+        <img src="/images/procession.jpg" alt="Memorial procession" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 45%">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,21,.72) 0%,rgba(15,17,21,.15) 40%,rgba(15,17,21,.92) 100%)"></div>
+        <header style="position:relative;display:flex;justify-content:space-between;align-items:center;padding:26px 44px">
+          <div style="font-family:'Bodoni Moda',serif;font-size:15px;letter-spacing:.34em;text-transform:uppercase">Celeste</div>
+          <nav style="display:flex;gap:28px;align-items:center">
+            <a href="#c-about" style="font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#9ba3af">About</a>
+            <a href="#c-services" style="font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#9ba3af">Services</a>
+            <button class="nav-switch-shop" style="background:none;border:0;padding:0;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#9ba3af">Prints</button>
+            <button class="nav-switch-client" style="background:none;border:1px solid #d4af37;border-radius:3px;padding:8px 16px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#d4af37">Client Login</button>
+          </nav>
+        </header>
+        <div style="position:absolute;left:44px;right:44px;bottom:46px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end">
+          <div style="display:flex;flex-direction:column;gap:18px;max-width:760px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#d4af37">Frame 02 — Memorial procession, June</div>
+            <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:clamp(44px,6.4vw,92px);line-height:.94;letter-spacing:.03em">The picture is the whole argument.</h1>
+            <div style="display:flex;gap:12px;margin-top:6px">
+              <button class="nav-scroll-book" style="background:#d4af37;border:0;border-radius:3px;padding:14px 28px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#0f1115;font-weight:500">Book a session</button>
+              <button class="nav-switch-shop" style="background:none;border:1px solid rgba(240,242,245,.4);border-radius:3px;padding:14px 28px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#f0f2f5">View prints</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section style="padding:70px 44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        <img src="/images/hero.webp" alt="Friday night football" style="width:100%;height:280px;object-fit:cover;display:block">
+        <img src="/images/demonstration.jpg" alt="Riverfront demonstration" style="width:100%;height:280px;object-fit:cover;display:block">
+        <img src="/images/league.jpg" alt="Outdoor league" style="width:100%;height:280px;object-fit:cover;display:block">
+      </section>
+    </div>
+
+    <!-- PRESET 3: ARCHIVE -->
+    <div id="preset-archive" class="preset-section" style="background:#ece8e1;min-height:100vh;padding-bottom:96px">
+      <header style="display:flex;justify-content:space-between;align-items:center;padding:22px 34px;border-bottom:1px solid #d5cfc4">
+        <div style="display:flex;align-items:baseline;gap:14px">
+          <span style="font-family:'Bodoni Moda',serif;font-size:15px;letter-spacing:.3em;text-transform:uppercase;color:#22242c">Celeste</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:#8d887d">ARCHIVE / 214 FRAMES</span>
+        </div>
+        <nav style="display:flex;gap:22px;align-items:center">
+          <a href="#about" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">About</a>
+          <a href="#services" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Rates</a>
+          <button class="nav-switch-shop" style="background:none;border:0;padding:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Prints</button>
+          <button class="nav-switch-client" style="background:#22242c;border:0;padding:8px 15px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#ece8e1">Client Login</button>
+        </nav>
+      </header>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;padding:20px 34px;border-bottom:1px solid #d5cfc4">
+        <span style="padding:6px 13px;background:#22242c;color:#ece8e1;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase">All</span>
+        <span style="padding:6px 13px;border:1px solid #c9c3b8;color:#6b6f7d;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Sport</span>
+        <span style="padding:6px 13px;border:1px solid #c9c3b8;color:#6b6f7d;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Protest</span>
+        <span style="padding:6px 13px;border:1px solid #c9c3b8;color:#6b6f7d;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Community</span>
+        <span style="padding:6px 13px;border:1px solid #c9c3b8;color:#6b6f7d;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Portrait</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px;padding:2px">
+        <figure style="margin:0;background:#22242c;position:relative"><img src="/images/hero.webp" alt="Frame" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block"><figcaption style="position:absolute;left:0;right:0;bottom:0;padding:9px 10px;background:linear-gradient(180deg,rgba(34,36,44,0),rgba(34,36,44,.88));font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#e8e6e0;display:flex;justify-content:space-between;gap:8px"><span>Sideline, 4th quarter</span><span style="color:#a9a49a">CP-0412-1</span></figcaption></figure>
+        <figure style="margin:0;background:#22242c;position:relative"><img src="/images/league.jpg" alt="Frame" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block"><figcaption style="position:absolute;left:0;right:0;bottom:0;padding:9px 10px;background:linear-gradient(180deg,rgba(34,36,44,0),rgba(34,36,44,.88));font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#e8e6e0;display:flex;justify-content:space-between;gap:8px"><span>Second period</span><span style="color:#a9a49a">CP-0388-2</span></figcaption></figure>
+        <figure style="margin:0;background:#22242c;position:relative"><img src="/images/procession.jpg" alt="Frame" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block"><figcaption style="position:absolute;left:0;right:0;bottom:0;padding:9px 10px;background:linear-gradient(180deg,rgba(34,36,44,0),rgba(34,36,44,.88));font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#e8e6e0;display:flex;justify-content:space-between;gap:8px"><span>Procession</span><span style="color:#a9a49a">CP-0501-3</span></figcaption></figure>
+        <figure style="margin:0;background:#22242c;position:relative"><img src="/images/demonstration.jpg" alt="Frame" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block"><figcaption style="position:absolute;left:0;right:0;bottom:0;padding:9px 10px;background:linear-gradient(180deg,rgba(34,36,44,0),rgba(34,36,44,.88));font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#e8e6e0;display:flex;justify-content:space-between;gap:8px"><span>Riverfront</span><span style="color:#a9a49a">CP-0466-4</span></figcaption></figure>
+        <figure style="margin:0;background:#22242c;position:relative"><img src="/images/placard.jpg" alt="Frame" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block"><figcaption style="position:absolute;left:0;right:0;bottom:0;padding:9px 10px;background:linear-gradient(180deg,rgba(34,36,44,0),rgba(34,36,44,.88));font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#e8e6e0;display:flex;justify-content:space-between;gap:8px"><span>Placard</span><span style="color:#a9a49a">CP-0473-5</span></figcaption></figure>
+      </div>
+    </div>
+
+    <!-- PRESET 4: MINIMAL PORTAL -->
+    <div id="preset-portal" class="preset-section" style="background:#f7f5f1;min-height:calc(100vh - 96px);display:grid;grid-template-rows:auto 1fr auto">
+      <header style="display:flex;justify-content:space-between;align-items:center;padding:28px 44px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#a9a49a">Louisville, KY</span>
+        <nav style="display:flex;gap:24px;align-items:center">
+          <button class="nav-switch-shop" style="background:none;border:0;padding:0;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#a9a49a">Prints</button>
+          <button class="nav-switch-client" style="background:none;border:0;padding:0;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#22242c">Clients</button>
+        </nav>
+      </header>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;padding:20px">
+        <img src="/images/placard.jpg" alt="Street placard" style="width:min(420px,64vw);aspect-ratio:4/5;object-fit:cover;display:block">
+        <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:clamp(42px,8vw,124px);line-height:.86;letter-spacing:.09em;text-transform:uppercase;color:#22242c;text-align:center">Celeste</h1>
+        <p style="margin:0;max-width:420px;text-align:center;font-size:13.5px;line-height:1.8;color:#6b6f7d;text-wrap:pretty">Documentary photography. Sport, protest, and public life.</p>
+        <button class="nav-switch-ethereal" style="background:none;border:0;padding:0;border-bottom:1px solid #22242c;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#22242c;padding-bottom:4px">Enter the work</button>
+      </div>
+      <div style="padding:28px 44px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">
+        <span>Est. 2019</span><span class="display-email">hello@celestephoto.com</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========================================================================== -->
+  <!-- CLIENT AREA VIEW                                                          -->
+  <!-- ========================================================================== -->
+  <div id="view-client" class="view-section" style="min-height:calc(100vh - 96px);background:#f7f5f1">
+    <div id="client-login-card" style="display:grid;grid-template-columns:1.15fr 1fr;min-height:calc(100vh - 96px)">
+      <div style="position:relative;overflow:hidden">
+        <img src="/images/hero.webp" alt="" style="width:100%;height:100%;object-fit:cover">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(34,36,44,.35),rgba(34,36,44,.75))"></div>
+        <div style="position:absolute;left:44px;bottom:44px;color:#f7f5f1;max-width:420px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:14px;opacity:.8">Client area</div>
+          <p style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:32px;line-height:1.15;letter-spacing:.02em;text-wrap:pretty">Your gallery, your downloads, your proofs — in one place.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:center;padding:60px 64px;gap:26px">
+        <div style="font-family:'Bodoni Moda',serif;font-size:14px;letter-spacing:.34em;text-transform:uppercase;color:#22242c">Celeste</div>
+        <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:44px;line-height:1.05;letter-spacing:.03em;color:#22242c">Sign in to your gallery</h1>
+        <p style="margin:0;font-size:13.5px;line-height:1.7;color:#6b6f7d;text-wrap:pretty">Use the email the gallery was sent to, plus the six-character code from your delivery message.</p>
+        <form id="client-form" style="display:flex;flex-direction:column;gap:12px;max-width:380px">
+          <label style="display:flex;flex-direction:column;gap:7px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Email
+            <input type="email" value="jordan@jtownathletics.org" required style="background:#fff;border:1px solid #d5cfc4;padding:13px 14px;font-family:'Jost',sans-serif;font-size:14px;color:#22242c;border-radius:2px">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Gallery code
+            <input type="text" value="JT4-9QK" required style="background:#fff;border:1px solid #d5cfc4;padding:13px 14px;font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.22em;color:#22242c;border-radius:2px">
+          </label>
+          <button type="submit" style="background:#22242c;border:0;border-radius:2px;padding:15px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#f7f5f1;font-weight:500;margin-top:6px">Open my gallery</button>
         </form>
       </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <span id="displayFooterText">© 2026 Celeste Photo Studio. All rights reserved.</span>
-      <a href="/admin.html">🔒 Admin CMS Login</a>
-    </footer>
-
+    </div>
   </div>
 
-  <!-- ==================== FLOATING FRONT END SWITCHER BAR ==================== -->
-  <div class="switcher-bar">
-    <span class="switcher-label">UI Preset</span>
-    <button class="btn-preset active" data-theme="ethereal">Ethereal Editorial</button>
-    <button class="btn-preset" data-theme="cinematic">Cinematic Dark</button>
+  <!-- ========================================================================== -->
+  <!-- SHOP VIEW                                                                 -->
+  <!-- ========================================================================== -->
+  <div id="view-shop" class="view-section" style="min-height:calc(100vh - 96px);background:#f7f5f1">
+    <header style="display:flex;justify-content:space-between;align-items:center;padding:22px 40px;border-bottom:1px solid #ddd7cc">
+      <div style="display:flex;align-items:baseline;gap:16px">
+        <button class="nav-switch-site" style="background:none;border:0;padding:0;font-family:'Bodoni Moda',serif;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:#22242c">Celeste</button>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#a9a49a">Prints &amp; licences</span>
+      </div>
+      <div style="display:flex;gap:14px;align-items:center">
+        <button class="nav-switch-site" style="background:none;border:0;padding:0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Back to site</button>
+        <div style="display:flex;align-items:center;gap:99px;border:1px solid #d5cfc4;border-radius:2px;padding:8px 15px;font-size:12px;color:#22242c">Cart <span id="cart-badge" style="background:#22242c;color:#f7f5f1;border-radius:9px;padding:1px 8px;font-size:11px">2</span></div>
+      </div>
+    </header>
+
+    <div style="display:grid;grid-template-columns:1fr 400px;gap:0;align-items:start">
+      <div style="padding:32px 40px 70px">
+        <h1 style="margin:0 0 8px;font-family:'Bodoni Moda',serif;font-weight:300;font-size:44px;letter-spacing:.03em;color:#22242c">Open editions</h1>
+        <p style="margin:0 0 28px;font-size:13.5px;line-height:1.7;color:#6b6f7d;max-width:520px;text-wrap:pretty">Archival pigment prints on cotton rag, signed and shipped from Louisville. Digital files are licensed for editorial or personal use.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px">
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <img src="/images/hero.webp" alt="Print 1" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Bodoni Moda',serif;font-size:17px;color:#22242c">Sideline, 4th quarter</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6b6f7d">$60 – $290</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <img src="/images/league.jpg" alt="Print 2" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Bodoni Moda',serif;font-size:17px;color:#22242c">Second period</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6b6f7d">$60 – $290</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <img src="/images/procession.jpg" alt="Print 3" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Bodoni Moda',serif;font-size:17px;color:#22242c">Procession</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6b6f7d">$60 – $290</span></div>
+          </div>
+        </div>
+      </div>
+
+      <aside style="border-left:1px solid #ddd7cc;padding:32px 34px 60px;background:#fff;display:flex;flex-direction:column;gap:20px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#a9a49a">Selected</div>
+        <img src="/images/hero.webp" alt="Selected print" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">
+        <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:26px;color:#22242c">Sideline, 4th quarter</h2>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Print size</div>
+          <div style="display:flex;gap:8px;">
+            <button style="border:1px solid #d5cfc4;background:none;padding:9px 14px;font-size:12px;color:#22242c">8×10 · $60</button>
+            <button style="border:1px solid #22242c;background:#22242c;color:#fff;padding:9px 14px;font-size:12px;">16×20 · $145</button>
+          </div>
+        </div>
+        <button onclick="const b=document.getElementById('cart-badge');b.textContent=parseInt(b.textContent)+1;alert('Item added to cart!');" style="background:#22242c;border:0;border-radius:2px;padding:15px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#f7f5f1;font-weight:500">Add to cart</button>
+      </aside>
+    </div>
   </div>
 
-  <!-- Firestore Integration & Theme Switcher Script -->
+  <!-- ========================================================================== -->
+  <!-- ADMIN PREVIEW VIEW                                                         -->
+  <!-- ========================================================================== -->
+  <div id="view-admin" class="view-section" style="min-height:calc(100vh - 96px);background:#0f1115;color:#f0f2f5">
+    <header style="display:flex;justify-content:space-between;align-items:center;padding:20px 40px;border-bottom:1px solid #2a2d36">
+      <div style="display:flex;align-items:baseline;gap:14px">
+        <span style="font-family:'Bodoni Moda',serif;font-size:14px;letter-spacing:.3em;text-transform:uppercase">Celeste</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:#9ba3af">CMS ADMIN PREVIEW</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <a href="/admin.html" style="background:#d4af37;border:0;border-radius:3px;padding:8px 15px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#0f1115;font-weight:600">Open Full CMS Portal</a>
+      </div>
+    </header>
+    <div style="max-width:800px;margin:40px auto;padding:20px;text-align:center;display:flex;flex-direction:column;gap:20px">
+      <h1 style="font-family:'Bodoni Moda',serif;font-weight:300;font-size:36px;">Cloud Firestore CMS Dashboard</h1>
+      <p style="color:#9ba3af;line-height:1.7;">You can update headlines, portfolio entries, rates, and contact details live in real-time.</p>
+      <div><a href="/admin.html" style="background:#d4af37;color:#000;padding:14px 28px;border-radius:4px;font-weight:600;display:inline-block;">Go to /admin.html</a></div>
+    </div>
+  </div>
+
+  <!-- ========================================================================== -->
+  <!-- FULL SWITCHER FLOATING BAR (Lines 868 to 882 from Switcher Doc)             -->
+  <!-- ========================================================================== -->
+  <div class="switcher-container">
+    <div class="switcher-bar">
+      <span class="switcher-label">Preset</span>
+      <button class="sw-btn active" data-preset="ethereal"><span class="dot"></span>Editorial</button>
+      <button class="sw-btn" data-preset="cinematic"><span class="dot"></span>Cinematic</button>
+      <button class="sw-btn" data-preset="archive"><span class="dot"></span>Archive</button>
+      <button class="sw-btn" data-preset="portal"><span class="dot"></span>Portal</button>
+      
+      <span class="sw-divider"></span>
+      
+      <button class="sw-btn sw-view active" data-view="site">Public</button>
+      <button class="sw-btn sw-view" data-view="client">Client area</button>
+      <button class="sw-btn sw-view" data-view="shop">Shop</button>
+      <a href="/admin.html" class="sw-btn-admin">Admin</a>
+    </div>
+  </div>
+
+  <!-- Switcher Logic & Firebase Firestore Hooks Script -->
   <script type="module">
     import { subscribeToSiteContent } from '/src/firebase.js';
 
-    // Theme Switcher Logic
-    const themeButtons = document.querySelectorAll('.btn-preset');
-    themeButtons.forEach(btn => {
+    // State Management for Switcher
+    const state = {
+      view: 'site',
+      preset: 'ethereal'
+    };
+
+    const presetButtons = document.querySelectorAll('.sw-btn[data-preset]');
+    const viewButtons = document.querySelectorAll('.sw-view');
+    const viewSections = document.querySelectorAll('.view-section');
+    const presetSections = document.querySelectorAll('.preset-section');
+
+    function updateUI() {
+      // Views
+      viewSections.forEach(v => v.classList.remove('active'));
+      const activeView = document.getElementById(`view-${state.view}`);
+      if (activeView) activeView.classList.add('active');
+
+      viewButtons.forEach(btn => {
+        if (btn.getAttribute('data-view') === state.view) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Presets
+      presetSections.forEach(p => p.classList.remove('active'));
+      const activePreset = document.getElementById(`preset-${state.preset}`);
+      if (activePreset) activePreset.classList.add('active');
+
+      presetButtons.forEach(btn => {
+        if (btn.getAttribute('data-preset') === state.preset) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    presetButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        themeButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const theme = btn.getAttribute('data-theme');
-        document.body.className = `theme-${theme}`;
+        state.preset = btn.getAttribute('data-preset');
+        state.view = 'site';
+        updateUI();
       });
     });
 
-    // Elements
-    const heroTitle = document.getElementById('displayHeroTitle');
-    const heroDesc = document.getElementById('displayHeroDesc');
-    const portfolioGrid = document.getElementById('displayPortfolioGrid');
-    const servicesGrid = document.getElementById('displayServicesGrid');
-    const contactEmail = document.getElementById('displayContactEmail');
-    const contactPhone = document.getElementById('displayContactPhone');
-    const footerText = document.getElementById('displayFooterText');
+    viewButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.view = btn.getAttribute('data-view');
+        updateUI();
+      });
+    });
 
-    // Subscribe to real-time Firestore content updates
+    // Navigation Helper bindings
+    document.querySelectorAll('.nav-switch-shop').forEach(b => b.addEventListener('click', () => { state.view = 'shop'; updateUI(); }));
+    document.querySelectorAll('.nav-switch-client').forEach(b => b.addEventListener('click', () => { state.view = 'client'; updateUI(); }));
+    document.querySelectorAll('.nav-switch-site').forEach(b => b.addEventListener('click', () => { state.view = 'site'; updateUI(); }));
+    document.querySelectorAll('.nav-switch-ethereal').forEach(b => b.addEventListener('click', () => { state.preset = 'ethereal'; state.view = 'site'; updateUI(); }));
+
+    document.querySelectorAll('.nav-scroll-book').forEach(b => b.addEventListener('click', () => {
+      const el = document.getElementById('book');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }));
+
+    // Firebase Realtime Firestore Subscription
     subscribeToSiteContent((data) => {
       if (!data) return;
 
-      if (data.heroTitle) heroTitle.innerHTML = `${data.heroTitle}<span>.</span>`;
-      if (data.heroDesc) heroDesc.textContent = data.heroDesc;
-      if (data.contactEmail) contactEmail.textContent = data.contactEmail;
-      if (data.contactPhone) contactPhone.textContent = data.contactPhone;
-      if (data.footerText) footerText.textContent = data.footerText;
+      // Update Hero Headline & Description
+      const etherealTitle = document.getElementById('ethereal-hero-title');
+      const etherealDesc = document.getElementById('ethereal-hero-desc');
+      if (etherealTitle && data.heroTitle) etherealTitle.innerHTML = `${data.heroTitle}<span style="color:#8a6d1f">.</span>`;
+      if (etherealDesc && data.heroDesc) etherealDesc.textContent = data.heroDesc;
 
-      // Dynamic Portfolio rendering
-      if (Array.isArray(data.portfolio) && data.portfolio.length > 0) {
-        portfolioGrid.innerHTML = data.portfolio.map(item => `
-          <figure class="work-card">
-            <img src="${item.imageUrl || '/images/league.jpg'}" alt="${item.title || 'Work'}">
-            <figcaption>${item.title || 'Untitled'} · ${item.category || ''}</figcaption>
+      // Update Contact Info & Footer across sections
+      if (data.contactEmail) {
+        document.querySelectorAll('.display-email').forEach(el => el.textContent = data.contactEmail);
+      }
+      if (data.contactPhone) {
+        document.querySelectorAll('.display-phone').forEach(el => el.textContent = data.contactPhone);
+      }
+      if (data.footerText) {
+        document.querySelectorAll('.display-footer-text').forEach(el => el.textContent = data.footerText);
+      }
+
+      // Update Portfolio Grid
+      const etherealWorkGrid = document.getElementById('ethereal-work-grid');
+      if (etherealWorkGrid && Array.isArray(data.portfolio) && data.portfolio.length > 0) {
+        etherealWorkGrid.innerHTML = data.portfolio.map(item => `
+          <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+            <img src="${item.imageUrl || '/images/league.jpg'}" alt="${item.title || 'Work'}" style="width:100%;height:320px;object-fit:cover;display:block">
+            <figcaption style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#a3a8b8">${item.title || ''} · ${item.category || ''}</figcaption>
           </figure>
         `).join('');
       }
 
-      // Dynamic Services rendering
-      if (Array.isArray(data.services) && data.services.length > 0) {
-        servicesGrid.innerHTML = data.services.map((item, index) => `
-          <div class="service-col">
-            <div class="service-num">0${index + 1}</div>
-            <h3>${item.title || ''}</h3>
-            <p>${item.desc || ''}</p>
+      // Update Services Grid
+      const etherealServicesGrid = document.getElementById('ethereal-services-grid');
+      if (etherealServicesGrid && Array.isArray(data.services) && data.services.length > 0) {
+        etherealServicesGrid.innerHTML = data.services.map((item, index) => `
+          <div style="padding:34px;border-right:1px solid #ddd7cc;display:flex;flex-direction:column;gap:12px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#a9a49a">0${index + 1}</div>
+            <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:24px;color:#22242c">${item.title || ''}</h3>
+            <p style="margin:0;font-size:13.5px;line-height:1.75;color:#6b6f7d;text-wrap:pretty">${item.desc || ''}</p>
           </div>
         `).join('');
       }
