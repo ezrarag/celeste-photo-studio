@@ -411,6 +411,9 @@
       <button class="sw-btn sw-view" data-view="client">Client area</button>
       <button class="sw-btn sw-view" data-view="shop">Shop</button>
       <a href="/admin.html" class="sw-btn-admin">Admin</a>
+      <button class="sw-btn" id="swBtnFeedback" style="display: none; background: rgba(212, 175, 55, 0.2); border: 1px solid #d4af37; color: #d4af37; font-weight: 600; margin-left: 4px;">
+        📷 Visual Feedback
+      </button>
     </div>
   </div>
 
@@ -529,12 +532,8 @@
     });
   </script>
 
-  <!-- Floating Visual Feedback Widget Container -->
-  <div id="visualFeedbackContainer" style="display: none;">
-    <button id="vfTriggerBtn" style="position: fixed; bottom: 25px; right: 25px; z-index: 10000; background: #d4af37; color: #0f1115; border: none; padding: 11px 20px; border-radius: 30px; font-weight: 600; font-size: 13px; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px;">
-      📷 Visual Feedback
-    </button>
-
+  <!-- Floating Visual Feedback Container & Modals -->
+  <div id="visualFeedbackContainer">
     <div id="vfInspectorBanner" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #d4af37; color: #0f1115; padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 13px; z-index: 10001; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
       🎯 Click any element on the page to capture visual feedback
     </div>
@@ -570,10 +569,9 @@
   </div>
 
   <script type="module">
-    import { subscribeToAuthState, addFeedbackToFirestore } from '/src/firebase.js';
+    import { subscribeToAuthState, isUserAdmin, isFirebaseConfigured, addFeedbackToFirestore } from '/src/firebase.js';
 
-    const vfContainer = document.getElementById('visualFeedbackContainer');
-    const vfTriggerBtn = document.getElementById('vfTriggerBtn');
+    const swBtnFeedback = document.getElementById('swBtnFeedback');
     const vfInspectorBanner = document.getElementById('vfInspectorBanner');
     const vfHighlightBox = document.getElementById('vfHighlightBox');
     const vfModal = document.getElementById('vfModal');
@@ -587,19 +585,21 @@
     const urlParams = new URLSearchParams(window.location.search);
     const isReviewMode = urlParams.get('review') === 'true';
 
-    // Activate only if ?review=true in URL or signed-in as admin
-    function updateWidgetVisibility(user) {
-      if (isReviewMode || user) {
-        vfContainer.style.display = 'block';
+    // Show "📷 Visual Feedback" button in preset switcher bar ONLY when admin is logged in (or ?review=true)
+    function updateFeedbackButtonVisibility(user) {
+      const email = user?.email || "";
+      const isAdmin = user && isUserAdmin(email);
+      if (isAdmin || isReviewMode || (!isFirebaseConfigured && isReviewMode)) {
+        if (swBtnFeedback) swBtnFeedback.style.display = 'inline-flex';
       } else {
-        vfContainer.style.display = 'none';
+        if (swBtnFeedback) swBtnFeedback.style.display = 'none';
       }
     }
 
     subscribeToAuthState((user) => {
-      updateWidgetVisibility(user);
+      updateFeedbackButtonVisibility(user);
     });
-    if (isReviewMode) updateWidgetVisibility(null);
+    if (isReviewMode) updateFeedbackButtonVisibility(null);
 
     // Dynamic html2canvas Loader
     function loadHtml2Canvas() {
@@ -616,70 +616,68 @@
     let isInspecting = false;
     let selectedSelector = 'body';
     let capturedBase64 = null;
-    let targetElementRef = null;
 
-    // Hover Inspector & Capture Logic
-    vfTriggerBtn.addEventListener('click', () => {
-      vfContainer.style.display = 'none';
-      isInspecting = true;
-      vfInspectorBanner.style.display = 'block';
+    // Hover Inspector & Screenshot Capture Trigger
+    if (swBtnFeedback) {
+      swBtnFeedback.addEventListener('click', () => {
+        isInspecting = true;
+        vfInspectorBanner.style.display = 'block';
 
-      function onHover(e) {
-        if (!isInspecting) return;
-        const el = e.target;
-        if (!el || el.closest('#visualFeedbackContainer')) return;
-        const rect = el.getBoundingClientRect();
-        vfHighlightBox.style.left = rect.left + 'px';
-        vfHighlightBox.style.top = rect.top + 'px';
-        vfHighlightBox.style.width = rect.width + 'px';
-        vfHighlightBox.style.height = rect.height + 'px';
-        vfHighlightBox.style.display = 'block';
-      }
-
-      async function onClick(e) {
-        if (!isInspecting) return;
-        const el = e.target;
-        if (!el || el.closest('#visualFeedbackContainer')) return;
-        e.preventDefault();
-        e.stopPropagation();
-
-        isInspecting = false;
-        vfInspectorBanner.style.display = 'none';
-        vfHighlightBox.style.display = 'none';
-
-        window.removeEventListener('mousemove', onHover, true);
-        window.removeEventListener('click', onClick, true);
-
-        targetElementRef = el;
-        const tag = el.tagName.toLowerCase();
-        const id = el.id ? '#' + el.id : '';
-        const cls = el.className && typeof el.className === 'string' ? '.' + el.className.split(' ')[0] : '';
-        selectedSelector = `${tag}${id}${cls}`;
-        vfTargetBadge.innerText = 'Target: ' + selectedSelector;
-
-        // Take automatic screenshot using html2canvas
-        try {
-          await loadHtml2Canvas();
-          const targetToCapture = el || document.body;
-          const canvas = await window.html2canvas(targetToCapture, {
-            useCORS: true,
-            allowTaint: false,
-            logging: false
-          });
-          capturedBase64 = canvas.toDataURL('image/png');
-          vfScreenshotPreview.src = capturedBase64;
-        } catch (err) {
-          console.warn('Screenshot capture fallback:', err);
-          capturedBase64 = null;
+        function onHover(e) {
+          if (!isInspecting) return;
+          const el = e.target;
+          if (!el || el.closest('#visualFeedbackContainer') || el.closest('.switcher-container')) return;
+          const rect = el.getBoundingClientRect();
+          vfHighlightBox.style.left = rect.left + 'px';
+          vfHighlightBox.style.top = rect.top + 'px';
+          vfHighlightBox.style.width = rect.width + 'px';
+          vfHighlightBox.style.height = rect.height + 'px';
+          vfHighlightBox.style.display = 'block';
         }
 
-        vfContainer.style.display = 'block';
-        vfModal.style.display = 'flex';
-      }
+        async function onClick(e) {
+          if (!isInspecting) return;
+          const el = e.target;
+          if (!el || el.closest('#visualFeedbackContainer') || el.closest('.switcher-container')) return;
+          e.preventDefault();
+          e.stopPropagation();
 
-      window.addEventListener('mousemove', onHover, true);
-      window.addEventListener('click', onClick, true);
-    });
+          isInspecting = false;
+          vfInspectorBanner.style.display = 'none';
+          vfHighlightBox.style.display = 'none';
+
+          window.removeEventListener('mousemove', onHover, true);
+          window.removeEventListener('click', onClick, true);
+
+          const tag = el.tagName.toLowerCase();
+          const id = el.id ? '#' + el.id : '';
+          const cls = el.className && typeof el.className === 'string' ? '.' + el.className.split(' ')[0] : '';
+          selectedSelector = `${tag}${id}${cls}`;
+          vfTargetBadge.innerText = 'Target: ' + selectedSelector;
+
+          // Take automatic screenshot using html2canvas
+          try {
+            await loadHtml2Canvas();
+            const targetToCapture = el || document.body;
+            const canvas = await window.html2canvas(targetToCapture, {
+              useCORS: true,
+              allowTaint: false,
+              logging: false
+            });
+            capturedBase64 = canvas.toDataURL('image/png');
+            vfScreenshotPreview.src = capturedBase64;
+          } catch (err) {
+            console.warn('Screenshot capture fallback:', err);
+            capturedBase64 = null;
+          }
+
+          vfModal.style.display = 'flex';
+        }
+
+        window.addEventListener('mousemove', onHover, true);
+        window.addEventListener('click', onClick, true);
+      });
+    }
 
     function closeModal() {
       vfModal.style.display = 'none';
