@@ -7,7 +7,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         admin: resolve(__dirname, 'admin.html'),
-        switcher: resolve(__dirname, 'switcher.html')
+        switcher: resolve(__dirname, 'switcher.html'),
+        prototype: resolve(__dirname, 'admin-feedback-prototype.html')
       }
     }
   }
