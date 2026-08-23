@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Celeste Photo Studio</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
+  <style>
+    :root {
+      --bg: #0f1115;
+      --card-bg: #181a20;
+      --card-border: #2a2d36;
+      --text: #f0f2f5;
+      --text-muted: #9ba3af;
+      --accent: #d4af37;
+      --accent-hover: #e5be47;
+      --danger: #ef4444;
+      --danger-hover: #dc2626;
+      --success: #22c55e;
+      --warning-bg: #451a03;
+      --warning-border: #78350f;
+      --warning-text: #fde68a;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-serif: "Georgia", "Cambria", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      padding-bottom: 4rem;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--card-border);
+      background: #14161c;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .brand {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .user-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .user-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
+    }
+
+    .btn {
+      padding: 0.55rem 1.2rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    .btn-danger:hover {
+      background: var(--danger-hover);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Warning Banner */
+    .banner {
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      color: var(--warning-text);
+      padding: 1.25rem 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .banner h4 {
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Login Card */
+    .login-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 480px;
+      margin: 4rem auto;
+    }
+
+    .login-card h2 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .login-card p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .btn-google {
+      background: #ffffff;
+      color: #000000;
+      width: 100%;
+      justify-content: center;
+      padding: 0.85rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .btn-google:hover {
+      background: #f1f5f9;
+    }
+
+    /* Dashboard Layout */
+    .dashboard {
+      display: none;
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .dashboard-title h1 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+    }
+
+    .dashboard-title p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      background: #0f1115;
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* Dynamic Item Card */
+    .item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .item-row {
+      background: #12141a;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      position: relative;
+    }
+
+    .item-row-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .item-row-title {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .status-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      background: #181a20;
+      border: 1px solid var(--accent);
+      color: var(--text);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      gap: 0.75rem;
+      z-index: 100;
+    }
+
+    .access-denied {
+      display: none;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--danger);
+      border-radius: 12px;
+      max-width: 540px;
+      margin: 4rem auto;
+    }
+
+    .access-denied h2 {
+      color: var(--danger);
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="/" class="brand">Celeste <span>Studio</span> <small style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-sans);">(CMS Admin)</small></a>
+    <div class="user-controls" id="userControls" style="display: none;">
+      <div class="user-info">
+        <img id="userAvatar" class="user-avatar" src="" alt="Profile">
+        <span id="userName">User</span>
+      </div>
+      <button class="btn btn-outline" id="btnLogout">Sign Out</button>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Firebase Missing Config Warning -->
+    <div class="banner" id="configWarning" style="display: none;">
+      <h4>⚠️ Firebase Environment Variables Required</h4>
+      <p>Your Firebase credentials have not been set in <code>.env.local</code> or Vercel Environment Variables yet. To enable full authentication and live content editing, please add your Firebase credentials to your <code>.env.local</code> file locally and to your Vercel Project Settings for production.</p>
+    </div>
+
+    <!-- Login Card -->
+    <div class="login-card" id="loginCard">
+      <h2>Admin Sign In</h2>
+      <p>Log in with your authorized Google account to manage Celeste Photo Studio content.</p>
+      <button class="btn btn-google" id="btnLoginGoogle">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.15C3.26 21.3 7.33 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.99-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.7 1.29 6.61l3.99 3.15c.95-2.85 3.6-4.96 6.72-4.96z"/></svg>
+        Sign in with Google
+      </button>
+    </div>
+
+    <!-- Access Denied Card -->
+    <div class="access-denied" id="accessDeniedCard">
+      <h2>🚫 Access Denied</h2>
+      <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+        Signed in as <strong id="deniedEmail" style="color: var(--text);"></strong>.<br>
+        This email address is not listed as an authorized administrator.
+      </p>
+      <button class="btn btn-outline" id="btnDeniedLogout">Sign Out & Try Another Account</button>
+    </div>
+
+    <!-- Main CMS Dashboard -->
+    <div class="dashboard" id="dashboard">
+      <div class="dashboard-header">
+        <div class="dashboard-title">
+          <h1>Website Content Manager</h1>
+          <p>Edit text, portfolio items, and services. Changes save directly to Cloud Firestore.</p>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+          <a href="/" target="_blank" class="btn btn-outline">👁️ Preview Site</a>
+          <button class="btn btn-primary" id="btnSaveAll">💾 Save All Changes</button>
+        </div>
+      </div>
+
+      <!-- Hero Section Editor -->
+      <div class="card">
+        <div class="card-title">
+          <span>✨ Hero Header Section</span>
+        </div>
+        <div class="form-group">
+          <label>Tagline / Subheader Badge</label>
+          <input type="text" id="heroTag" class="form-control" placeholder="e.g. Fine Art & Commercial Photography">
+        </div>
+        <div class="form-group">
+          <label>Main Headline</label>
+          <input type="text" id="heroTitle" class="form-control" placeholder="e.g. Capturing Timeless Moments With Precision & Emotion">
+        </div>
+        <div class="form-group">
+          <label>Description Paragraph</label>
+          <textarea id="heroDesc" class="form-control" placeholder="Short intro text for hero section"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Call to Action Button Text</label>
+          <input type="text" id="heroCta" class="form-control" placeholder="e.g. View Portfolio">
+        </div>
+      </div>
+
+      <!-- Portfolio Section Editor -->
+      <div class="card">
+        <div class="card-title">
+          <span>🖼️ Portfolio Gallery</span>
+          <button class="btn btn-outline" id="btnAddPortfolioItem" style="font-size: 0.8rem; padding: 0.35rem 0.8rem;">+ Add Image Item</button>
+        </div>
+        <div class="item-list" id="portfolioList"></div>
+      </div>
+
+      <!-- Services Section Editor -->
+      <div class="card">
+        <div class="card-title">
+          <span>💼 Studio Services</span>
+          <button class="btn btn-outline" id="btnAddServiceItem" style="font-size: 0.8rem; padding: 0.35rem 0.8rem;">+ Add Service</button>
+        </div>
+        <div class="item-list" id="servicesList"></div>
+      </div>
+
+      <!-- Footer & Contact Editor -->
+      <div class="card">
+        <div class="card-title">
+          <span>📞 Footer & Contact Info</span>
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Contact Email</label>
+            <input type="email" id="contactEmail" class="form-control" placeholder="e.g. hello@celestephoto.com">
+          </div>
+          <div class="form-group">
+            <label>Contact Phone</label>
+            <input type="text" id="contactPhone" class="form-control" placeholder="e.g. (555) 234-5678">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Footer Copyright Text</label>
+          <input type="text" id="footerText" class="form-control" placeholder="e.g. © 2026 Celeste Photo Studio. All rights reserved.">
+        </div>
+      </div>
+
+      <div style="text-align: right;">
+        <button class="btn btn-primary" id="btnSaveAllBottom" style="padding: 0.85rem 2.5rem; font-size: 1.05rem;">💾 Save All Changes</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="status-toast" id="statusToast">
+    <span id="toastMessage">Changes saved successfully!</span>
+  </div>
+
+  <script type="module">
+    import { 
+      isFirebaseConfigured, 
+      loginWithGoogle, 
+      logoutUser, 
+      subscribeToAuthState, 
+      isUserAdmin,
+      getSiteContentFromFirestore,
+      saveSiteContentToFirestore
+    } from '/src/firebase.js';
+
+    // UI Elements
+    const configWarning = document.getElementById('configWarning');
+    const loginCard = document.getElementById('loginCard');
+    const accessDeniedCard = document.getElementById('accessDeniedCard');
+    const dashboard = document.getElementById('dashboard');
+    const userControls = document.getElementById('userControls');
+    const userAvatar = document.getElementById('userAvatar');
+    const userName = document.getElementById('userName');
+    const btnLoginGoogle = document.getElementById('btnLoginGoogle');
+    const btnLogout = document.getElementById('btnLogout');
+    const btnDeniedLogout = document.getElementById('btnDeniedLogout');
+    const deniedEmail = document.getElementById('deniedEmail');
+    const btnSaveAll = document.getElementById('btnSaveAll');
+    const btnSaveAllBottom = document.getElementById('btnSaveAllBottom');
+    const statusToast = document.getElementById('statusToast');
+    const toastMessage = document.getElementById('toastMessage');
+
+    // Portfolio & Services State
+    let portfolioItems = [];
+    let serviceItems = [];
+
+    // Check Firebase configuration
+    if (!isFirebaseConfigured) {
+      configWarning.style.display = 'flex';
+    }
+
+    // Auth State Listener
+    subscribeToAuthState(async (user) => {
+      if (user) {
+        const email = user.email || "";
+        if (isUserAdmin(email) || !isFirebaseConfigured) {
+          // Authorized Admin
+          loginCard.style.display = 'none';
+          accessDeniedCard.style.display = 'none';
+          dashboard.style.display = 'block';
+          userControls.style.display = 'flex';
+          userAvatar.src = user.photoURL || 'https://via.placeholder.com/34';
+          userName.textContent = user.displayName || email;
+
+          // Load current Firestore content
+          await loadContentIntoForm();
+        } else {
+          // Unauthorized user
+          loginCard.style.display = 'none';
+          dashboard.style.display = 'none';
+          userControls.style.display = 'none';
+          accessDeniedCard.style.display = 'block';
+          deniedEmail.textContent = email;
+        }
+      } else {
+        // Logged out
+        loginCard.style.display = 'block';
+        accessDeniedCard.style.display = 'none';
+        dashboard.style.display = 'none';
+        userControls.style.display = 'none';
+      }
+    });
+
+    // Login Event
+    btnLoginGoogle.addEventListener('click', async () => {
+      try {
+        await loginWithGoogle();
+      } catch (err) {
+        alert(err.message || 'Error signing in with Google.');
+      }
+    });
+
+    // Logout Events
+    btnLogout.addEventListener('click', () => logoutUser());
+    btnDeniedLogout.addEventListener('click', () => logoutUser());
+
+    // Load content from Firestore or set defaults
+    async function loadContentIntoForm() {
+      const data = await getSiteContentFromFirestore();
+      
+      const defaults = {
+        heroTag: 'Fine Art & Commercial Photography',
+        heroTitle: 'Capturing Timeless Moments With Precision & Emotion',
+        heroDesc: 'Celeste Photo Studio specializes in portraiture, editorial photography, and high-end studio productions.',
+        heroCta: 'View Portfolio',
+        portfolio: [
+          { title: 'Weddings & Events', category: 'Editorial Stories', imageUrl: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80' },
+          { title: 'Portraiture', category: 'Studio & Location', imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80' },
+          { title: 'Commercial & Fashion', category: 'Brand Campaigns', imageUrl: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80' }
+        ],
+        services: [
+          { title: 'Studio Portraits', desc: 'Professional lighting, creative direction, and retouching for personal branding and portraiture.' },
+          { title: 'Editorial & Fashion', desc: 'Full production support for magazine features, lookbooks, and high-concept fashion shoots.' },
+          { title: 'Event Coverage', desc: 'Discreet, documentary-style photography for private events, galas, and intimate celebrations.' }
+        ],
+        contactEmail: 'hello@celestephoto.com',
+        contactPhone: '(555) 234-5678',
+        footerText: '© 2026 Celeste Photo Studio. All rights reserved.'
+      };
+
+      const content = data || defaults;
+
+      document.getElementById('heroTag').value = content.heroTag || '';
+      document.getElementById('heroTitle').value = content.heroTitle || '';
+      document.getElementById('heroDesc').value = content.heroDesc || '';
+      document.getElementById('heroCta').value = content.heroCta || '';
+      document.getElementById('contactEmail').value = content.contactEmail || '';
+      document.getElementById('contactPhone').value = content.contactPhone || '';
+      document.getElementById('footerText').value = content.footerText || '';
+
+      portfolioItems = content.portfolio || [];
+      serviceItems = content.services || [];
+
+      renderPortfolioList();
+      renderServicesList();
+    }
+
+    // Render Portfolio Items
+    function renderPortfolioList() {
+      const listEl = document.getElementById('portfolioList');
+      listEl.innerHTML = '';
+      portfolioItems.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'item-row';
+        div.innerHTML = `
+          <div class="item-row-header">
+            <span class="item-row-title">Portfolio Item #${index + 1}</span>
+            <button class="btn btn-danger" style="padding: 0.25rem 0.6rem; font-size: 0.8rem;" data-remove-portfolio="${index}">Remove</button>
+          </div>
+          <div class="grid-2">
+            <input type="text" class="form-control" placeholder="Title" value="${item.title || ''}" data-port-title="${index}">
+            <input type="text" class="form-control" placeholder="Category" value="${item.category || ''}" data-port-cat="${index}">
+          </div>
+          <input type="text" class="form-control" placeholder="Image URL" value="${item.imageUrl || ''}" data-port-url="${index}">
+        `;
+        listEl.appendChild(div);
+      });
+    }
+
+    // Render Services List
+    function renderServicesList() {
+      const listEl = document.getElementById('servicesList');
+      listEl.innerHTML = '';
+      serviceItems.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'item-row';
+        div.innerHTML = `
+          <div class="item-row-header">
+            <span class="item-row-title">Service #${index + 1}</span>
+            <button class="btn btn-danger" style="padding: 0.25rem 0.6rem; font-size: 0.8rem;" data-remove-service="${index}">Remove</button>
+          </div>
+          <input type="text" class="form-control" placeholder="Service Title" value="${item.title || ''}" data-service-title="${index}">
+          <textarea class="form-control" placeholder="Description" data-service-desc="${index}">${item.desc || ''}</textarea>
+        `;
+        listEl.appendChild(div);
+      });
+    }
+
+    // Event delegation for Add/Remove buttons
+    document.getElementById('btnAddPortfolioItem').addEventListener('click', () => {
+      portfolioItems.push({ title: 'New Category', category: 'Subcategory', imageUrl: '' });
+      renderPortfolioList();
+    });
+
+    document.getElementById('btnAddServiceItem').addEventListener('click', () => {
+      serviceItems.push({ title: 'New Service', desc: '' });
+      renderServicesList();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (e.target.hasAttribute('data-remove-portfolio')) {
+        const idx = parseInt(e.target.getAttribute('data-remove-portfolio'));
+        portfolioItems.splice(idx, 1);
+        renderPortfolioList();
+      }
+      if (e.target.hasAttribute('data-remove-service')) {
+        const idx = parseInt(e.target.getAttribute('data-remove-service'));
+        serviceItems.splice(idx, 1);
+        renderServicesList();
+      }
+    });
+
+    // Collect Data from Form Inputs
+    function collectFormData() {
+      // Update portfolio items array from input fields
+      portfolioItems.forEach((item, i) => {
+        const titleEl = document.querySelector(`[data-port-title="${i}"]`);
+        const catEl = document.querySelector(`[data-port-cat="${i}"]`);
+        const urlEl = document.querySelector(`[data-port-url="${i}"]`);
+        if (titleEl) item.title = titleEl.value;
+        if (catEl) item.category = catEl.value;
+        if (urlEl) item.imageUrl = urlEl.value;
+      });
+
+      // Update services array from input fields
+      serviceItems.forEach((item, i) => {
+        const titleEl = document.querySelector(`[data-service-title="${i}"]`);
+        const descEl = document.querySelector(`[data-service-desc="${i}"]`);
+        if (titleEl) item.title = titleEl.value;
+        if (descEl) item.desc = descEl.value;
+      });
+
+      return {
+        heroTag: document.getElementById('heroTag').value,
+        heroTitle: document.getElementById('heroTitle').value,
+        heroDesc: document.getElementById('heroDesc').value,
+        heroCta: document.getElementById('heroCta').value,
+        portfolio: portfolioItems,
+        services: serviceItems,
+        contactEmail: document.getElementById('contactEmail').value,
+        contactPhone: document.getElementById('contactPhone').value,
+        footerText: document.getElementById('footerText').value
+      };
+    }
+
+    // Save All Handler
+    async function handleSaveAll() {
+      const formData = collectFormData();
+      try {
+        showToast('Saving changes to Firestore...', false);
+        await saveSiteContentToFirestore(formData);
+        showToast('✅ All changes saved successfully!', true);
+      } catch (err) {
+        showToast('❌ Error: ' + (err.message || 'Failed to save changes'), false);
+      }
+    }
+
+    btnSaveAll.addEventListener('click', handleSaveAll);
+    btnSaveAllBottom.addEventListener('click', handleSaveAll);
+
+    function showToast(msg, isSuccess = true) {
+      toastMessage.textContent = msg;
+      statusToast.style.borderColor = isSuccess ? 'var(--success)' : 'var(--danger)';
+      statusToast.style.display = 'flex';
+      setTimeout(() => {
+        statusToast.style.display = 'none';
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
