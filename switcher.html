@@ -25,10 +25,669 @@
   .hover-border-gold:hover{border-color:#d4af37!important}
   .hover-bg-dark:hover{background:#22242c!important}
   .hover-bg-dark-text-light:hover{background:#22242c!important;color:#e8e6e0!important}
+
+  /* Mobile Responsive Styles */
+  @media (max-width: 900px) {
+    .site-header { padding: 16px 20px !important; flex-wrap: wrap !important; gap: 14px !important; }
+    .site-nav { gap: 14px !important; flex-wrap: wrap !important; }
+    .ethereal-hero-section { grid-template-columns: 1fr !important; padding: 0 20px !important; min-height: auto !important; gap: 16px !important; }
+    .hero-index-col { flex-direction: row !important; gap: 16px !important; padding-top: 10px !important; justify-content: center !important; }
+    .hero-img-col { height: 380px !important; }
+    .hero-thumbs-col { flex-direction: row !important; justify-content: center !important; align-items: center !important; padding-left: 0 !important; gap: 16px !important; }
+    .hero-thumbs-col img { width: 48px !important; height: 48px !important; }
+    .hero-thumbs-col div { writing-mode: horizontal-tb !important; margin-top: 0 !important; }
+    .ethereal-title-section { grid-template-columns: 1fr !important; gap: 20px !important; padding: 24px 20px 40px !important; }
+    #work { padding: 48px 20px 60px !important; }
+    #ethereal-work-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+    .about-section { grid-template-columns: 1fr !important; gap: 32px !important; padding: 56px 20px !important; }
+    .services-section { padding: 0 20px 60px !important; }
+    #ethereal-services-grid { grid-template-columns: 1fr !important; }
+    .booking-section { padding: 56px 20px !important; }
+    .booking-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+    .booking-form-row { grid-template-columns: 1fr !important; }
+    #client-login-card { grid-template-columns: 1fr !important; min-height: auto !important; }
+    .client-hero-img { height: 200px !important; }
+    .client-form-panel { padding: 36px 20px !important; }
+    .shop-layout-grid { grid-template-columns: 1fr !important; }
+    .shop-cart-sidebar { border-left: none !important; border-top: 1px solid #ddd7cc !important; padding: 28px 20px 40px !important; }
+    .switcher-container { padding: 0 10px 12px !important; }
+    .switcher-bar { max-width: 96vw !important; overflow-x: auto !important; white-space: nowrap !important; flex-wrap: nowrap !important; justify-content: flex-start !important; padding: 6px 12px !important; border-radius: 30px !important; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .switcher-bar::-webkit-scrollbar { display: none; }
+    .sw-btn, .sw-btn-admin { padding: 6px 10px !important; font-size: 11px !important; flex-shrink: 0 !important; }
+  }
+  .archive-grid figure {
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.25s ease;
+  }
+  .archive-grid figure:hover img {
+    transform: scale(1.03);
+    opacity: 0.92;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* Archive Commercial Licensing Store Modal */
+  .licensing-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 17, 21, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10005;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+  .licensing-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .licensing-modal-container {
+    background: #181a20;
+    border: 1px solid #2a2d36;
+    border-radius: 12px;
+    max-width: 720px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    color: #f0f2f5;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    transform: translateY(12px) scale(0.98);
+    transition: transform 0.25s ease;
+  }
+  .licensing-modal-overlay.active .licensing-modal-container {
+    transform: translateY(0) scale(1);
+  }
+  .licensing-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #9ba3af;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.15s ease;
+    z-index: 2;
+  }
+  .licensing-modal-close:hover {
+    color: #f0f2f5;
+  }
+  .licensing-modal-header {
+    padding: 24px 28px 16px;
+    border-bottom: 1px solid #2a2d36;
+  }
+  .licensing-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #d4af37;
+    background: rgba(212, 175, 55, 0.12);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .licensing-badge.gold {
+    color: #0f1115;
+    background: #d4af37;
+    font-weight: 600;
+  }
+  .licensing-modal-title {
+    margin: 0 0 6px;
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 300;
+    font-size: 24px;
+    color: #f0f2f5;
+    letter-spacing: 0.02em;
+  }
+  .licensing-modal-sub {
+    margin: 0;
+    font-size: 13px;
+    color: #9ba3af;
+    line-height: 1.5;
+  }
+  .licensing-modal-body {
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .licensing-photo-card {
+    background: #0f1115;
+    border: 1px solid #2a2d36;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .licensing-img-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #22242c;
+    overflow: hidden;
+  }
+  .licensing-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .licensing-photo-details {
+    padding: 12px 14px;
+  }
+  .licensing-photo-title {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 15px;
+    color: #f0f2f5;
+    margin-bottom: 4px;
+  }
+  .licensing-photo-ref {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: #d4af37;
+  }
+  .licensing-options-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .licensing-section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #a9a49a;
+  }
+  .licensing-tiers-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tier-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #0f1115;
+    border: 1px solid #2a2d36;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .tier-card:hover {
+    border-color: #4a4e5d;
+  }
+  .tier-card.active {
+    border-color: #d4af37;
+    background: rgba(212, 175, 55, 0.08);
+  }
+  .tier-card input[type="radio"] {
+    accent-color: #d4af37;
+    margin-top: 3px;
+    cursor: pointer;
+  }
+  .tier-content {
+    flex: 1;
+  }
+  .tier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
+  }
+  .tier-name {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #f0f2f5;
+  }
+  .tier-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #d4af37;
+  }
+  .tier-desc {
+    font-size: 12px;
+    color: #9ba3af;
+    line-height: 1.4;
+  }
+  .licensing-terms-box {
+    background: #0f1115;
+    border: 1px solid #2a2d36;
+    border-radius: 6px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .licensing-terms-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #f0f2f5;
+    cursor: pointer;
+    user-select: none;
+  }
+  .licensing-terms-label input[type="checkbox"] {
+    accent-color: #d4af37;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+  .licensing-terms-note {
+    margin: 0;
+    font-size: 11px;
+    color: #6d7480;
+    line-height: 1.4;
+    padding-left: 26px;
+  }
+  .licensing-pay-btn {
+    background: #d4af37;
+    color: #0f1115;
+    border: none;
+    border-radius: 6px;
+    padding: 14px;
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.2s ease, background 0.2s ease, transform 0.1s ease;
+  }
+  .licensing-pay-btn:hover:not(:disabled) {
+    background: #e5be48;
+    transform: translateY(-1px);
+  }
+  .licensing-pay-btn:disabled {
+    background: #2a2d36;
+    color: #6d7480;
+    cursor: not-allowed;
+  }
+  .licensing-pay-body {
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .pay-summary-card {
+    background: #0f1115;
+    border: 1px solid #2a2d36;
+    border-radius: 8px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .pay-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+  }
+  .pay-summary-label {
+    color: #9ba3af;
+  }
+  .pay-summary-val {
+    color: #f0f2f5;
+    font-weight: 500;
+  }
+  .pay-summary-val.ref-code {
+    font-family: 'JetBrains Mono', monospace;
+    color: #d4af37;
+  }
+  .pay-methods-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #a9a49a;
+  }
+  .pay-methods-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .pay-method-card {
+    background: #0f1115;
+    border: 1px solid #2a2d36;
+    border-radius: 8px;
+    padding: 14px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    text-decoration: none;
+    color: #f0f2f5;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .pay-method-card:hover {
+    border-color: #d4af37;
+    background: #1c1f27;
+  }
+  .pay-method-icon {
+    font-size: 22px;
+  }
+  .pay-method-name {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .pay-method-handle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #d4af37;
+  }
+  .pay-method-action {
+    font-size: 11px;
+    color: #9ba3af;
+    margin-top: 4px;
+  }
+  .pay-method-action-btn {
+    background: #2a2d36;
+    border: none;
+    color: #f0f2f5;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 11px;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: background 0.15s ease;
+  }
+  .pay-method-action-btn:hover {
+    background: #d4af37;
+    color: #0f1115;
+  }
+  .pay-instruction-box {
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .pay-instruction-header {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #d4af37;
+  }
+  .pay-instruction-box p {
+    margin: 0;
+    font-size: 12px;
+    color: #d5cfc4;
+    line-height: 1.5;
+  }
+  .pay-ref-copy-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0f1115;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #f0f2f5;
+  }
+  .pay-ref-copy-bar strong {
+    font-family: 'JetBrains Mono', monospace;
+    color: #d4af37;
+  }
+  .copy-ref-btn {
+    background: #d4af37;
+    color: #0f1115;
+    border: none;
+    border-radius: 3px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .copy-ref-btn:hover {
+    background: #e5be48;
+  }
+  .pay-actions-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 6px;
+  }
+  .licensing-btn-secondary {
+    background: transparent;
+    border: 1px solid #2a2d36;
+    color: #f0f2f5;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .licensing-btn-secondary:hover {
+    background: #2a2d36;
+  }
+  .licensing-btn-primary {
+    background: #d4af37;
+    border: none;
+    color: #0f1115;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .licensing-btn-primary:hover {
+    background: #e5be48;
+  }
+  @media (max-width: 640px) {
+    .licensing-modal-container {
+      max-height: 95vh;
+    }
+    .licensing-modal-body {
+      grid-template-columns: 1fr;
+      padding: 18px 20px;
+      gap: 18px;
+    }
+    .licensing-photo-card {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 10px;
+    }
+    .licensing-img-wrapper {
+      width: 72px;
+      height: 72px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .licensing-photo-details {
+      padding: 0;
+    }
+    .pay-methods-grid {
+      grid-template-columns: 1fr;
+    }
+    .licensing-modal-header {
+      padding: 20px 20px 14px;
+    }
+    .licensing-pay-body {
+      padding: 18px 20px;
+    }
+  }
 </style>
 </head>
-<body>
 <div id="app"></div>
+
+<!-- Archive Commercial Licensing Store Modal -->
+<div id="licensingModal" class="licensing-modal-overlay" aria-hidden="true">
+  <div class="licensing-modal-container" role="dialog" aria-modal="true" aria-labelledby="licensingModalTitle">
+    <button id="licensingModalClose" class="licensing-modal-close" aria-label="Close modal">&times;</button>
+    
+    <!-- Step 1: License Selection Form -->
+    <div id="licensingFormStep" class="licensing-step-content">
+      <div class="licensing-modal-header">
+        <div class="licensing-badge">Archive Commercial Store</div>
+        <h2 id="licensingModalTitle" class="licensing-modal-title">Photo Commercial Licensing</h2>
+        <p class="licensing-modal-sub">Select usage rights and licensing tier for immediate high-resolution clearance.</p>
+      </div>
+
+      <div class="licensing-modal-body">
+        <!-- Photo Info Column -->
+        <div class="licensing-photo-card">
+          <div class="licensing-img-wrapper">
+            <img id="licensingPhotoImg" src="" alt="Photo preview" />
+          </div>
+          <div class="licensing-photo-details">
+            <div id="licensingPhotoTitle" class="licensing-photo-title">Photo Title</div>
+            <div id="licensingPhotoRef" class="licensing-photo-ref">REF: CP-0412</div>
+          </div>
+        </div>
+
+        <!-- Licensing Options Column -->
+        <div class="licensing-options-column">
+          <label class="licensing-section-label">Select Licensing Tier</label>
+          
+          <div class="licensing-tiers-group">
+            <!-- Tier 1 -->
+            <label class="tier-card" data-price="75" data-name="Editorial Press License">
+              <input type="radio" name="licensingTier" value="75" data-tier-name="Editorial Press License" data-tier-desc="Single publication/editorial usage.">
+              <div class="tier-content">
+                <div class="tier-header">
+                  <span class="tier-name">Editorial Press License</span>
+                  <span class="tier-price">$75</span>
+                </div>
+                <div class="tier-desc">Single publication/editorial usage.</div>
+              </div>
+            </label>
+
+            <!-- Tier 2 (Default Selected) -->
+            <label class="tier-card active" data-price="250" data-name="Commercial / Brand License">
+              <input type="radio" name="licensingTier" value="250" data-tier-name="Commercial / Brand License" data-tier-desc="Non-exclusive marketing &amp; web usage." checked>
+              <div class="tier-content">
+                <div class="tier-header">
+                  <span class="tier-name">Commercial / Brand License</span>
+                  <span class="tier-price">$250</span>
+                </div>
+                <div class="tier-desc">Non-exclusive marketing &amp; web usage.</div>
+              </div>
+            </label>
+
+            <!-- Tier 3 -->
+            <label class="tier-card" data-price="650" data-name="Full Commercial Buyout">
+              <input type="radio" name="licensingTier" value="650" data-tier-name="Full Commercial Buyout" data-tier-desc="Exclusive buyout rights.">
+              <div class="tier-content">
+                <div class="tier-header">
+                  <span class="tier-name">Full Commercial Buyout</span>
+                  <span class="tier-price">$650</span>
+                </div>
+                <div class="tier-desc">Exclusive buyout rights.</div>
+              </div>
+            </label>
+          </div>
+
+          <!-- License Terms Checkbox -->
+          <div class="licensing-terms-box">
+            <label class="licensing-terms-label">
+              <input type="checkbox" id="licensingTermsCheckbox" />
+              <span>I accept the documentary usage terms</span>
+            </label>
+            <p class="licensing-terms-note">Digital delivery upon payment verification. No manipulative editing.</p>
+          </div>
+
+          <!-- Direct Pay Button -->
+          <button id="licensingPayBtn" class="licensing-pay-btn" disabled>
+            <span>Request License &amp; Pay (<span id="licensingPayAmount">$250</span>)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Direct Payment Modal -->
+    <div id="licensingPayStep" class="licensing-step-content" style="display: none;">
+      <div class="licensing-modal-header">
+        <div class="licensing-badge gold">Direct Payment</div>
+        <h2 class="licensing-modal-title">Payment &amp; Clearance Reference</h2>
+        <p class="licensing-modal-sub">Send payment using the reference code below to complete your license request.</p>
+      </div>
+
+      <div class="licensing-pay-body">
+        <div class="pay-summary-card">
+          <div class="pay-summary-row">
+            <span class="pay-summary-label">Photo:</span>
+            <span id="paySummaryTitle" class="pay-summary-val">Sideline, 4th quarter</span>
+          </div>
+          <div class="pay-summary-row">
+            <span class="pay-summary-label">Reference Code:</span>
+            <span id="paySummaryRef" class="pay-summary-val ref-code">CP-0412-1</span>
+          </div>
+          <div class="pay-summary-row">
+            <span class="pay-summary-label">Licensing Tier:</span>
+            <span id="paySummaryTier" class="pay-summary-val">Commercial / Brand License ($250)</span>
+          </div>
+        </div>
+
+        <div class="pay-methods-title">Instant Payment Options</div>
+        
+        <div class="pay-methods-grid">
+          <!-- CashApp -->
+          <a href="https://cash.app/$celestephoto" target="_blank" rel="noopener noreferrer" class="pay-method-card">
+            <div class="pay-method-icon">💵</div>
+            <div class="pay-method-info">
+              <div class="pay-method-name">CashApp</div>
+              <div class="pay-method-handle">$celestephoto</div>
+            </div>
+            <span class="pay-method-action">Open CashApp &rarr;</span>
+          </a>
+
+          <!-- Venmo -->
+          <a href="https://venmo.com/celestephoto" target="_blank" rel="noopener noreferrer" class="pay-method-card">
+            <div class="pay-method-icon">✌️</div>
+            <div class="pay-method-info">
+              <div class="pay-method-name">Venmo</div>
+              <div class="pay-method-handle">@celestephoto</div>
+            </div>
+            <span class="pay-method-action">Open Venmo &rarr;</span>
+          </a>
+
+          <!-- Zelle -->
+          <div class="pay-method-card">
+            <div class="pay-method-icon">⚡</div>
+            <div class="pay-method-info">
+              <div class="pay-method-name">Zelle</div>
+              <div class="pay-method-handle">hello@celestephoto.com</div>
+            </div>
+            <button type="button" id="copyZelleBtn" class="pay-method-action-btn">Copy Email</button>
+          </div>
+        </div>
+
+        <div class="pay-instruction-box">
+          <div class="pay-instruction-header">💡 Payment Memo / Reference</div>
+          <p>Please include reference code <strong id="payInstructionRef">CP-0412-1</strong> in your payment note. High-res file and license certificate will be sent immediately upon verification.</p>
+          <div class="pay-ref-copy-bar">
+            <span>Reference Code: <strong id="payCopyRefText">CP-0412-1</strong></span>
+            <button type="button" id="copyRefBtn" class="copy-ref-btn">Copy Code</button>
+          </div>
+        </div>
+
+        <div class="pay-actions-row">
+          <button id="licensingBackBtn" class="licensing-btn-secondary">&larr; Back to Tiers</button>
+          <button id="licensingDoneBtn" class="licensing-btn-primary">Done / Close</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <script type="module">
 const PHOTOS = [
@@ -44,10 +703,33 @@ const LABELS = { ethereal: "Editorial", cinematic: "Cinematic", archive: "Archiv
 const state = {
   view: "site", preset: "ethereal", published: "ethereal",
   about: true, services: true, shop: true,
-  loggedIn: false, tab: "gallery",
-  favs: new Set(["CP-0412-03", "CP-0388-05", "CP-0501-01"]),
+  loggedIn: false, tab: "all",
+  clientEmail: "jordan@jtownathletics.org",
+  favs: new Set(["CP-0412-01", "CP-0388-02", "CP-0501-03"]),
   sel: 0, option: "16×20 print", optionPrice: "$145",
-  cart: 2, cartTotal: "$205.00"
+  cart: 2, cartTotal: "$205.00",
+  checkoutModal: null,
+  swSize: "8×10",
+  swSizePrice: 60,
+  swSubstrate: "Archival Cotton Rag",
+  swFraming: "Unframed",
+  swFramingPrice: 0,
+  swShopCheckoutModal: false,
+  swShopCheckoutStep: 1,
+  swShopOrderRefCode: "",
+  swShipDetails: { name: "", email: "", address: "", city: "", statezip: "" },
+  paymentHandles: (() => {
+    try {
+      const s = localStorage.getItem('celeste_payment_handles');
+      if (s) return JSON.parse(s);
+    } catch(e) {}
+    return {
+      cashAppTag: "$celestephoto",
+      venmoHandle: "@celestephoto",
+      zelleEmail: "celeste@photo.com",
+      squareLink: "https://square.link/u/celestephoto"
+    };
+  })()
 };
 
 function setState(patch) {
@@ -60,7 +742,7 @@ function gallery() {
   for (let i = 0; i < 12; i++) {
     const p = PHOTOS[i % PHOTOS.length];
     const ref = p.ref + "-" + String(i + 1).padStart(2, "0");
-    out.push({ src: p.src, ref, fav: state.favs.has(ref) });
+    out.push({ src: p.src, title: p.title, ref, fav: state.favs.has(ref) });
   }
   return out;
 }
@@ -88,28 +770,80 @@ const ACTIONS = {
   toggleServices: () => setState({ services: !state.services }),
   toggleShop: () => setState({ shop: !state.shop }),
   publish: () => setState({ published: state.preset }),
-  login: () => setState({ loggedIn: true }),
-  logout: () => setState({ loggedIn: false, tab: "gallery" }),
-  tabGallery: () => setState({ tab: "gallery" }),
-  tabFavs: () => setState({ tab: "favs" }),
-  tabProofs: () => setState({ tab: "proofs" }),
-  tabInvoice: () => setState({ tab: "invoice" }),
+  login: (ds) => setState({ loggedIn: true }),
+  logout: () => setState({ loggedIn: false, tab: "all", checkoutModal: null }),
+  tabAll: () => setState({ tab: "all" }),
+  tabGallery: () => setState({ tab: "all" }),
+  tabFavorites: () => setState({ tab: "favorites" }),
+  tabFavs: () => setState({ tab: "favorites" }),
+  tabInvoiceProofs: () => setState({ tab: "invoice_proofs" }),
+  tabProofs: () => setState({ tab: "invoice_proofs" }),
+  tabInvoice: () => setState({ tab: "invoice_proofs" }),
   toggleFav: (ds) => {
     const favs = new Set(state.favs);
     favs.has(ds.ref) ? favs.delete(ds.ref) : favs.add(ds.ref);
     setState({ favs });
   },
+  openCheckout: (ds) => {
+    const hex = Math.floor(1000 + Math.random() * 9000).toString(16).toUpperCase();
+    const refCode = `CEL-${ds.type === 'single' ? 'SNGL' : 'FULL'}-${hex}`;
+    setState({
+      checkoutModal: {
+        type: ds.type || 'full',
+        title: ds.title || 'Full High-Res Gallery Unlock',
+        price: ds.price || '150',
+        refId: ds.ref || '',
+        refCode
+      }
+    });
+  },
+  closeCheckout: () => setState({ checkoutModal: null }),
+  copyRefCode: (ds) => {
+    const code = (ds && ds.code) || (state.checkoutModal && state.checkoutModal.refCode) || '';
+    if (code) {
+      navigator.clipboard.writeText(code).then(() => {
+        alert("✅ Reference code " + code + " copied to clipboard!");
+      }).catch(() => {
+        alert("Reference code: " + code);
+      });
+    }
+  },
+  submitPayment: () => {
+    alert("✅ Reference Code Recorded!\n\nThank you! Once payment confirmation is received via CashApp/Venmo/Zelle, your high-resolution download links will automatically be sent to " + (state.clientEmail || 'jordan@jtownathletics.org') + ".");
+    setState({ checkoutModal: null });
+  },
+  sendSelects: () => {
+    alert("✅ " + state.favs.size + " selected favorites sent to Celeste Photo Studio for retouching!");
+  },
   pickShopItem: (ds) => setState({ sel: Number(ds.idx) }),
-  pickSize: (ds) => setState({ option: ds.option, optionPrice: ds.price }),
+  swPickSize: (ds) => setState({ swSize: ds.size, swSizePrice: Number(ds.price) }),
+  swPickSubstrate: (ds) => setState({ swSubstrate: ds.substrate }),
+  swPickFraming: (ds) => setState({ swFraming: ds.framing, swFramingPrice: Number(ds.price) }),
+  swOpenCheckout: () => setState({ swShopCheckoutModal: true, swShopCheckoutStep: 1 }),
+  swCloseCheckout: () => setState({ swShopCheckoutModal: false }),
+  swSubmitShipping: (ds, form) => {
+    const name = document.getElementById('sw-ship-name')?.value || 'Eleanor Vance';
+    const email = document.getElementById('sw-ship-email')?.value || 'eleanor@example.com';
+    const address = document.getElementById('sw-ship-address')?.value || '123 Gallery Way';
+    const city = document.getElementById('sw-ship-city')?.value || 'Louisville';
+    const statezip = document.getElementById('sw-ship-statezip')?.value || 'KY 40202';
+    
+    const refCode = 'CPS-' + Math.floor(1000 + Math.random() * 9000);
+    setState({
+      swShopCheckoutStep: 2,
+      swShopOrderRefCode: refCode,
+      swShipDetails: { name, email, address, city, statezip }
+    });
+  },
   addToCart: () => setState({ cart: state.cart + 1 })
 };
 
 function renderEthereal() {
   return `
   <div style="background:#f7f5f1;animation:vfade .5s ease both">
-    <header style="display:flex;justify-content:space-between;align-items:center;padding:26px 48px">
+    <header class="site-header" style="display:flex;justify-content:space-between;align-items:center;padding:26px 48px">
       <div style="font-family:'Bodoni Moda',serif;font-size:15px;letter-spacing:.34em;text-transform:uppercase;color:#22242c">Celeste</div>
-      <nav style="display:flex;gap:30px;align-items:center">
+      <nav class="site-nav" style="display:flex;gap:30px;align-items:center">
         <a href="#work" style="font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Work</a>
         <a href="#about" style="font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">About</a>
         <a href="#services" style="font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Services</a>
@@ -118,17 +852,17 @@ function renderEthereal() {
       </nav>
     </header>
 
-    <section style="display:grid;grid-template-columns:150px 1fr 92px;gap:0;align-items:stretch;padding:0 48px;min-height:560px">
-      <div style="display:flex;flex-direction:column;gap:14px;padding-top:26px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:#a9a49a">
+    <section class="ethereal-hero-section" style="display:grid;grid-template-columns:150px 1fr 92px;gap:0;align-items:stretch;padding:0 48px;min-height:560px">
+      <div class="hero-index-col" style="display:flex;flex-direction:column;gap:14px;padding-top:26px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:#a9a49a">
         <div>01</div>
         <div style="display:flex;align-items:center;gap:9px;color:#22242c"><span style="width:6px;height:6px;border-radius:50%;background:#22242c"></span>02</div>
         <div>03</div><div>04</div><div>05</div>
       </div>
-      <div style="position:relative;overflow:hidden">
+      <div class="hero-img-col" style="position:relative;overflow:hidden">
         <img src="${PHOTOS[0].src}" alt="Friday night football, sideline" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block;filter:saturate(.78) contrast(1.03)">
         <div style="position:absolute;inset:0;background:linear-gradient(180deg,#f7f5f1 0%,rgba(247,245,241,.55) 22%,rgba(247,245,241,0) 55%)"></div>
       </div>
-      <div style="display:flex;flex-direction:column;justify-content:center;gap:10px;padding-left:16px">
+      <div class="hero-thumbs-col" style="display:flex;flex-direction:column;justify-content:center;gap:10px;padding-left:16px">
         <img src="${PHOTOS[1].src}" alt="" style="width:56px;height:56px;object-fit:cover;border-radius:50%">
         <img src="${PHOTOS[2].src}" alt="" style="width:56px;height:56px;object-fit:cover;border-radius:50%">
         <img src="${PHOTOS[3].src}" alt="" style="width:56px;height:56px;object-fit:cover;border-radius:50%">
@@ -136,10 +870,10 @@ function renderEthereal() {
       </div>
     </section>
 
-    <section style="display:grid;grid-template-columns:1fr 300px 74px;gap:36px;align-items:end;padding:34px 48px 64px">
+    <section class="ethereal-title-section" style="display:grid;grid-template-columns:1fr 300px 74px;gap:36px;align-items:end;padding:34px 48px 64px">
       <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:clamp(48px,7.4vw,112px);line-height:.9;letter-spacing:.04em;color:#22242c;text-transform:uppercase">Documentary<span style="color:#8a6d1f">.</span></h1>
       <p style="margin:0;font-size:13.5px;line-height:1.75;color:#6b6f7d;text-wrap:pretty">Sport, protest and public life in Louisville — photographed as it happens, printed as it was seen. Booking sessions and assignments for 2026.</p>
-      <button data-action="goBook" class="hover-invert-dark" style="width:74px;height:74px;border-radius:50%;border:1px solid #22242c;background:none;color:#22242c;font-size:19px">&#8599;</button>
+      <button data-action="goBook" class="hover-invert-dark ethereal-hero-btn" style="width:74px;height:74px;border-radius:50%;border:1px solid #22242c;background:none;color:#22242c;font-size:19px">&#8599;</button>
     </section>
 
     <section id="work" style="background:#3a4054;padding:78px 48px 90px;color:#e8e6e0">
@@ -147,7 +881,7 @@ function renderEthereal() {
         <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#a3a8b8">Selected work<br>2024 &ndash; 2026</div>
         <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:clamp(40px,5.6vw,84px);line-height:.92;letter-spacing:.05em;text-transform:uppercase">The Work</h2>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:end">
+      <div id="ethereal-work-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:end">
         <figure style="margin:0;display:flex;flex-direction:column;gap:10px"><img src="${PHOTOS[1].src}" alt="Outdoor league, second period" style="width:100%;height:300px;object-fit:cover;display:block"><figcaption style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#a3a8b8">Shawnee Park &middot; League</figcaption></figure>
         <figure style="margin:0;display:flex;flex-direction:column;gap:10px"><img src="${PHOTOS[2].src}" alt="Memorial procession" style="width:100%;height:360px;object-fit:cover;display:block"><figcaption style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#a3a8b8">Memorial procession</figcaption></figure>
         <figure style="margin:0;display:flex;flex-direction:column;gap:10px"><img src="${PHOTOS[3].src}" alt="Riverfront demonstration" style="width:100%;height:262px;object-fit:cover;display:block"><figcaption style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#a3a8b8">Riverfront &middot; Demonstration</figcaption></figure>
@@ -200,7 +934,7 @@ function renderCinematicHero() {
 
 function renderArchive() {
   const items = archiveItems().map(it => `
-        <figure style="margin:0;background:#22242c;position:relative">
+        <figure style="margin:0;background:#22242c;position:relative;cursor:pointer">
           <img src="${it.src}" alt="${it.title}" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block">
           <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:9px 10px;background:linear-gradient(180deg,rgba(34,36,44,0),rgba(34,36,44,.88));font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#e8e6e0;display:flex;justify-content:space-between;gap:8px">
             <span>${it.title}</span><span style="color:#a9a49a">${it.ref}</span>
@@ -208,7 +942,7 @@ function renderArchive() {
         </figure>`).join("");
 
   return `
-  <div style="background:#ece8e1;animation:vfade .5s ease both">
+  <div id="preset-archive" class="preset-section" style="background:#ece8e1;animation:vfade .5s ease both">
     <header style="display:flex;justify-content:space-between;align-items:center;padding:22px 34px;border-bottom:1px solid #d5cfc4">
       <div style="display:flex;align-items:baseline;gap:14px">
         <span style="font-family:'Bodoni Moda',serif;font-size:15px;letter-spacing:.3em;text-transform:uppercase;color:#22242c">Celeste</span>
@@ -221,14 +955,14 @@ function renderArchive() {
         <button data-action="goClient" style="background:#22242c;border:0;padding:8px 15px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#ece8e1">Client Login</button>
       </nav>
     </header>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;padding:20px 34px;border-bottom:1px solid #d5cfc4">
+    <div class="archive-filter-bar" style="display:flex;gap:8px;flex-wrap:wrap;padding:20px 34px;border-bottom:1px solid #d5cfc4">
       <span style="padding:6px 13px;background:#22242c;color:#ece8e1;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase">All</span>
       <span style="padding:6px 13px;border:1px solid #c9c3b8;color:#6b6f7d;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Sport</span>
       <span style="padding:6px 13px;border:1px solid #c9c3b8;color:#6b6f7d;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Protest</span>
       <span style="padding:6px 13px;border:1px solid #c9c3b8;color:#6b6f7d;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Community</span>
       <span style="padding:6px 13px;border:1px solid #c9c3b8;color:#6b6f7d;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Portrait</span>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px;padding:2px">
+    <div class="archive-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px;padding:2px">
       ${items}
     </div>
   </div>`;
@@ -411,24 +1145,114 @@ function renderClientLogin() {
   </div>`;
 }
 
+function renderCheckoutModal() {
+  if (!state.checkoutModal) return '';
+  const cm = state.checkoutModal;
+  const email = state.clientEmail || 'jordan@jtownathletics.org';
+
+  return `
+  <div class="checkout-modal-backdrop" style="position:fixed;inset:0;background:rgba(0,0,0,0.78);backdrop-filter:blur(5px);z-index:10050;display:flex;align-items:center;justify-content:center;padding:20px">
+    <div style="background:#181a20;border:1px solid #d4af37;border-radius:8px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;color:#f0f2f5;padding:28px;box-shadow:0 20px 50px rgba(0,0,0,0.8);position:relative">
+      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #2a2d36;padding-bottom:16px;margin-bottom:20px">
+        <h2 style="font-family:'Bodoni Moda',serif;font-size:22px;color:#d4af37;margin:0">Gallery Checkout</h2>
+        <button data-action="closeCheckout" style="background:none;border:none;color:#9ba3af;font-size:24px;cursor:pointer;line-height:1">&times;</button>
+      </div>
+
+      <div style="background:#22242c;border:1px solid #3a3f4d;border-radius:6px;padding:14px 16px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:14px;font-weight:500;color:#f0f2f5">${cm.title}</div>
+          <div style="font-size:11px;color:#9ba3af;margin-top:2px">Unwatermarked full-resolution JPEG download</div>
+        </div>
+        <div style="font-family:'Bodoni Moda',serif;font-size:22px;color:#d4af37;font-weight:600">$${cm.price}</div>
+      </div>
+
+      <div style="margin-bottom:18px">
+        <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a;margin-bottom:6px">Delivery Email Address</label>
+        <input type="email" value="${email}" id="modal-client-email" style="width:100%;background:#0f1115;border:1px solid #2a2d36;padding:12px;font-family:'Jost',sans-serif;font-size:14px;color:#f0f2f5;border-radius:4px">
+      </div>
+
+      <div style="margin-bottom:18px">
+        <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a;margin-bottom:8px">Select Payment Method</label>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+          <a href="https://cash.app/$CelestePhoto/${cm.price}" target="_blank" rel="noopener" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px 8px;background:#0f1115;border:1px solid #2a2d36;border-radius:6px;color:#f0f2f5;font-size:12px;text-decoration:none;transition:all 0.2s">
+            <span style="font-size:16px;color:#00D632;font-weight:bold">$</span>
+            <span>CashApp</span>
+            <span style="font-size:9px;color:#6b6f7d">$CelestePhoto</span>
+          </a>
+          <a href="https://venmo.com/CelestePhoto" target="_blank" rel="noopener" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px 8px;background:#0f1115;border:1px solid #2a2d36;border-radius:6px;color:#f0f2f5;font-size:12px;text-decoration:none;transition:all 0.2s">
+            <span style="font-size:16px;color:#008CFF;font-weight:bold">V</span>
+            <span>Venmo</span>
+            <span style="font-size:9px;color:#6b6f7d">@CelestePhoto</span>
+          </a>
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px 8px;background:#0f1115;border:1px solid #2a2d36;border-radius:6px;color:#f0f2f5;font-size:12px">
+            <span style="font-size:16px;color:#7414CA;font-weight:bold">Z</span>
+            <span>Zelle</span>
+            <span style="font-size:9px;color:#6b6f7d">pay@celestephoto.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#0f1115;border:1px dashed #d4af37;border-radius:6px;padding:14px 16px;margin:20px 0;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Instant Reference Code</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;letter-spacing:.15em;color:#d4af37;margin-top:2px">${cm.refCode}</div>
+        </div>
+        <button data-action="copyRefCode" data-code="${cm.refCode}" style="background:#22242c;border:1px solid #3a3f4d;color:#f0f2f5;border-radius:4px;padding:8px 12px;font-size:11px;font-family:'JetBrains Mono',monospace;cursor:pointer">
+          Copy Code
+        </button>
+      </div>
+
+      <p style="margin:0 0 20px;font-size:11.5px;color:#9ba3af;line-height:1.5">
+        ⚠️ <strong>Important:</strong> Include reference code <strong>${cm.refCode}</strong> in your payment memo/note so our system can instantly verify and unlock your downloads.
+      </p>
+
+      <div style="display:flex;gap:12px;justify-content:flex-end">
+        <button data-action="closeCheckout" style="background:none;border:1px solid #2a2d36;color:#9ba3af;border-radius:4px;padding:10px 18px;font-size:12px;cursor:pointer">Cancel</button>
+        <button data-action="submitPayment" style="background:#d4af37;color:#0f1115;border:none;border-radius:4px;padding:10px 22px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer">I've Sent Payment</button>
+      </div>
+    </div>
+  </div>`;
+}
+
 function renderClientDashboard() {
   const g = gallery();
   const favLine = state.favs.size + " frames selected.";
 
   const galleryGrid = g.map(it => `
-            <div style="position:relative;background:#e6e0d5">
-              <img src="${it.src}" alt="${it.ref}" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block">
-              <div style="position:absolute;top:8px;right:8px;display:flex;gap:6px">
-                <button data-action="toggleFav" data-ref="${it.ref}" title="Add to selects" style="width:30px;height:30px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#8a6d1f;font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center">${it.fav ? "●" : "○"}</button>
-                <button title="Download original" style="width:30px;height:30px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#22242c;font-size:13px;line-height:1;display:flex;align-items:center;justify-content:center">&#8595;</button>
-              </div>
-              <div style="position:absolute;left:0;bottom:0;padding:6px 9px;background:rgba(34,36,44,.78);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:#f7f5f1">${it.ref}</div>
-            </div>`).join("");
+    <div class="client-photo-card" style="position:relative;background:#e6e0d5;border-radius:4px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)">
+      <img src="${it.src}" alt="${it.ref}" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block">
+      <div style="position:absolute;top:10px;right:10px;display:flex;gap:6px;z-index:2">
+        <button data-action="toggleFav" data-ref="${it.ref}" title="${it.fav ? 'Remove from favorites' : 'Add to favorites'}" style="width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:${it.fav ? '#e63946' : '#6b6f7d'};font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)">
+          ${it.fav ? '❤️' : '♡'}
+        </button>
+      </div>
+      <div style="padding:10px 12px;background:#ffffff;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eee8dd">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:#6b6f7d">${it.ref}</span>
+        <button data-action="openCheckout" data-type="single" data-title="Single High-Res Frame (${it.ref})" data-price="15" data-ref="${it.ref}" style="background:#22242c;color:#f7f5f1;border:none;border-radius:2px;padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">
+          ⬇ High-Res $15
+        </button>
+      </div>
+    </div>`).join("");
 
   const favGrid = g.filter(it => it.fav).map(it => `
-            <div style="position:relative"><img src="${it.src}" alt="${it.ref}" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block"><button data-action="toggleFav" data-ref="${it.ref}" style="position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#8a6d1f;font-size:14px">&#10005;</button></div>`).join("");
+    <div class="client-photo-card" style="position:relative;background:#e6e0d5;border-radius:4px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)">
+      <img src="${it.src}" alt="${it.ref}" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block">
+      <div style="position:absolute;top:10px;right:10px;display:flex;gap:6px;z-index:2">
+        <button data-action="toggleFav" data-ref="${it.ref}" title="Remove from favorites" style="width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#e63946;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)">❤️</button>
+      </div>
+      <div style="padding:10px 12px;background:#ffffff;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eee8dd">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:#6b6f7d">${it.ref}</span>
+        <button data-action="openCheckout" data-type="single" data-title="Single High-Res Frame (${it.ref})" data-price="15" data-ref="${it.ref}" style="background:#22242c;color:#f7f5f1;border:none;border-radius:2px;padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">
+          ⬇ High-Res $15
+        </button>
+      </div>
+    </div>`).join("");
 
-  const navBtn = (action, key, label, badge) => `<button data-action="${action}" class="hover-bg-cream" style="text-align:left;background:none;border:0;padding:11px 24px;font-size:13.5px;color:#22242c;border-left:2px solid ${state.tab === key ? "#8a6d1f" : "transparent"}">${label} ${badge}</button>`;
+  const navBtn = (action, key, label, badge) => `<button data-action="${action}" class="hover-bg-cream client-tab-btn" style="text-align:left;background:none;border:0;padding:11px 24px;font-size:13.5px;color:#22242c;border-left:2px solid ${(state.tab === key || (key === 'all' && state.tab === 'gallery') || (key === 'favorites' && state.tab === 'favs') || (key === 'invoice_proofs' && (state.tab === 'proofs' || state.tab === 'invoice'))) ? "#8a6d1f" : "transparent"}">${label} ${badge}</button>`;
+
+  const isAllTab = state.tab === "all" || state.tab === "gallery";
+  const isFavsTab = state.tab === "favorites" || state.tab === "favs";
+  const isInvoiceProofsTab = state.tab === "invoice_proofs" || state.tab === "proofs" || state.tab === "invoice";
 
   return `
   <div>
@@ -438,18 +1262,19 @@ function renderClientDashboard() {
         <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#a9a49a">Client area / J-Town Athletics</span>
       </div>
       <div style="display:flex;gap:16px;align-items:center">
-        <span style="font-size:12.5px;color:#6b6f7d">jordan@jtownathletics.org</span>
+        <span style="font-size:12.5px;color:#6b6f7d">${state.clientEmail || 'jordan@jtownathletics.org'}</span>
         <button data-action="logout" style="background:none;border:1px solid #d5cfc4;border-radius:2px;padding:7px 14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Sign out</button>
       </div>
     </header>
 
-    <div style="display:grid;grid-template-columns:236px 1fr;min-height:calc(100vh - 158px)">
-      <aside style="border-right:1px solid #ddd7cc;padding:28px 0;display:flex;flex-direction:column;gap:2px;background:#fff">
-        <div style="padding:0 24px 14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#a9a49a">Gallery</div>
-        ${navBtn("tabGallery", "gallery", "All frames", `<span style="color:#a9a49a">142</span>`)}
-        ${navBtn("tabFavs", "favs", "My selects", `<span style="color:#8a6d1f">${state.favs.size}</span>`)}
-        ${navBtn("tabProofs", "proofs", "Proofs", `<span style="color:#a9a49a">2 open</span>`)}
-        ${navBtn("tabInvoice", "invoice", "Invoice", "")}
+    <div class="client-dashboard-layout" style="display:grid;grid-template-columns:236px 1fr;min-height:calc(100vh - 158px)">
+      <aside class="client-aside-nav" style="border-right:1px solid #ddd7cc;padding:28px 0;display:flex;flex-direction:column;gap:2px;background:#fff">
+        <div style="padding:0 24px 14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#a9a49a">Gallery Navigation</div>
+        <div class="client-aside-nav-list" style="display:flex;flex-direction:column;gap:2px">
+          ${navBtn("tabAll", "all", "All Photos", `<span style="color:#a9a49a">142</span>`)}
+          ${navBtn("tabFavorites", "favorites", "Selected Favorites", `<span style="color:#8a6d1f" id="fav-count-badge">${state.favs.size}</span>`)}
+          ${navBtn("tabInvoiceProofs", "invoice_proofs", "Invoice & Proofs", `<span style="color:#a9a49a">2 open</span>`)}
+        </div>
         <div style="margin-top:auto;padding:24px;display:flex;flex-direction:column;gap:10px;border-top:1px solid #ddd7cc">
           <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#a9a49a">Link expires</div>
           <div style="font-size:13px;color:#22242c">14 Nov 2026 &middot; 62 days</div>
@@ -457,75 +1282,100 @@ function renderClientDashboard() {
         </div>
       </aside>
 
-      <main style="padding:30px 40px 60px">
-        ${state.tab === "gallery" ? `
+      <main class="client-main-content" style="padding:30px 40px 60px">
+        ${isAllTab ? `
         <div>
+          <!-- Upsell Banner -->
+          <div class="upsell-banner" style="background:linear-gradient(135deg,#181a20,#22242c);border:1px solid #d4af37;border-radius:6px;padding:24px 30px;margin-bottom:28px;display:flex;justify-content:space-between;align-items:center;gap:20px;box-shadow:0 10px 30px rgba(0,0,0,.15);color:#f7f5f1">
+            <div>
+              <h3 style="margin:0 0 6px;font-family:'Bodoni Moda',serif;font-weight:400;font-size:22px;color:#d4af37;display:flex;align-items:center;gap:8px">
+                <span>✨</span> Unlock Full High-Res Gallery ($150)
+              </h3>
+              <p style="margin:0;font-size:13.5px;color:#a3a8b8;line-height:1.55">
+                Get immediate, unwatermarked high-resolution JPEG downloads of all 142 gallery frames with full personal print rights.
+              </p>
+            </div>
+            <button data-action="openCheckout" data-type="full" data-title="Full High-Res Gallery Unlock" data-price="150" style="background:#d4af37;color:#0f1115;border:0;border-radius:3px;padding:13px 24px;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;cursor:pointer">
+              Unlock Full Gallery — $150
+            </button>
+          </div>
+
           <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:24px;flex-wrap:wrap">
             <div style="display:flex;flex-direction:column;gap:8px">
               <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:38px;letter-spacing:.03em;color:#22242c">Homecoming vs. Fern Creek</h1>
               <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#a9a49a">Delivered 16 Aug 2026 &middot; 142 frames &middot; full-resolution JPEG + web</div>
             </div>
             <div style="display:flex;gap:10px">
-              <button class="hover-border-dark" style="background:none;border:1px solid #d5cfc4;border-radius:2px;padding:11px 18px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#22242c">Download selects</button>
-              <button style="background:#22242c;border:0;border-radius:2px;padding:11px 18px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#f7f5f1">Download all &middot; zip 2.4&nbsp;GB</button>
+              <button data-action="tabFavorites" class="hover-border-dark" style="background:none;border:1px solid #d5cfc4;border-radius:2px;padding:11px 18px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#22242c">View selects (${state.favs.size})</button>
+              <button data-action="openCheckout" data-type="full" data-title="Full High-Res Gallery Unlock" data-price="150" style="background:#22242c;border:0;border-radius:2px;padding:11px 18px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#f7f5f1">Unlock all &middot; zip 2.4&nbsp;GB ($150)</button>
             </div>
           </div>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px">${galleryGrid}</div>
         </div>` : ""}
 
-        ${state.tab === "favs" ? `
+        ${isFavsTab ? `
         <div style="display:flex;flex-direction:column;gap:20px">
-          <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:38px;letter-spacing:.03em;color:#22242c">My selects</h1>
-          <p style="margin:0;font-size:13.5px;color:#6b6f7d;max-width:520px;line-height:1.7">${favLine} Selects are what I retouch and what goes to print — send them over when the list is final.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px">${favGrid}</div>
-          <button style="align-self:flex-start;background:#22242c;border:0;border-radius:2px;padding:13px 22px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#f7f5f1">Send selects to Celeste</button>
+          <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:38px;letter-spacing:.03em;color:#22242c">Selected Favorites</h1>
+          <p style="margin:0;font-size:13.5px;color:#6b6f7d;max-width:520px;line-height:1.7">${favLine} Selects are what I retouch and what goes to print — send them over when your list is final.</p>
+          ${state.favs.size > 0 ? `
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px">${favGrid}</div>
+            <button data-action="sendSelects" style="align-self:flex-start;background:#22242c;border:0;border-radius:2px;padding:13px 22px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#f7f5f1">Send selects to Celeste</button>
+          ` : `
+            <div style="padding:40px;background:#fff;border:1px solid #ddd7cc;text-align:center;color:#6b6f7d;border-radius:4px">
+              No favorites selected yet. Click the heart icon on any photo in <a href="#" data-action="tabAll" style="color:#8a6d1f;text-decoration:underline">All Photos</a> to add it here.
+            </div>
+          `}
         </div>` : ""}
 
-        ${state.tab === "proofs" ? `
-        <div style="display:flex;flex-direction:column;gap:22px;max-width:900px">
-          <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:38px;letter-spacing:.03em;color:#22242c">Proofs awaiting approval</h1>
-          <div style="display:grid;grid-template-columns:260px 1fr;gap:26px;background:#fff;border:1px solid #ddd7cc;padding:22px">
-            <img src="${PHOTOS[1].src}" alt="Proof 1" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block">
-            <div style="display:flex;flex-direction:column;gap:14px">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Proof 01 &middot; retouch v2 &middot; 20 Aug</div>
-              <p style="margin:0;font-size:14px;line-height:1.75;color:#22242c">Warmed the highlights and cropped tighter on the shooter. Let me know if you want the scoreboard kept in frame.</p>
-              <textarea rows="3" placeholder="Leave a comment for Celeste" style="background:#f7f5f1;border:1px solid #ddd7cc;padding:11px 12px;font-family:inherit;font-size:13.5px;color:#22242c;resize:vertical"></textarea>
-              <div style="display:flex;gap:10px">
-                <button style="background:#22242c;border:0;border-radius:2px;padding:11px 20px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#f7f5f1">Approve</button>
-                <button style="background:none;border:1px solid #d5cfc4;border-radius:2px;padding:11px 20px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Request changes</button>
+        ${isInvoiceProofsTab ? `
+        <div style="display:flex;flex-direction:column;gap:36px;max-width:900px">
+          <!-- Proofs Section -->
+          <div style="display:flex;flex-direction:column;gap:20px">
+            <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:38px;letter-spacing:.03em;color:#22242c">Proofs awaiting approval</h1>
+            <div style="display:grid;grid-template-columns:260px 1fr;gap:26px;background:#fff;border:1px solid #ddd7cc;padding:22px">
+              <img src="${PHOTOS[1].src}" alt="Proof 1" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block">
+              <div style="display:flex;flex-direction:column;gap:14px">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Proof 01 &middot; retouch v2 &middot; 20 Aug</div>
+                <p style="margin:0;font-size:14px;line-height:1.75;color:#22242c">Warmed the highlights and cropped tighter on the shooter. Let me know if you want the scoreboard kept in frame.</p>
+                <textarea rows="3" placeholder="Leave a comment for Celeste" style="background:#f7f5f1;border:1px solid #ddd7cc;padding:11px 12px;font-family:inherit;font-size:13.5px;color:#22242c;resize:vertical"></textarea>
+                <div style="display:flex;gap:10px">
+                  <button onclick="alert('Proof 01 approved!')" style="background:#22242c;border:0;border-radius:2px;padding:11px 20px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#f7f5f1">Approve</button>
+                  <button onclick="alert('Feedback submitted to Celeste')" style="background:none;border:1px solid #d5cfc4;border-radius:2px;padding:11px 20px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Request changes</button>
+                </div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:260px 1fr;gap:26px;background:#fff;border:1px solid #ddd7cc;padding:22px">
+              <img src="${PHOTOS[0].src}" alt="Proof 2" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block">
+              <div style="display:flex;flex-direction:column;gap:14px">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Proof 02 &middot; retouch v1 &middot; 21 Aug</div>
+                <p style="margin:0;font-size:14px;line-height:1.75;color:#22242c">Black-and-white conversion for the program cover. Colour version is in the gallery if you prefer it.</p>
+                <div style="display:flex;gap:10px">
+                  <button onclick="alert('Proof 02 approved!')" style="background:#22242c;border:0;border-radius:2px;padding:11px 20px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#f7f5f1">Approve</button>
+                  <button onclick="alert('Feedback submitted to Celeste')" style="background:none;border:1px solid #d5cfc4;border-radius:2px;padding:11px 20px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Request changes</button>
+                </div>
               </div>
             </div>
           </div>
-          <div style="display:grid;grid-template-columns:260px 1fr;gap:26px;background:#fff;border:1px solid #ddd7cc;padding:22px">
-            <img src="${PHOTOS[0].src}" alt="Proof 2" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block">
-            <div style="display:flex;flex-direction:column;gap:14px">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Proof 02 &middot; retouch v1 &middot; 21 Aug</div>
-              <p style="margin:0;font-size:14px;line-height:1.75;color:#22242c">Black-and-white conversion for the program cover. Colour version is in the gallery if you prefer it.</p>
-              <div style="display:flex;gap:10px">
-                <button style="background:#22242c;border:0;border-radius:2px;padding:11px 20px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#f7f5f1">Approve</button>
-                <button style="background:none;border:1px solid #d5cfc4;border-radius:2px;padding:11px 20px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Request changes</button>
-              </div>
-            </div>
-          </div>
-        </div>` : ""}
 
-        ${state.tab === "invoice" ? `
-        <div style="max-width:640px;display:flex;flex-direction:column;gap:24px">
-          <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:38px;letter-spacing:.03em;color:#22242c">Invoice 2026-114</h1>
-          <div style="background:#fff;border:1px solid #ddd7cc">
-            <div style="display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #eee8dd;font-size:14px;color:#22242c"><span>Event coverage &mdash; homecoming, full game</span><span>$450.00</span></div>
-            <div style="display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #eee8dd;font-size:14px;color:#22242c"><span>Additional retouching &mdash; 12 frames</span><span>$180.00</span></div>
-            <div style="display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #eee8dd;font-size:14px;color:#22242c"><span>Program licence &mdash; one season</span><span>$150.00</span></div>
-            <div style="display:flex;justify-content:space-between;padding:18px 22px;font-family:'Bodoni Moda',serif;font-size:20px;color:#22242c"><span>Balance due</span><span>$780.00</span></div>
-          </div>
-          <div style="display:flex;gap:10px;align-items:center">
-            <button style="background:#22242c;border:0;border-radius:2px;padding:14px 26px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#f7f5f1">Pay invoice</button>
-            <button style="background:none;border:1px solid #d5cfc4;border-radius:2px;padding:14px 22px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Download PDF</button>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#a9a49a">Due 30 Aug</span>
+          <!-- Invoice Section -->
+          <div style="display:flex;flex-direction:column;gap:20px;max-width:640px">
+            <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:32px;letter-spacing:.03em;color:#22242c">Invoice #2026-114</h2>
+            <div style="background:#fff;border:1px solid #ddd7cc">
+              <div style="display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #eee8dd;font-size:14px;color:#22242c"><span>Event coverage &mdash; homecoming, full game</span><span>$450.00</span></div>
+              <div style="display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #eee8dd;font-size:14px;color:#22242c"><span>Additional retouching &mdash; 12 frames</span><span>$180.00</span></div>
+              <div style="display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #eee8dd;font-size:14px;color:#22242c"><span>Program licence &mdash; one season</span><span>$150.00</span></div>
+              <div style="display:flex;justify-content:space-between;padding:18px 22px;font-family:'Bodoni Moda',serif;font-size:20px;color:#22242c"><span>Balance due</span><span>$780.00</span></div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+              <button data-action="openCheckout" data-type="full" data-title="Invoice Balance #2026-114" data-price="780" style="background:#22242c;border:0;border-radius:2px;padding:14px 26px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#f7f5f1">Pay invoice ($780)</button>
+              <button onclick="alert('PDF invoice download initiated.')" style="background:none;border:1px solid #d5cfc4;border-radius:2px;padding:14px 22px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Download PDF</button>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#a9a49a">Due 30 Aug</span>
+            </div>
           </div>
         </div>` : ""}
       </main>
     </div>
+    ${renderCheckoutModal()}
   </div>`;
 }
 
@@ -548,7 +1398,135 @@ function renderShop() {
           <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#a9a49a">${s.meta}</div>
         </div>`).join("");
 
-  const sizeBtn = (option, price, label) => `<button data-action="pickSize" data-option="${option}" data-price="${price}" class="hover-border-dark" style="border:1px solid ${state.option === option ? "#22242c" : "#d5cfc4"};background:none;padding:9px 14px;font-size:12px;color:#22242c">${label}</button>`;
+  const sizeBtn = (size, price, label) => `
+    <button data-action="swPickSize" data-size="${size}" data-price="${price}" style="border:1px solid ${state.swSize === size ? "#22242c" : "#d5cfc4"};background:${state.swSize === size ? "#22242c" : "none"};color:${state.swSize === size ? "#fff" : "#22242c"};padding:9px 14px;font-size:12px;border-radius:2px;cursor:pointer">
+      ${label}
+    </button>`;
+
+  const subBtn = (substrate, label, sub) => `
+    <button data-action="swPickSubstrate" data-substrate="${substrate}" style="text-align:left;border:1px solid ${state.swSubstrate === substrate ? "#22242c" : "#d5cfc4"};background:${state.swSubstrate === substrate ? "#22242c" : "none"};color:${state.swSubstrate === substrate ? "#fff" : "#22242c"};padding:9px 12px;font-size:12px;border-radius:2px;cursor:pointer;display:flex;justify-content:space-between;align-items:center">
+      <span>${label}</span>
+      <span style="font-size:10px;${state.swSubstrate === substrate ? "opacity:0.8" : "color:#6b6f7d"}">${sub}</span>
+    </button>`;
+
+  const frameBtn = (framing, price, label, priceLabel) => `
+    <button data-action="swPickFraming" data-framing="${framing}" data-price="${price}" style="text-align:left;border:1px solid ${state.swFraming === framing ? "#22242c" : "#d5cfc4"};background:${state.swFraming === framing ? "#22242c" : "none"};color:${state.swFraming === framing ? "#fff" : "#22242c"};padding:9px 12px;font-size:12px;border-radius:2px;cursor:pointer;display:flex;justify-content:space-between;align-items:center">
+      <span>${label}</span>
+      <span style="font-size:11px;${state.swFraming === framing ? "" : "color:#6b6f7d"}">${priceLabel}</span>
+    </button>`;
+
+  const totalPrice = state.swSizePrice + state.swFramingPrice;
+
+  const handles = state.paymentHandles || {};
+  const cashApp = (handles.cashAppTag || '$celestephoto').trim();
+  const cashTagClean = cashApp.startsWith('$') ? cashApp.substring(1) : cashApp;
+  const cashAppUrl = `https://cash.app/$${cashTagClean}/${totalPrice}`;
+
+  const venmo = (handles.venmoHandle || '@celestephoto').trim();
+  const venmoClean = venmo.startsWith('@') ? venmo.substring(1) : venmo;
+  const venmoUrl = `https://venmo.com/u/${venmoClean}?txn=pay&amount=${totalPrice}&note=Order%20${state.swShopOrderRefCode}`;
+
+  const zelle = (handles.zelleEmail || 'celeste@photo.com').trim();
+  const square = (handles.squareLink || 'https://square.link/u/celestephoto').trim();
+
+  const renderModal = () => {
+    if (!state.swShopCheckoutModal) return '';
+    return `
+    <div style="position:fixed;inset:0;background:rgba(15,17,21,0.75);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px">
+      <div style="background:#fff;color:#22242c;width:100%;max-width:560px;border-radius:6px;box-shadow:0 24px 48px rgba(0,0,0,0.3);max-height:90vh;overflow-y:auto;padding:32px;position:relative">
+        <button data-action="swCloseCheckout" style="position:absolute;top:20px;right:20px;background:none;border:none;font-size:22px;color:#a9a49a;cursor:pointer;line-height:1">&times;</button>
+        
+        ${state.swShopCheckoutStep === 1 ? `
+          <h2 style="margin:0 0 6px;font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px">Shipping &amp; Order Details</h2>
+          <p style="margin:0 0 20px;font-size:13px;color:#6b6f7d">Enter your shipping address to generate your print order &amp; payment links.</p>
+          
+          <form data-action="swSubmitShipping" style="display:flex;flex-direction:column;gap:14px">
+            <div>
+              <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d;margin-bottom:5px">Full Name *</label>
+              <input type="text" id="sw-ship-name" required value="${state.swShipDetails.name || ''}" placeholder="e.g. Eleanor Vance" style="width:100%;padding:11px 14px;border:1px solid #d5cfc4;border-radius:3px;font-size:13.5px;color:#22242c">
+            </div>
+            <div>
+              <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d;margin-bottom:5px">Email Address *</label>
+              <input type="email" id="sw-ship-email" required value="${state.swShipDetails.email || ''}" placeholder="eleanor@example.com" style="width:100%;padding:11px 14px;border:1px solid #d5cfc4;border-radius:3px;font-size:13.5px;color:#22242c">
+            </div>
+            <div>
+              <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d;margin-bottom:5px">Street Address *</label>
+              <input type="text" id="sw-ship-address" required value="${state.swShipDetails.address || ''}" placeholder="123 Gallery Way, Apt 4" style="width:100%;padding:11px 14px;border:1px solid #d5cfc4;border-radius:3px;font-size:13.5px;color:#22242c">
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <div>
+                <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d;margin-bottom:5px">City *</label>
+                <input type="text" id="sw-ship-city" required value="${state.swShipDetails.city || ''}" placeholder="Louisville" style="width:100%;padding:11px 14px;border:1px solid #d5cfc4;border-radius:3px;font-size:13.5px;color:#22242c">
+              </div>
+              <div>
+                <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d;margin-bottom:5px">State / ZIP *</label>
+                <input type="text" id="sw-ship-statezip" required value="${state.swShipDetails.statezip || ''}" placeholder="KY 40202" style="width:100%;padding:11px 14px;border:1px solid #d5cfc4;border-radius:3px;font-size:13.5px;color:#22242c">
+              </div>
+            </div>
+            
+            <div style="margin-top:10px;padding:14px;background:#f7f5f1;border:1px solid #ddd7cc;border-radius:4px;display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:12.5px;color:#6b6f7d">${sel.title} · ${state.swSize}</span>
+              <span style="font-family:'Bodoni Moda',serif;font-size:18px;font-weight:600;color:#22242c">$${totalPrice.toFixed(2)}</span>
+            </div>
+
+            <button type="submit" style="margin-top:8px;background:#22242c;border:0;border-radius:3px;padding:15px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#f7f5f1;font-weight:500;cursor:pointer">Generate Payment Links &rarr;</button>
+          </form>
+        ` : `
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+            <span style="background:#22c55e;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold">&check;</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#22c55e;font-weight:600">Order Reference Created</span>
+          </div>
+
+          <h2 style="margin:0 0 10px;font-family:'Bodoni Moda',serif;font-weight:300;font-size:26px">Complete Direct Payment</h2>
+          
+          <div style="background:#f7f5f1;border:1px solid #ddd7cc;padding:14px 16px;border-radius:4px;margin-bottom:18px;display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Reference Code</span>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:15px;letter-spacing:.1em;color:#22242c;background:#fff;padding:3px 8px;border:1px solid #d5cfc4;border-radius:3px">${state.swShopOrderRefCode}</span>
+                <button data-action="copyRefCode" data-code="${state.swShopOrderRefCode}" style="background:#22242c;color:#fff;border:none;padding:5px 10px;border-radius:3px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Copy Code</button>
+              </div>
+            </div>
+            <div style="font-size:12px;color:#6b6f7d;line-height:1.5">
+              <div><strong>Item:</strong> ${sel.title}</div>
+              <div><strong>Specification:</strong> ${state.swSize} · ${state.swSubstrate} · ${state.swFraming}</div>
+              <div><strong>Total Price:</strong> $${totalPrice.toFixed(2)}</div>
+              <div><strong>Deliver to:</strong> ${state.swShipDetails.name}, ${state.swShipDetails.address}, ${state.swShipDetails.city}, ${state.swShipDetails.statezip}</div>
+            </div>
+          </div>
+
+          <p style="margin:0 0 14px;font-size:12.5px;line-height:1.6;color:#6b6f7d">Select your payment app below to finalize your order. <strong>Include reference code <span style="font-family:'JetBrains Mono',monospace;font-weight:bold;color:#22242c">${state.swShopOrderRefCode}</span> in your payment note/memo.</strong></p>
+
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <a href="${cashAppUrl}" target="_blank" rel="noopener noreferrer" style="display:flex;justify-content:space-between;align-items:center;background:#00D632;color:#fff;padding:14px 18px;border-radius:4px;text-decoration:none;font-weight:600;font-size:13.5px">
+              <span>Pay $${totalPrice} with Cash App <strong>($${cashTagClean})</strong></span>
+              <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase">Open App &rarr;</span>
+            </a>
+
+            <a href="${venmoUrl}" target="_blank" rel="noopener noreferrer" style="display:flex;justify-content:space-between;align-items:center;background:#008CFF;color:#fff;padding:14px 18px;border-radius:4px;text-decoration:none;font-weight:600;font-size:13.5px">
+              <span>Pay $${totalPrice} with Venmo <strong>(@${venmoClean})</strong></span>
+              <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase">Open App &rarr;</span>
+            </a>
+
+            <div style="background:#7414CA;color:#fff;padding:14px 18px;border-radius:4px;display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-weight:600;font-size:13.5px">Zelle Email: <strong>${zelle}</strong></div>
+                <div style="font-size:11px;opacity:0.9;margin-top:2px">Send $${totalPrice} with memo "${state.swShopOrderRefCode}"</div>
+              </div>
+              <button data-action="copyRefCode" data-code="${zelle}" style="background:rgba(255,255,255,0.2);color:#fff;border:1px solid rgba(255,255,255,0.4);padding:6px 12px;border-radius:3px;font-size:11px;cursor:pointer">Copy Email</button>
+            </div>
+
+            <a href="${square}" target="_blank" rel="noopener noreferrer" style="display:flex;justify-content:space-between;align-items:center;background:#111;color:#fff;padding:14px 18px;border-radius:4px;text-decoration:none;font-weight:600;font-size:13.5px;border:1px solid #333">
+              <span>Pay $${totalPrice} with Square / Credit Card</span>
+              <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase">Square Link &rarr;</span>
+            </a>
+          </div>
+
+          <button data-action="swCloseCheckout" style="margin-top:20px;background:#22242c;border:0;border-radius:3px;padding:14px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#f7f5f1;font-weight:500;width:100%;cursor:pointer">Done / Order Submitted</button>
+        `}
+      </div>
+    </div>`;
+  };
 
   return `
   <div style="min-height:calc(100vh - 96px);background:#f7f5f1;animation:vfade .4s ease both">
@@ -566,37 +1544,59 @@ function renderShop() {
     <div style="display:grid;grid-template-columns:1fr 400px;gap:0;align-items:start">
       <div style="padding:32px 40px 70px">
         <h1 style="margin:0 0 8px;font-family:'Bodoni Moda',serif;font-weight:300;font-size:44px;letter-spacing:.03em;color:#22242c">Open editions</h1>
-        <p style="margin:0 0 28px;font-size:13.5px;line-height:1.7;color:#6b6f7d;max-width:520px;text-wrap:pretty">Archival pigment prints on cotton rag, signed and shipped from Louisville. Digital files are licensed for editorial or personal use.</p>
+        <p style="margin:0 0 28px;font-size:13.5px;line-height:1.7;color:#6b6f7d;max-width:520px;text-wrap:pretty">Archival pigment prints on premium substrates, signed and shipped from Louisville. Digital files are licensed for editorial or personal use.</p>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px">${items}</div>
       </div>
 
       <aside style="border-left:1px solid #ddd7cc;padding:32px 34px 60px;background:#fff;position:sticky;top:0;display:flex;flex-direction:column;gap:20px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#a9a49a">Selected</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#a9a49a">Selected Print</div>
         <img src="${sel.src}" alt="${sel.title}" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:#e6e0d5">
         <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:26px;letter-spacing:.02em;color:#22242c">${sel.title}</h2>
-        <p style="margin:0;font-size:13px;line-height:1.7;color:#6b6f7d">${sel.note}</p>
+        
+        <!-- Size Selector -->
         <div style="display:flex;flex-direction:column;gap:9px">
           <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Print size</div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
-            ${sizeBtn("8×10 print", "$60", "8&times;10 &middot; $60")}
-            ${sizeBtn("16×20 print", "$145", "16&times;20 &middot; $145")}
-            ${sizeBtn("24×30 print", "$290", "24&times;30 &middot; $290")}
+            ${sizeBtn("8×10", "60", "8&times;10 &middot; $60")}
+            ${sizeBtn("16×20", "145", "16&times;20 &middot; $145")}
+            ${sizeBtn("24×36", "290", "24&times;36 &middot; $290")}
           </div>
         </div>
+
+        <!-- Substrate Selector -->
         <div style="display:flex;flex-direction:column;gap:9px">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Or licence the file</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
-            ${sizeBtn("Personal licence", "$35", "Personal &middot; $35")}
-            ${sizeBtn("Editorial licence", "$180", "Editorial &middot; $180")}
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Paper Substrate</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            ${subBtn("Archival Cotton Rag", "Archival Cotton Rag", "Museum Grade (Default)")}
+            ${subBtn("Fine Art Luster", "Fine Art Luster", "Subtle Sheen")}
+            ${subBtn("Smooth Gloss", "Smooth Gloss", "Vivid Contrast")}
           </div>
         </div>
-        <div style="padding:14px 16px;background:#f7f5f1;border:1px solid #ddd7cc;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#22242c">
-          <span>${state.option}</span><span style="font-family:'JetBrains Mono',monospace">${state.optionPrice}</span>
+
+        <!-- Framing Selector -->
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Framing &amp; Mounting</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            ${frameBtn("Unframed", "0", "Unframed", "$0")}
+            ${frameBtn("Museum Wood Frame", "120", "Museum Wood Frame", "+ $120")}
+            ${frameBtn("Acrylic Gallery Float Mount", "220", "Acrylic Gallery Float Mount", "+ $220")}
+          </div>
         </div>
-        <button data-action="addToCart" style="background:#22242c;border:0;border-radius:2px;padding:15px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#f7f5f1;font-weight:500">Add to cart</button>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;line-height:1.9;color:#a9a49a">Prints ship in 5&ndash;7 days<br>Files delivered instantly after checkout</div>
+
+        <!-- Total Price Summary Box -->
+        <div style="padding:14px 16px;background:#f7f5f1;border:1px solid #ddd7cc;display:flex;flex-direction:column;gap:4px;font-size:13px;color:#22242c">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;color:#6b6f7d">${state.swSize} &middot; ${state.swFraming}</span>
+            <span style="font-family:'Bodoni Moda',serif;font-size:22px;font-weight:600">$${totalPrice.toFixed(2)}</span>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;color:#8a8478">Substrate: ${state.swSubstrate}</div>
+        </div>
+
+        <button data-action="swOpenCheckout" style="background:#22242c;border:0;border-radius:2px;padding:15px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#f7f5f1;font-weight:500;cursor:pointer">Proceed to Checkout &rarr;</button>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;line-height:1.9;color:#a9a49a;text-align:center">Prints ship in 5&ndash;7 days<br>Direct payment links generated upon checkout</div>
       </aside>
     </div>
+    ${renderModal()}
   </div>`;
 }
 

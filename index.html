@@ -78,6 +78,730 @@
     .sw-divider { width: 1px; height: 22px; background: #2a2d36; margin: 0 8px; }
     .sw-btn-admin { background: #d4af37; border: 0; border-radius: 22px; padding: 8px 15px; font-size: 12px; color: #0f1115; font-weight: 500; }
     .sw-btn-admin:hover { background: #e5be47; }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 900px) {
+      .site-header {
+        padding: 16px 20px !important;
+        flex-wrap: wrap !important;
+        gap: 14px !important;
+      }
+      .site-nav {
+        gap: 14px !important;
+        flex-wrap: wrap !important;
+      }
+      .site-nav a, .site-nav button {
+        font-size: 11.5px !important;
+      }
+
+      /* Ethereal Hero Section */
+      .ethereal-hero-section {
+        grid-template-columns: 1fr !important;
+        padding: 0 20px !important;
+        min-height: auto !important;
+        gap: 16px !important;
+      }
+      .hero-index-col {
+        flex-direction: row !important;
+        gap: 16px !important;
+        padding-top: 10px !important;
+        justify-content: center !important;
+      }
+      .hero-img-col {
+        height: 380px !important;
+      }
+      .hero-thumbs-col {
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding-left: 0 !important;
+        gap: 16px !important;
+      }
+      .hero-thumbs-col img {
+        width: 48px !important;
+        height: 48px !important;
+      }
+      .hero-thumbs-col div {
+        writing-mode: horizontal-tb !important;
+        margin-top: 0 !important;
+      }
+
+      /* Ethereal Hero Title Section */
+      .ethereal-title-section {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        padding: 24px 20px 40px !important;
+      }
+      .ethereal-hero-btn {
+        width: 60px !important;
+        height: 60px !important;
+      }
+
+      /* Work Section */
+      #work {
+        padding: 48px 20px 60px !important;
+      }
+      #work > div:first-child {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 14px !important;
+        margin-bottom: 24px !important;
+      }
+      #ethereal-work-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+      }
+
+      /* About Section */
+      .about-section {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+        padding: 56px 20px !important;
+      }
+      .about-section img {
+        height: 320px !important;
+      }
+
+      /* Services Section */
+      .services-section {
+        padding: 0 20px 60px !important;
+      }
+      #ethereal-services-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .service-card {
+        padding: 24px 0 !important;
+        border-right: none !important;
+        border-bottom: 1px solid #ddd7cc !important;
+      }
+
+      /* Booking Section */
+      .booking-section {
+        padding: 56px 20px !important;
+      }
+      .booking-grid {
+        grid-template-columns: 1fr !important;
+        gap: 36px !important;
+      }
+      .booking-form-row {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Footer */
+      .site-footer {
+        padding: 24px 20px !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        text-align: center !important;
+      }
+
+      /* Cinematic Preset */
+      .cinematic-hero-overlay {
+        left: 20px !important;
+        right: 20px !important;
+        bottom: 24px !important;
+        grid-template-columns: 1fr !important;
+      }
+      .cinematic-grid {
+        padding: 40px 20px !important;
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+      }
+
+      /* Archive Preset */
+      .archive-header {
+        padding: 16px 20px !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+      }
+      .archive-filter-bar {
+        padding: 14px 20px !important;
+      }
+      .archive-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
+      }
+
+      /* Portal Preset */
+      .portal-header {
+        padding: 20px !important;
+      }
+      .portal-footer {
+        padding: 20px !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        align-items: center !important;
+      }
+
+      /* Client View */
+      #client-login-card {
+        grid-template-columns: 1fr !important;
+        min-height: auto !important;
+      }
+      .client-hero-img {
+        height: 200px !important;
+      }
+      .client-hero-img > div:last-child {
+        left: 20px !important;
+        bottom: 20px !important;
+      }
+      .client-hero-img p {
+        font-size: 22px !important;
+      }
+      .client-form-panel {
+        padding: 36px 20px !important;
+      }
+      .client-dashboard-layout {
+        grid-template-columns: 1fr !important;
+      }
+      .client-aside-nav {
+        border-right: none !important;
+        border-bottom: 1px solid #ddd7cc !important;
+        padding: 16px 20px !important;
+      }
+      .client-aside-nav-list {
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        gap: 8px !important;
+      }
+      .client-tab-btn {
+        white-space: nowrap !important;
+        border-left: none !important;
+        border-bottom: 2px solid transparent !important;
+        padding: 8px 16px !important;
+      }
+      .client-main-content {
+        padding: 20px 16px 40px !important;
+      }
+      .upsell-banner {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 20px !important;
+      }
+      .upsell-banner button {
+        width: 100% !important;
+        text-align: center !important;
+      }
+
+      /* Shop View */
+      .shop-header {
+        padding: 16px 20px !important;
+        flex-wrap: wrap !important;
+        gap: 12px !important;
+      }
+      .shop-layout-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .shop-layout-grid > div {
+        padding: 24px 20px 40px !important;
+      }
+      .shop-cart-sidebar {
+        border-left: none !important;
+        border-top: 1px solid #ddd7cc !important;
+        padding: 28px 20px 40px !important;
+      }
+
+      /* Switcher Bar Fix */
+      .switcher-container {
+        padding: 0 10px 12px !important;
+      }
+      .switcher-bar {
+        max-width: 96vw !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        padding: 6px 12px !important;
+        border-radius: 30px !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .switcher-bar::-webkit-scrollbar {
+        display: none;
+      }
+      .sw-btn, .sw-btn-admin {
+        padding: 6px 10px !important;
+        font-size: 11px !important;
+        flex-shrink: 0 !important;
+      }
+      .sw-divider {
+        margin: 0 4px !important;
+        flex-shrink: 0 !important;
+      }
+      .switcher-label {
+        flex-shrink: 0 !important;
+      }
+    }
+
+      .archive-grid figure {
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.25s ease;
+      }
+      .archive-grid figure:hover img {
+        transform: scale(1.03);
+        opacity: 0.92;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      /* Archive Commercial Licensing Store Modal */
+      .licensing-modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 17, 21, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 10005;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.25s ease, visibility 0.25s ease;
+      }
+      .licensing-modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .licensing-modal-container {
+        background: #181a20;
+        border: 1px solid #2a2d36;
+        border-radius: 12px;
+        max-width: 720px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        color: #f0f2f5;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+        transform: translateY(12px) scale(0.98);
+        transition: transform 0.25s ease;
+      }
+      .licensing-modal-overlay.active .licensing-modal-container {
+        transform: translateY(0) scale(1);
+      }
+      .licensing-modal-close {
+        position: absolute;
+        top: 18px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: #9ba3af;
+        font-size: 26px;
+        line-height: 1;
+        cursor: pointer;
+        transition: color 0.15s ease;
+        z-index: 2;
+      }
+      .licensing-modal-close:hover {
+        color: #f0f2f5;
+      }
+      .licensing-modal-header {
+        padding: 24px 28px 16px;
+        border-bottom: 1px solid #2a2d36;
+      }
+      .licensing-badge {
+        display: inline-block;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9.5px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #d4af37;
+        background: rgba(212, 175, 55, 0.12);
+        padding: 4px 10px;
+        border-radius: 4px;
+        margin-bottom: 8px;
+      }
+      .licensing-badge.gold {
+        color: #0f1115;
+        background: #d4af37;
+        font-weight: 600;
+      }
+      .licensing-modal-title {
+        margin: 0 0 6px;
+        font-family: 'Bodoni Moda', serif;
+        font-weight: 300;
+        font-size: 24px;
+        color: #f0f2f5;
+        letter-spacing: 0.02em;
+      }
+      .licensing-modal-sub {
+        margin: 0;
+        font-size: 13px;
+        color: #9ba3af;
+        line-height: 1.5;
+      }
+      .licensing-modal-body {
+        padding: 24px 28px;
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+      .licensing-photo-card {
+        background: #0f1115;
+        border: 1px solid #2a2d36;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .licensing-img-wrapper {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background: #22242c;
+        overflow: hidden;
+      }
+      .licensing-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .licensing-photo-details {
+        padding: 12px 14px;
+      }
+      .licensing-photo-title {
+        font-family: 'Bodoni Moda', serif;
+        font-size: 15px;
+        color: #f0f2f5;
+        margin-bottom: 4px;
+      }
+      .licensing-photo-ref {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        color: #d4af37;
+      }
+      .licensing-options-column {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .licensing-section-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #a9a49a;
+      }
+      .licensing-tiers-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .tier-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 16px;
+        background: #0f1115;
+        border: 1px solid #2a2d36;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: border-color 0.2s ease, background 0.2s ease;
+      }
+      .tier-card:hover {
+        border-color: #4a4e5d;
+      }
+      .tier-card.active {
+        border-color: #d4af37;
+        background: rgba(212, 175, 55, 0.08);
+      }
+      .tier-card input[type="radio"] {
+        accent-color: #d4af37;
+        margin-top: 3px;
+        cursor: pointer;
+      }
+      .tier-content {
+        flex: 1;
+      }
+      .tier-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 3px;
+      }
+      .tier-name {
+        font-size: 13.5px;
+        font-weight: 500;
+        color: #f0f2f5;
+      }
+      .tier-price {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13.5px;
+        font-weight: 500;
+        color: #d4af37;
+      }
+      .tier-desc {
+        font-size: 12px;
+        color: #9ba3af;
+        line-height: 1.4;
+      }
+      .licensing-terms-box {
+        background: #0f1115;
+        border: 1px solid #2a2d36;
+        border-radius: 6px;
+        padding: 12px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .licensing-terms-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        color: #f0f2f5;
+        cursor: pointer;
+        user-select: none;
+      }
+      .licensing-terms-label input[type="checkbox"] {
+        accent-color: #d4af37;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+      }
+      .licensing-terms-note {
+        margin: 0;
+        font-size: 11px;
+        color: #6d7480;
+        line-height: 1.4;
+        padding-left: 26px;
+      }
+      .licensing-pay-btn {
+        background: #d4af37;
+        color: #0f1115;
+        border: none;
+        border-radius: 6px;
+        padding: 14px;
+        font-family: 'Jost', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: opacity 0.2s ease, background 0.2s ease, transform 0.1s ease;
+      }
+      .licensing-pay-btn:hover:not(:disabled) {
+        background: #e5be48;
+        transform: translateY(-1px);
+      }
+      .licensing-pay-btn:disabled {
+        background: #2a2d36;
+        color: #6d7480;
+        cursor: not-allowed;
+      }
+      .licensing-pay-body {
+        padding: 24px 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .pay-summary-card {
+        background: #0f1115;
+        border: 1px solid #2a2d36;
+        border-radius: 8px;
+        padding: 16px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .pay-summary-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+      }
+      .pay-summary-label {
+        color: #9ba3af;
+      }
+      .pay-summary-val {
+        color: #f0f2f5;
+        font-weight: 500;
+      }
+      .pay-summary-val.ref-code {
+        font-family: 'JetBrains Mono', monospace;
+        color: #d4af37;
+      }
+      .pay-methods-title {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #a9a49a;
+      }
+      .pay-methods-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .pay-method-card {
+        background: #0f1115;
+        border: 1px solid #2a2d36;
+        border-radius: 8px;
+        padding: 14px 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 6px;
+        text-decoration: none;
+        color: #f0f2f5;
+        transition: border-color 0.2s ease, background 0.2s ease;
+      }
+      .pay-method-card:hover {
+        border-color: #d4af37;
+        background: #1c1f27;
+      }
+      .pay-method-icon {
+        font-size: 22px;
+      }
+      .pay-method-name {
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .pay-method-handle {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        color: #d4af37;
+      }
+      .pay-method-action {
+        font-size: 11px;
+        color: #9ba3af;
+        margin-top: 4px;
+      }
+      .pay-method-action-btn {
+        background: #2a2d36;
+        border: none;
+        color: #f0f2f5;
+        border-radius: 4px;
+        padding: 4px 10px;
+        font-size: 11px;
+        cursor: pointer;
+        margin-top: 4px;
+        transition: background 0.15s ease;
+      }
+      .pay-method-action-btn:hover {
+        background: #d4af37;
+        color: #0f1115;
+      }
+      .pay-instruction-box {
+        background: rgba(212, 175, 55, 0.08);
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        border-radius: 8px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .pay-instruction-header {
+        font-size: 12.5px;
+        font-weight: 600;
+        color: #d4af37;
+      }
+      .pay-instruction-box p {
+        margin: 0;
+        font-size: 12px;
+        color: #d5cfc4;
+        line-height: 1.5;
+      }
+      .pay-ref-copy-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #0f1115;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-size: 12px;
+        color: #f0f2f5;
+      }
+      .pay-ref-copy-bar strong {
+        font-family: 'JetBrains Mono', monospace;
+        color: #d4af37;
+      }
+      .copy-ref-btn {
+        background: #d4af37;
+        color: #0f1115;
+        border: none;
+        border-radius: 3px;
+        padding: 4px 10px;
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s ease;
+      }
+      .copy-ref-btn:hover {
+        background: #e5be48;
+      }
+      .pay-actions-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 6px;
+      }
+      .licensing-btn-secondary {
+        background: transparent;
+        border: 1px solid #2a2d36;
+        color: #f0f2f5;
+        padding: 10px 18px;
+        border-radius: 6px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: background 0.15s ease;
+      }
+      .licensing-btn-secondary:hover {
+        background: #2a2d36;
+      }
+      .licensing-btn-primary {
+        background: #d4af37;
+        border: none;
+        color: #0f1115;
+        padding: 10px 24px;
+        border-radius: 6px;
+        font-size: 12.5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s ease;
+      }
+      .licensing-btn-primary:hover {
+        background: #e5be48;
+      }
+      @media (max-width: 640px) {
+        .licensing-modal-container {
+          max-height: 95vh;
+        }
+        .licensing-modal-body {
+          grid-template-columns: 1fr;
+          padding: 18px 20px;
+          gap: 18px;
+        }
+        .licensing-photo-card {
+          display: flex;
+          gap: 14px;
+          align-items: center;
+          padding: 10px;
+        }
+        .licensing-img-wrapper {
+          width: 72px;
+          height: 72px;
+          border-radius: 4px;
+          flex-shrink: 0;
+        }
+        .licensing-photo-details {
+          padding: 0;
+        }
+        .pay-methods-grid {
+          grid-template-columns: 1fr;
+        }
+        .licensing-modal-header {
+          padding: 20px 20px 14px;
+        }
+        .licensing-pay-body {
+          padding: 18px 20px;
+        }
+      }
   </style>
 </head>
 <body>
@@ -89,9 +813,9 @@
 
     <!-- PRESET 1: ETHEREAL EDITORIAL -->
     <div id="preset-ethereal" class="preset-section active" style="background:#f7f5f1; min-height:100vh; padding-bottom:96px">
-      <header style="display:flex;justify-content:space-between;align-items:center;padding:26px 48px">
+      <header class="site-header" style="display:flex;justify-content:space-between;align-items:center;padding:26px 48px">
         <div style="font-family:'Bodoni Moda',serif;font-size:15px;letter-spacing:.34em;text-transform:uppercase;color:#22242c">Celeste</div>
-        <nav style="display:flex;gap:30px;align-items:center">
+        <nav class="site-nav" style="display:flex;gap:30px;align-items:center">
           <a href="#work" style="font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Work</a>
           <a href="#about" style="font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">About</a>
           <a href="#services" style="font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Services</a>
@@ -100,17 +824,17 @@
         </nav>
       </header>
 
-      <section style="display:grid;grid-template-columns:150px 1fr 92px;gap:0;align-items:stretch;padding:0 48px;min-height:560px">
-        <div style="display:flex;flex-direction:column;gap:14px;padding-top:26px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:#a9a49a">
+      <section class="ethereal-hero-section" style="display:grid;grid-template-columns:150px 1fr 92px;gap:0;align-items:stretch;padding:0 48px;min-height:560px">
+        <div class="hero-index-col" style="display:flex;flex-direction:column;gap:14px;padding-top:26px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:#a9a49a">
           <div>01</div>
           <div style="display:flex;align-items:center;gap:9px;color:#22242c"><span style="width:6px;height:6px;border-radius:50%;background:#22242c"></span>02</div>
           <div>03</div><div>04</div><div>05</div>
         </div>
-        <div style="position:relative;overflow:hidden">
+        <div class="hero-img-col" style="position:relative;overflow:hidden">
           <img src="/images/hero.webp" alt="Friday night football" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block;filter:saturate(.78) contrast(1.03)">
           <div style="position:absolute;inset:0;background:linear-gradient(180deg,#f7f5f1 0%,rgba(247,245,241,.55) 22%,rgba(247,245,241,0) 55%)"></div>
         </div>
-        <div style="display:flex;flex-direction:column;justify-content:center;gap:10px;padding-left:16px">
+        <div class="hero-thumbs-col" style="display:flex;flex-direction:column;justify-content:center;gap:10px;padding-left:16px">
           <img src="/images/league.jpg" alt="" style="width:56px;height:56px;object-fit:cover;border-radius:50%">
           <img src="/images/procession.jpg" alt="" style="width:56px;height:56px;object-fit:cover;border-radius:50%">
           <img src="/images/demonstration.jpg" alt="" style="width:56px;height:56px;object-fit:cover;border-radius:50%">
@@ -118,10 +842,10 @@
         </div>
       </section>
 
-      <section style="display:grid;grid-template-columns:1fr 300px 74px;gap:36px;align-items:end;padding:34px 48px 64px">
+      <section class="ethereal-title-section" style="display:grid;grid-template-columns:1fr 300px 74px;gap:36px;align-items:end;padding:34px 48px 64px">
         <h1 id="ethereal-hero-title" style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:clamp(48px,7.4vw,112px);line-height:.9;letter-spacing:.04em;color:#22242c;text-transform:uppercase">Documentary<span style="color:#8a6d1f">.</span></h1>
         <p id="ethereal-hero-desc" style="margin:0;font-size:13.5px;line-height:1.75;color:#6b6f7d;text-wrap:pretty">Sport, protest and public life in Louisville — photographed as it happens, printed as it was seen. Booking sessions and assignments for 2026.</p>
-        <button class="nav-scroll-book" style="width:74px;height:74px;border-radius:50%;border:1px solid #22242c;background:none;color:#22242c;font-size:19px" onmouseover="this.style.background='#22242c';this.style.color='#f7f5f1';" onmouseout="this.style.background='none';this.style.color='#22242c';">↗</button>
+        <button class="nav-scroll-book ethereal-hero-btn" style="width:74px;height:74px;border-radius:50%;border:1px solid #22242c;background:none;color:#22242c;font-size:19px" onmouseover="this.style.background='#22242c';this.style.color='#f7f5f1';" onmouseout="this.style.background='none';this.style.color='#22242c';">↗</button>
       </section>
 
       <!-- Work Section -->
@@ -139,7 +863,7 @@
       </section>
 
       <!-- Shared Lower Stack: About & Services -->
-      <section id="about" style="display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;padding:96px 48px;max-width:1280px;margin:0 auto">
+      <section id="about" class="about-section" style="display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;padding:96px 48px;max-width:1280px;margin:0 auto">
         <img src="/images/demonstration.jpg" alt="Riverfront demonstration" style="width:100%;height:460px;object-fit:cover;display:block">
         <div style="display:flex;flex-direction:column;gap:22px">
           <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#a9a49a">About</div>
@@ -149,25 +873,25 @@
         </div>
       </section>
 
-      <section id="services" style="padding:0 48px 96px;max-width:1280px;margin:0 auto">
+      <section id="services" class="services-section" style="padding:0 48px 96px;max-width:1280px;margin:0 auto">
         <div style="display:flex;align-items:baseline;gap:18px;padding-bottom:26px;border-bottom:1px solid #ddd7cc;margin-bottom:0">
           <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:clamp(30px,3.6vw,52px);letter-spacing:.05em;text-transform:uppercase;color:#22242c">Services</h2>
           <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#a9a49a">2026 rates</span>
         </div>
         <div id="ethereal-services-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0">
-          <div style="padding:34px 34px 34px 0;border-right:1px solid #ddd7cc;display:flex;flex-direction:column;gap:12px">
+          <div class="service-card" style="padding:34px 34px 34px 0;border-right:1px solid #ddd7cc;display:flex;flex-direction:column;gap:12px">
             <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#a9a49a">01</div>
             <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:24px;color:#22242c">Event &amp; game coverage</h3>
             <p style="margin:0;font-size:13.5px;line-height:1.75;color:#6b6f7d;text-wrap:pretty">Half or full event. Edited gallery in 72 hours, delivered to your own client area with download rights.</p>
             <div style="margin-top:auto;padding-top:14px;font-size:13px;letter-spacing:.06em;color:#22242c">From $450</div>
           </div>
-          <div style="padding:34px;border-right:1px solid #ddd7cc;display:flex;flex-direction:column;gap:12px">
+          <div class="service-card" style="padding:34px;border-right:1px solid #ddd7cc;display:flex;flex-direction:column;gap:12px">
             <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#a9a49a">02</div>
             <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:24px;color:#22242c">Portrait sessions</h3>
             <p style="margin:0;font-size:13.5px;line-height:1.75;color:#6b6f7d;text-wrap:pretty">Ninety minutes on location. Athletes, families, and personal branding. Twenty retouched frames.</p>
             <div style="margin-top:auto;padding-top:14px;font-size:13px;letter-spacing:.06em;color:#22242c">From $325</div>
           </div>
-          <div style="padding:34px 0 34px 34px;display:flex;flex-direction:column;gap:12px">
+          <div class="service-card" style="padding:34px 0 34px 34px;display:flex;flex-direction:column;gap:12px">
             <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#a9a49a">03</div>
             <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:24px;color:#22242c">Editorial assignment</h3>
             <p style="margin:0;font-size:13.5px;line-height:1.75;color:#6b6f7d;text-wrap:pretty">Day rate for newsrooms and organizations. Licensing quoted per use; archive access included.</p>
@@ -177,8 +901,8 @@
       </section>
 
       <!-- Booking Section -->
-      <section id="book" style="background:#3a4054;color:#e8e6e0;padding:88px 48px">
-        <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+      <section id="book" class="booking-section" style="background:#3a4054;color:#e8e6e0;padding:88px 48px">
+        <div class="booking-grid" style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
           <div style="display:flex;flex-direction:column;gap:18px">
             <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#a3a8b8">Booking</div>
             <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:clamp(32px,4vw,58px);line-height:1;letter-spacing:.04em;text-transform:uppercase">Start with the date</h2>
@@ -191,7 +915,7 @@
           <form onsubmit="event.preventDefault();alert('Booking enquiry sent!');" style="display:flex;flex-direction:column;gap:14px">
             <input type="text" placeholder="Name" required style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);padding:13px 14px;color:#e8e6e0;font-family:inherit;font-size:13.5px;border-radius:2px">
             <input type="email" placeholder="Email" required style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);padding:13px 14px;color:#e8e6e0;font-family:inherit;font-size:13.5px;border-radius:2px">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <div class="booking-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
               <input type="text" placeholder="Date" required style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);padding:13px 14px;color:#e8e6e0;font-family:inherit;font-size:13.5px;border-radius:2px">
               <select required style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);padding:13px 14px;color:#e8e6e0;font-family:inherit;font-size:13.5px;border-radius:2px">
                 <option style="color:#000;">Event coverage</option><option style="color:#000;">Portrait session</option><option style="color:#000;">Editorial assignment</option>
@@ -203,7 +927,7 @@
         </div>
       </section>
 
-      <footer style="background:#f7f5f1;padding:34px 48px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#a9a49a">
+      <footer class="site-footer" style="background:#f7f5f1;padding:34px 48px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#a9a49a">
         <span class="display-footer-text">© 2026 Celeste Photo Studio</span>
         <button class="nav-switch-client" style="background:none;border:0;padding:0;font-family:inherit;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#22242c">Client area</button>
       </footer>
@@ -214,27 +938,27 @@
       <div style="position:relative;height:calc(100vh - 96px);min-height:600px;overflow:hidden">
         <img src="/images/procession.jpg" alt="Memorial procession" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 45%">
         <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,21,.72) 0%,rgba(15,17,21,.15) 40%,rgba(15,17,21,.92) 100%)"></div>
-        <header style="position:relative;display:flex;justify-content:space-between;align-items:center;padding:26px 44px">
+        <header class="site-header" style="position:relative;display:flex;justify-content:space-between;align-items:center;padding:26px 44px">
           <div style="font-family:'Bodoni Moda',serif;font-size:15px;letter-spacing:.34em;text-transform:uppercase">Celeste</div>
-          <nav style="display:flex;gap:28px;align-items:center">
+          <nav class="site-nav" style="display:flex;gap:28px;align-items:center">
             <a href="#c-about" style="font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#9ba3af">About</a>
             <a href="#c-services" style="font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#9ba3af">Services</a>
             <button class="nav-switch-shop" style="background:none;border:0;padding:0;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#9ba3af">Prints</button>
             <button class="nav-switch-client" style="background:none;border:1px solid #d4af37;border-radius:3px;padding:8px 16px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#d4af37">Client Login</button>
           </nav>
         </header>
-        <div style="position:absolute;left:44px;right:44px;bottom:46px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end">
+        <div class="cinematic-hero-overlay" style="position:absolute;left:44px;right:44px;bottom:46px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end">
           <div style="display:flex;flex-direction:column;gap:18px;max-width:760px">
             <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#d4af37">Frame 02 — Memorial procession, June</div>
             <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:clamp(44px,6.4vw,92px);line-height:.94;letter-spacing:.03em">The picture is the whole argument.</h1>
-            <div style="display:flex;gap:12px;margin-top:6px">
+            <div style="display:flex;gap:12px;margin-top:6px;flex-wrap:wrap">
               <button class="nav-scroll-book" style="background:#d4af37;border:0;border-radius:3px;padding:14px 28px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#0f1115;font-weight:500">Book a session</button>
               <button class="nav-switch-shop" style="background:none;border:1px solid rgba(240,242,245,.4);border-radius:3px;padding:14px 28px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#f0f2f5">View prints</button>
             </div>
           </div>
         </div>
       </div>
-      <section style="padding:70px 44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      <section class="cinematic-grid" style="padding:70px 44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
         <img src="/images/hero.webp" alt="Friday night football" style="width:100%;height:280px;object-fit:cover;display:block">
         <img src="/images/demonstration.jpg" alt="Riverfront demonstration" style="width:100%;height:280px;object-fit:cover;display:block">
         <img src="/images/league.jpg" alt="Outdoor league" style="width:100%;height:280px;object-fit:cover;display:block">
@@ -243,26 +967,26 @@
 
     <!-- PRESET 3: ARCHIVE -->
     <div id="preset-archive" class="preset-section" style="background:#ece8e1;min-height:100vh;padding-bottom:96px">
-      <header style="display:flex;justify-content:space-between;align-items:center;padding:22px 34px;border-bottom:1px solid #d5cfc4">
+      <header class="archive-header" style="display:flex;justify-content:space-between;align-items:center;padding:22px 34px;border-bottom:1px solid #d5cfc4">
         <div style="display:flex;align-items:baseline;gap:14px">
           <span style="font-family:'Bodoni Moda',serif;font-size:15px;letter-spacing:.3em;text-transform:uppercase;color:#22242c">Celeste</span>
           <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:#8d887d">ARCHIVE / 214 FRAMES</span>
         </div>
-        <nav style="display:flex;gap:22px;align-items:center">
+        <nav class="site-nav" style="display:flex;gap:22px;align-items:center">
           <a href="#about" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">About</a>
           <a href="#services" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Rates</a>
           <button class="nav-switch-shop" style="background:none;border:0;padding:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Prints</button>
           <button class="nav-switch-client" style="background:#22242c;border:0;padding:8px 15px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#ece8e1">Client Login</button>
         </nav>
       </header>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;padding:20px 34px;border-bottom:1px solid #d5cfc4">
+      <div class="archive-filter-bar" style="display:flex;gap:8px;flex-wrap:wrap;padding:20px 34px;border-bottom:1px solid #d5cfc4">
         <span style="padding:6px 13px;background:#22242c;color:#ece8e1;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase">All</span>
         <span style="padding:6px 13px;border:1px solid #c9c3b8;color:#6b6f7d;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Sport</span>
         <span style="padding:6px 13px;border:1px solid #c9c3b8;color:#6b6f7d;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Protest</span>
         <span style="padding:6px 13px;border:1px solid #c9c3b8;color:#6b6f7d;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Community</span>
         <span style="padding:6px 13px;border:1px solid #c9c3b8;color:#6b6f7d;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Portrait</span>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px;padding:2px">
+      <div class="archive-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px;padding:2px">
         <figure style="margin:0;background:#22242c;position:relative"><img src="/images/hero.webp" alt="Frame" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block"><figcaption style="position:absolute;left:0;right:0;bottom:0;padding:9px 10px;background:linear-gradient(180deg,rgba(34,36,44,0),rgba(34,36,44,.88));font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#e8e6e0;display:flex;justify-content:space-between;gap:8px"><span>Sideline, 4th quarter</span><span style="color:#a9a49a">CP-0412-1</span></figcaption></figure>
         <figure style="margin:0;background:#22242c;position:relative"><img src="/images/league.jpg" alt="Frame" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block"><figcaption style="position:absolute;left:0;right:0;bottom:0;padding:9px 10px;background:linear-gradient(180deg,rgba(34,36,44,0),rgba(34,36,44,.88));font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#e8e6e0;display:flex;justify-content:space-between;gap:8px"><span>Second period</span><span style="color:#a9a49a">CP-0388-2</span></figcaption></figure>
         <figure style="margin:0;background:#22242c;position:relative"><img src="/images/procession.jpg" alt="Frame" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block"><figcaption style="position:absolute;left:0;right:0;bottom:0;padding:9px 10px;background:linear-gradient(180deg,rgba(34,36,44,0),rgba(34,36,44,.88));font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#e8e6e0;display:flex;justify-content:space-between;gap:8px"><span>Procession</span><span style="color:#a9a49a">CP-0501-3</span></figcaption></figure>
@@ -273,9 +997,9 @@
 
     <!-- PRESET 4: MINIMAL PORTAL -->
     <div id="preset-portal" class="preset-section" style="background:#f7f5f1;min-height:calc(100vh - 96px);display:grid;grid-template-rows:auto 1fr auto">
-      <header style="display:flex;justify-content:space-between;align-items:center;padding:28px 44px">
+      <header class="portal-header" style="display:flex;justify-content:space-between;align-items:center;padding:28px 44px">
         <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#a9a49a">Louisville, KY</span>
-        <nav style="display:flex;gap:24px;align-items:center">
+        <nav class="site-nav" style="display:flex;gap:24px;align-items:center">
           <button class="nav-switch-shop" style="background:none;border:0;padding:0;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#a9a49a">Prints</button>
           <button class="nav-switch-client" style="background:none;border:0;padding:0;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#22242c">Clients</button>
         </nav>
@@ -286,7 +1010,7 @@
         <p style="margin:0;max-width:420px;text-align:center;font-size:13.5px;line-height:1.8;color:#6b6f7d;text-wrap:pretty">Documentary photography. Sport, protest, and public life.</p>
         <button class="nav-switch-ethereal" style="background:none;border:0;padding:0;border-bottom:1px solid #22242c;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#22242c;padding-bottom:4px">Enter the work</button>
       </div>
-      <div style="padding:28px 44px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">
+      <div class="portal-footer" style="padding:28px 44px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">
         <span>Est. 2019</span><span class="display-email">hello@celestephoto.com</span>
       </div>
     </div>
@@ -298,7 +1022,7 @@
   <!-- ========================================================================== -->
   <div id="view-client" class="view-section" style="min-height:calc(100vh - 96px);background:#f7f5f1">
     <div id="client-login-card" style="display:grid;grid-template-columns:1.15fr 1fr;min-height:calc(100vh - 96px)">
-      <div style="position:relative;overflow:hidden">
+      <div class="client-hero-img" style="position:relative;overflow:hidden">
         <img src="/images/hero.webp" alt="" style="width:100%;height:100%;object-fit:cover">
         <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(34,36,44,.35),rgba(34,36,44,.75))"></div>
         <div style="position:absolute;left:44px;bottom:44px;color:#f7f5f1;max-width:420px">
@@ -306,7 +1030,7 @@
           <p style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:32px;line-height:1.15;letter-spacing:.02em;text-wrap:pretty">Your gallery, your downloads, your proofs — in one place.</p>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;justify-content:center;padding:60px 64px;gap:26px">
+      <div class="client-form-panel" style="display:flex;flex-direction:column;justify-content:center;padding:60px 64px;gap:26px">
         <div style="font-family:'Bodoni Moda',serif;font-size:14px;letter-spacing:.34em;text-transform:uppercase;color:#22242c">Celeste</div>
         <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:44px;line-height:1.05;letter-spacing:.03em;color:#22242c">Sign in to your gallery</h1>
         <p style="margin:0;font-size:13.5px;line-height:1.7;color:#6b6f7d;text-wrap:pretty">Use the email the gallery was sent to, plus the six-character code from your delivery message.</p>
@@ -317,17 +1041,18 @@
           <label style="display:flex;flex-direction:column;gap:7px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Gallery code
             <input type="text" value="JT4-9QK" required style="background:#fff;border:1px solid #d5cfc4;padding:13px 14px;font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.22em;color:#22242c;border-radius:2px">
           </label>
-          <button type="submit" style="background:#22242c;border:0;border-radius:2px;padding:15px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#f7f5f1;font-weight:500;margin-top:6px">Open my gallery</button>
         </form>
       </div>
     </div>
+    <div id="client-dashboard-container" style="display:none;min-height:calc(100vh - 96px);background:#f7f5f1"></div>
+    <div id="client-checkout-modal-container"></div>
   </div>
 
   <!-- ========================================================================== -->
   <!-- SHOP VIEW                                                                 -->
   <!-- ========================================================================== -->
   <div id="view-shop" class="view-section" style="min-height:calc(100vh - 96px);background:#f7f5f1">
-    <header style="display:flex;justify-content:space-between;align-items:center;padding:22px 40px;border-bottom:1px solid #ddd7cc">
+    <header class="shop-header" style="display:flex;justify-content:space-between;align-items:center;padding:22px 40px;border-bottom:1px solid #ddd7cc">
       <div style="display:flex;align-items:baseline;gap:16px">
         <button class="nav-switch-site" style="background:none;border:0;padding:0;font-family:'Bodoni Moda',serif;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:#22242c">Celeste</button>
         <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#a9a49a">Prints &amp; licences</span>
@@ -338,39 +1063,167 @@
       </div>
     </header>
 
-    <div style="display:grid;grid-template-columns:1fr 400px;gap:0;align-items:start">
+    <div class="shop-layout-grid" style="display:grid;grid-template-columns:1fr 400px;gap:0;align-items:start">
       <div style="padding:32px 40px 70px">
         <h1 style="margin:0 0 8px;font-family:'Bodoni Moda',serif;font-weight:300;font-size:44px;letter-spacing:.03em;color:#22242c">Open editions</h1>
-        <p style="margin:0 0 28px;font-size:13.5px;line-height:1.7;color:#6b6f7d;max-width:520px;text-wrap:pretty">Archival pigment prints on cotton rag, signed and shipped from Louisville. Digital files are licensed for editorial or personal use.</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px">
-          <div style="display:flex;flex-direction:column;gap:11px">
+        <p style="margin:0 0 28px;font-size:13.5px;line-height:1.7;color:#6b6f7d;max-width:520px;text-wrap:pretty">Archival pigment prints on premium substrates, signed and shipped from Louisville. Digital files are licensed for editorial or personal use.</p>
+        <div class="shop-products-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px">
+          <div class="shop-product-card" data-idx="0" style="display:flex;flex-direction:column;gap:11px;cursor:pointer">
             <img src="/images/hero.webp" alt="Print 1" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">
             <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Bodoni Moda',serif;font-size:17px;color:#22242c">Sideline, 4th quarter</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6b6f7d">$60 – $290</span></div>
           </div>
-          <div style="display:flex;flex-direction:column;gap:11px">
+          <div class="shop-product-card" data-idx="1" style="display:flex;flex-direction:column;gap:11px;cursor:pointer">
             <img src="/images/league.jpg" alt="Print 2" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">
             <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Bodoni Moda',serif;font-size:17px;color:#22242c">Second period</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6b6f7d">$60 – $290</span></div>
           </div>
-          <div style="display:flex;flex-direction:column;gap:11px">
+          <div class="shop-product-card" data-idx="2" style="display:flex;flex-direction:column;gap:11px;cursor:pointer">
             <img src="/images/procession.jpg" alt="Print 3" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">
             <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Bodoni Moda',serif;font-size:17px;color:#22242c">Procession</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6b6f7d">$60 – $290</span></div>
           </div>
         </div>
       </div>
 
-      <aside style="border-left:1px solid #ddd7cc;padding:32px 34px 60px;background:#fff;display:flex;flex-direction:column;gap:20px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#a9a49a">Selected</div>
-        <img src="/images/hero.webp" alt="Selected print" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">
-        <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:26px;color:#22242c">Sideline, 4th quarter</h2>
+      <aside class="shop-cart-sidebar" style="border-left:1px solid #ddd7cc;padding:32px 34px 60px;background:#fff;display:flex;flex-direction:column;gap:20px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#a9a49a">Selected Print</div>
+        <img id="idx-selected-img" src="/images/hero.webp" alt="Selected print" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">
+        <h2 id="idx-selected-title" style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:26px;color:#22242c">Sideline, 4th quarter</h2>
+
+        <!-- Print Size Selector -->
         <div style="display:flex;flex-direction:column;gap:9px">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Print size</div>
-          <div style="display:flex;gap:8px;">
-            <button style="border:1px solid #d5cfc4;background:none;padding:9px 14px;font-size:12px;color:#22242c">8×10 · $60</button>
-            <button style="border:1px solid #22242c;background:#22242c;color:#fff;padding:9px 14px;font-size:12px;">16×20 · $145</button>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Print Size</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap" id="idx-size-container">
+            <button class="idx-size-btn active" data-size="8×10" data-price="60" style="border:1px solid #22242c;background:#22242c;color:#fff;padding:9px 14px;font-size:12px;border-radius:2px;cursor:pointer">8×10 · $60</button>
+            <button class="idx-size-btn" data-size="16×20" data-price="145" style="border:1px solid #d5cfc4;background:none;color:#22242c;padding:9px 14px;font-size:12px;border-radius:2px;cursor:pointer">16×20 · $145</button>
+            <button class="idx-size-btn" data-size="24×36" data-price="290" style="border:1px solid #d5cfc4;background:none;color:#22242c;padding:9px 14px;font-size:12px;border-radius:2px;cursor:pointer">24×36 · $290</button>
           </div>
         </div>
-        <button onclick="const b=document.getElementById('cart-badge');b.textContent=parseInt(b.textContent)+1;alert('Item added to cart!');" style="background:#22242c;border:0;border-radius:2px;padding:15px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#f7f5f1;font-weight:500">Add to cart</button>
+
+        <!-- Paper Substrate Options -->
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Paper Substrate</div>
+          <div style="display:flex;flex-direction:column;gap:6px" id="idx-substrate-container">
+            <button class="idx-sub-btn active" data-substrate="Archival Cotton Rag" style="text-align:left;border:1px solid #22242c;background:#22242c;color:#fff;padding:9px 12px;font-size:12px;border-radius:2px;cursor:pointer;display:flex;justify-content:space-between;align-items:center">
+              <span>Archival Cotton Rag</span>
+              <span style="font-size:10px;opacity:0.8">Museum Grade (Default)</span>
+            </button>
+            <button class="idx-sub-btn" data-substrate="Fine Art Luster" style="text-align:left;border:1px solid #d5cfc4;background:none;color:#22242c;padding:9px 12px;font-size:12px;border-radius:2px;cursor:pointer;display:flex;justify-content:space-between;align-items:center">
+              <span>Fine Art Luster</span>
+              <span style="font-size:10px;color:#6b6f7d">Subtle Sheen</span>
+            </button>
+            <button class="idx-sub-btn" data-substrate="Smooth Gloss" style="text-align:left;border:1px solid #d5cfc4;background:none;color:#22242c;padding:9px 12px;font-size:12px;border-radius:2px;cursor:pointer;display:flex;justify-content:space-between;align-items:center">
+              <span>Smooth Gloss</span>
+              <span style="font-size:10px;color:#6b6f7d">Vivid Contrast</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Custom Framing & Mounting Options -->
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Framing &amp; Mounting</div>
+          <div style="display:flex;flex-direction:column;gap:6px" id="idx-framing-container">
+            <button class="idx-frame-btn active" data-framing="Unframed" data-price="0" style="text-align:left;border:1px solid #22242c;background:#22242c;color:#fff;padding:9px 12px;font-size:12px;border-radius:2px;cursor:pointer;display:flex;justify-content:space-between;align-items:center">
+              <span>Unframed</span>
+              <span style="font-size:11px">$0</span>
+            </button>
+            <button class="idx-frame-btn" data-framing="Museum Wood Frame" data-price="120" style="text-align:left;border:1px solid #d5cfc4;background:none;color:#22242c;padding:9px 12px;font-size:12px;border-radius:2px;cursor:pointer;display:flex;justify-content:space-between;align-items:center">
+              <span>Museum Wood Frame</span>
+              <span style="font-size:11px;color:#6b6f7d">+ $120</span>
+            </button>
+            <button class="idx-frame-btn" data-framing="Acrylic Gallery Float Mount" data-price="220" style="text-align:left;border:1px solid #d5cfc4;background:none;color:#22242c;padding:9px 12px;font-size:12px;border-radius:2px;cursor:pointer;display:flex;justify-content:space-between;align-items:center">
+              <span>Acrylic Gallery Float Mount</span>
+              <span style="font-size:11px;color:#6b6f7d">+ $220</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Real-time Total Price Calculation Box -->
+        <div style="padding:14px 16px;background:#f7f5f1;border:1px solid #ddd7cc;border-radius:2px;display:flex;flex-direction:column;gap:4px;font-size:13px;color:#22242c">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;color:#6b6f7d" id="idx-price-breakdown">8×10 · Unframed</span>
+            <span style="font-family:'Bodoni Moda',serif;font-size:22px;font-weight:600" id="idx-total-price-display">$60.00</span>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;color:#8a8478" id="idx-sub-label">Substrate: Archival Cotton Rag</div>
+        </div>
+
+        <button id="idx-btn-checkout" style="background:#22242c;border:0;border-radius:2px;padding:15px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#f7f5f1;font-weight:500;cursor:pointer">Proceed to Checkout →</button>
       </aside>
+    </div>
+  </div>
+
+  <!-- Shipping Address & Direct Payment Links Modal -->
+  <div id="idx-checkout-modal" style="display:none;position:fixed;inset:0;background:rgba(15,17,21,0.75);backdrop-filter:blur(6px);z-index:99999;align-items:center;justify-content:center;padding:20px">
+    <div style="background:#fff;color:#22242c;width:100%;max-width:560px;border-radius:6px;box-shadow:0 24px 48px rgba(0,0,0,0.3);max-height:90vh;overflow-y:auto;padding:32px;position:relative">
+      <button id="idx-modal-close" style="position:absolute;top:20px;right:20px;background:none;border:none;font-size:22px;color:#a9a49a;cursor:pointer;line-height:1">&times;</button>
+      
+      <!-- Step 1: Shipping Address Form -->
+      <div id="idx-modal-step-1">
+        <h2 style="margin:0 0 6px;font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px">Shipping &amp; Order Details</h2>
+        <p style="margin:0 0 20px;font-size:13px;color:#6b6f7d">Enter your shipping address to generate your bespoke print order &amp; direct payment links.</p>
+        
+        <form id="idx-shipping-form" style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d;margin-bottom:5px">Full Name *</label>
+            <input type="text" id="idx-ship-name" required placeholder="e.g. Eleanor Vance" style="width:100%;padding:11px 14px;border:1px solid #d5cfc4;border-radius:3px;font-size:13.5px;color:#22242c">
+          </div>
+          <div>
+            <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d;margin-bottom:5px">Email Address *</label>
+            <input type="email" id="idx-ship-email" required placeholder="eleanor@example.com" style="width:100%;padding:11px 14px;border:1px solid #d5cfc4;border-radius:3px;font-size:13.5px;color:#22242c">
+          </div>
+          <div>
+            <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d;margin-bottom:5px">Street Address *</label>
+            <input type="text" id="idx-ship-address" required placeholder="123 Gallery Way, Apt 4" style="width:100%;padding:11px 14px;border:1px solid #d5cfc4;border-radius:3px;font-size:13.5px;color:#22242c">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d;margin-bottom:5px">City *</label>
+              <input type="text" id="idx-ship-city" required placeholder="Louisville" style="width:100%;padding:11px 14px;border:1px solid #d5cfc4;border-radius:3px;font-size:13.5px;color:#22242c">
+            </div>
+            <div>
+              <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d;margin-bottom:5px">State / ZIP *</label>
+              <input type="text" id="idx-ship-statezip" required placeholder="KY 40202" style="width:100%;padding:11px 14px;border:1px solid #d5cfc4;border-radius:3px;font-size:13.5px;color:#22242c">
+            </div>
+          </div>
+          
+          <div style="margin-top:10px;padding:14px;background:#f7f5f1;border:1px solid #ddd7cc;border-radius:4px;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:12.5px;color:#6b6f7d" id="idx-modal-summary-text">Sideline, 4th quarter · 8×10</span>
+            <span style="font-family:'Bodoni Moda',serif;font-size:18px;font-weight:600;color:#22242c" id="idx-modal-summary-total">$60.00</span>
+          </div>
+
+          <button type="submit" style="margin-top:8px;background:#22242c;border:0;border-radius:3px;padding:15px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#f7f5f1;font-weight:500;cursor:pointer">Generate Payment Links &rarr;</button>
+        </form>
+      </div>
+
+      <!-- Step 2: Payment Links & Reference Code -->
+      <div id="idx-modal-step-2" style="display:none">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <span style="background:#22c55e;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold">&check;</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#22c55e;font-weight:600">Order Reference Created</span>
+        </div>
+
+        <h2 style="margin:0 0 10px;font-family:'Bodoni Moda',serif;font-weight:300;font-size:26px">Complete Direct Payment</h2>
+        
+        <div style="background:#f7f5f1;border:1px solid #ddd7cc;padding:14px 16px;border-radius:4px;margin-bottom:18px;display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d">Reference Code</span>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span id="idx-ref-code-display" style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:15px;letter-spacing:.1em;color:#22242c;background:#fff;padding:3px 8px;border:1px solid #d5cfc4;border-radius:3px">CPS-8492</span>
+              <button id="idx-btn-copy-ref" style="background:#22242c;color:#fff;border:none;padding:5px 10px;border-radius:3px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Copy Code</button>
+            </div>
+          </div>
+          <div style="font-size:12px;color:#6b6f7d;line-height:1.5" id="idx-order-full-details">
+            <!-- Details populated by JS -->
+          </div>
+        </div>
+
+        <p style="margin:0 0 14px;font-size:12.5px;line-height:1.6;color:#6b6f7d">Select your payment app below to finalize your order. <strong>Include reference code <span id="idx-ref-code-inline" style="font-family:'JetBrains Mono',monospace;font-weight:bold;color:#22242c">CPS-8492</span> in your payment note/memo.</strong></p>
+
+        <!-- Direct Payout Payment Buttons -->
+        <div style="display:flex;flex-direction:column;gap:12px" id="idx-payout-links-list">
+          <!-- Dynamically populated -->
+        </div>
+
+        <button id="idx-btn-done-checkout" style="margin-top:20px;background:#22242c;border:0;border-radius:3px;padding:14px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#f7f5f1;font-weight:500;width:100%;cursor:pointer">Done / Order Submitted</button>
+      </div>
     </div>
   </div>
 
@@ -529,7 +1382,261 @@
           </div>
         `).join('');
       }
+
+      // Update Payment Handles if present
+      if (data.cashAppTag || data.venmoHandle || data.zelleEmail || data.squareLink || data.paymentHandles) {
+        if (data.cashAppTag) shopState.paymentHandles.cashAppTag = data.cashAppTag;
+        if (data.venmoHandle) shopState.paymentHandles.venmoHandle = data.venmoHandle;
+        if (data.zelleEmail) shopState.paymentHandles.zelleEmail = data.zelleEmail;
+        if (data.squareLink) shopState.paymentHandles.squareLink = data.squareLink;
+        if (data.paymentHandles) shopState.paymentHandles = { ...shopState.paymentHandles, ...data.paymentHandles };
+      }
     });
+
+    // Shop Interactive State & Real-Time Total Price Calculation
+    const shopState = {
+      selectedIdx: 0,
+      photos: [
+        { title: "Sideline, 4th quarter", src: "/images/hero.webp" },
+        { title: "Second period", src: "/images/league.jpg" },
+        { title: "Procession", src: "/images/procession.jpg" }
+      ],
+      size: "8×10",
+      sizePrice: 60,
+      substrate: "Archival Cotton Rag",
+      framing: "Unframed",
+      framingPrice: 0,
+      paymentHandles: {
+        cashAppTag: "$celestephoto",
+        venmoHandle: "@celestephoto",
+        zelleEmail: "celeste@photo.com",
+        squareLink: "https://square.link/u/celestephoto"
+      }
+    };
+
+    try {
+      const saved = localStorage.getItem('celeste_payment_handles');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed.cashAppTag) shopState.paymentHandles.cashAppTag = parsed.cashAppTag;
+        if (parsed.venmoHandle) shopState.paymentHandles.venmoHandle = parsed.venmoHandle;
+        if (parsed.zelleEmail) shopState.paymentHandles.zelleEmail = parsed.zelleEmail;
+        if (parsed.squareLink) shopState.paymentHandles.squareLink = parsed.squareLink;
+      }
+    } catch(e) {}
+
+    const idxSelectedImg = document.getElementById('idx-selected-img');
+    const idxSelectedTitle = document.getElementById('idx-selected-title');
+    const idxPriceBreakdown = document.getElementById('idx-price-breakdown');
+    const idxTotalPriceDisplay = document.getElementById('idx-total-price-display');
+    const idxSubLabel = document.getElementById('idx-sub-label');
+    const idxBtnCheckout = document.getElementById('idx-btn-checkout');
+
+    const idxCheckoutModal = document.getElementById('idx-checkout-modal');
+    const idxModalClose = document.getElementById('idx-modal-close');
+    const idxModalStep1 = document.getElementById('idx-modal-step-1');
+    const idxModalStep2 = document.getElementById('idx-modal-step-2');
+    const idxShippingForm = document.getElementById('idx-shipping-form');
+
+    function updateShopUI() {
+      const photo = shopState.photos[shopState.selectedIdx];
+      if (idxSelectedImg) idxSelectedImg.src = photo.src;
+      if (idxSelectedTitle) idxSelectedTitle.textContent = photo.title;
+
+      const total = shopState.sizePrice + shopState.framingPrice;
+      if (idxPriceBreakdown) idxPriceBreakdown.textContent = `${shopState.size} · ${shopState.framing}`;
+      if (idxTotalPriceDisplay) idxTotalPriceDisplay.textContent = `$${total.toFixed(2)}`;
+      if (idxSubLabel) idxSubLabel.textContent = `Substrate: ${shopState.substrate}`;
+
+      const modalSumText = document.getElementById('idx-modal-summary-text');
+      const modalSumTotal = document.getElementById('idx-modal-summary-total');
+      if (modalSumText) modalSumText.textContent = `${photo.title} (${shopState.size}, ${shopState.substrate}, ${shopState.framing})`;
+      if (modalSumTotal) modalSumTotal.textContent = `$${total.toFixed(2)}`;
+    }
+
+    // Select Product Card
+    document.querySelectorAll('.shop-product-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const idx = parseInt(card.getAttribute('data-idx') || '0');
+        shopState.selectedIdx = idx;
+        updateShopUI();
+      });
+    });
+
+    // Select Size
+    document.querySelectorAll('.idx-size-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.idx-size-btn').forEach(b => {
+          b.classList.remove('active');
+          b.style.border = '1px solid #d5cfc4';
+          b.style.background = 'none';
+          b.style.color = '#22242c';
+        });
+        btn.classList.add('active');
+        btn.style.border = '1px solid #22242c';
+        btn.style.background = '#22242c';
+        btn.style.color = '#fff';
+
+        shopState.size = btn.getAttribute('data-size');
+        shopState.sizePrice = parseFloat(btn.getAttribute('data-price') || '60');
+        updateShopUI();
+      });
+    });
+
+    // Select Substrate
+    document.querySelectorAll('.idx-sub-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.idx-sub-btn').forEach(b => {
+          b.classList.remove('active');
+          b.style.border = '1px solid #d5cfc4';
+          b.style.background = 'none';
+          b.style.color = '#22242c';
+        });
+        btn.classList.add('active');
+        btn.style.border = '1px solid #22242c';
+        btn.style.background = '#22242c';
+        btn.style.color = '#fff';
+
+        shopState.substrate = btn.getAttribute('data-substrate');
+        updateShopUI();
+      });
+    });
+
+    // Select Framing
+    document.querySelectorAll('.idx-frame-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.idx-frame-btn').forEach(b => {
+          b.classList.remove('active');
+          b.style.border = '1px solid #d5cfc4';
+          b.style.background = 'none';
+          b.style.color = '#22242c';
+        });
+        btn.classList.add('active');
+        btn.style.border = '1px solid #22242c';
+        btn.style.background = '#22242c';
+        btn.style.color = '#fff';
+
+        shopState.framing = btn.getAttribute('data-framing');
+        shopState.framingPrice = parseFloat(btn.getAttribute('data-price') || '0');
+        updateShopUI();
+      });
+    });
+
+    // Open Modal
+    if (idxBtnCheckout) {
+      idxBtnCheckout.addEventListener('click', () => {
+        if (idxCheckoutModal) {
+          idxModalStep1.style.display = 'block';
+          idxModalStep2.style.display = 'none';
+          idxCheckoutModal.style.display = 'flex';
+        }
+      });
+    }
+
+    // Close Modal
+    if (idxModalClose) {
+      idxModalClose.addEventListener('click', () => {
+        if (idxCheckoutModal) idxCheckoutModal.style.display = 'none';
+      });
+    }
+
+    let currentOrderRef = "";
+
+    // Submit Shipping Address Form
+    if (idxShippingForm) {
+      idxShippingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('idx-ship-name').value;
+        const email = document.getElementById('idx-ship-email').value;
+        const address = document.getElementById('idx-ship-address').value;
+        const city = document.getElementById('idx-ship-city').value;
+        const statezip = document.getElementById('idx-ship-statezip').value;
+
+        currentOrderRef = 'CPS-' + Math.floor(1000 + Math.random() * 9000);
+
+        const photo = shopState.photos[shopState.selectedIdx];
+        const total = shopState.sizePrice + shopState.framingPrice;
+
+        document.getElementById('idx-ref-code-display').textContent = currentOrderRef;
+        document.getElementById('idx-ref-code-inline').textContent = currentOrderRef;
+
+        const detailsEl = document.getElementById('idx-order-full-details');
+        if (detailsEl) {
+          detailsEl.innerHTML = `
+            <div><strong>Item:</strong> ${photo.title}</div>
+            <div><strong>Specification:</strong> ${shopState.size} · ${shopState.substrate} · ${shopState.framing}</div>
+            <div><strong>Total Price:</strong> \$${total.toFixed(2)}</div>
+            <div><strong>Deliver to:</strong> ${name}, ${address}, ${city}, ${statezip} (${email})</div>
+          `;
+        }
+
+        renderIdxPayoutLinks(total, currentOrderRef);
+
+        idxModalStep1.style.display = 'none';
+        idxModalStep2.style.display = 'block';
+      });
+    }
+
+    // Copy Ref Code Button
+    document.getElementById('idx-btn-copy-ref')?.addEventListener('click', () => {
+      if (currentOrderRef) {
+        navigator.clipboard.writeText(currentOrderRef);
+        alert(`Order reference code ${currentOrderRef} copied to clipboard!`);
+      }
+    });
+
+    // Done Checkout Button
+    document.getElementById('idx-btn-done-checkout')?.addEventListener('click', () => {
+      alert(`Thank you, order ${currentOrderRef} has been recorded! Celeste will process your shipment upon payment confirmation.`);
+      if (idxCheckoutModal) idxCheckoutModal.style.display = 'none';
+    });
+
+    function renderIdxPayoutLinks(total, refCode) {
+      const handles = shopState.paymentHandles;
+      const container = document.getElementById('idx-payout-links-list');
+      if (!container) return;
+
+      const cashApp = (handles.cashAppTag || '$celestephoto').trim();
+      const cashTagClean = cashApp.startsWith('$') ? cashApp.substring(1) : cashApp;
+      const cashAppUrl = `https://cash.app/$${cashTagClean}/${total}`;
+
+      const venmo = (handles.venmoHandle || '@celestephoto').trim();
+      const venmoClean = venmo.startsWith('@') ? venmo.substring(1) : venmo;
+      const venmoUrl = `https://venmo.com/u/${venmoClean}?txn=pay&amount=${total}&note=Order%20${refCode}`;
+
+      const zelle = (handles.zelleEmail || 'celeste@photo.com').trim();
+      const square = (handles.squareLink || 'https://square.link/u/celestephoto').trim();
+
+      container.innerHTML = `
+        <a href="${cashAppUrl}" target="_blank" rel="noopener noreferrer" style="display:flex;justify-content:space-between;align-items:center;background:#00D632;color:#fff;padding:14px 18px;border-radius:4px;text-decoration:none;font-weight:600;font-size:13.5px;transition:opacity 0.2s ease">
+          <span>Pay \$${total} with Cash App <strong>(\$${cashTagClean})</strong></span>
+          <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase">Open App &rarr;</span>
+        </a>
+
+        <a href="${venmoUrl}" target="_blank" rel="noopener noreferrer" style="display:flex;justify-content:space-between;align-items:center;background:#008CFF;color:#fff;padding:14px 18px;border-radius:4px;text-decoration:none;font-weight:600;font-size:13.5px;transition:opacity 0.2s ease">
+          <span>Pay \$${total} with Venmo <strong>(@${venmoClean})</strong></span>
+          <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase">Open App &rarr;</span>
+        </a>
+
+        <div style="background:#7414CA;color:#fff;padding:14px 18px;border-radius:4px;display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-weight:600;font-size:13.5px">Zelle Email: <strong>${zelle}</strong></div>
+            <div style="font-size:11px;opacity:0.9;margin-top:2px">Send \$${total} with memo "${refCode}"</div>
+          </div>
+          <button type="button" id="idx-btn-copy-zelle" style="background:rgba(255,255,255,0.2);color:#fff;border:1px solid rgba(255,255,255,0.4);padding:6px 12px;border-radius:3px;font-size:11px;cursor:pointer">Copy Email</button>
+        </div>
+
+        <a href="${square}" target="_blank" rel="noopener noreferrer" style="display:flex;justify-content:space-between;align-items:center;background:#111;color:#fff;padding:14px 18px;border-radius:4px;text-decoration:none;font-weight:600;font-size:13.5px;border:1px solid #333;transition:opacity 0.2s ease">
+          <span>Pay \$${total} with Square / Credit Card</span>
+          <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase">Square Link &rarr;</span>
+        </a>
+      `;
+
+      document.getElementById('idx-btn-copy-zelle')?.addEventListener('click', () => {
+        navigator.clipboard.writeText(zelle);
+        alert(`Zelle email copied: ${zelle}`);
+      });
+    }
   </script>
 
   <!-- Floating Visual Feedback Container & Modals -->
@@ -605,7 +1712,7 @@
     function loadHtml2Canvas() {
       return new Promise((resolve, reject) => {
         if (window.html2canvas) return resolve(window.html2canvas);
-        const script = document.createElement('script');
+        const script = document.createElement('sc' + 'ript');
         script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
         script.onload = () => resolve(window.html2canvas);
         script.onerror = () => reject(new Error('Could not load html2canvas CDN'));
@@ -717,8 +1824,675 @@
         vfModalSubmit.innerText = 'Submit Feedback';
       }
     });
+
+    // =========================================================================
+    // CLIENT PORTAL INTERACTIVE STATE & PROOFING / UPSELL LOGIC
+    // =========================================================================
+    const CLIENT_PHOTOS = [
+      { src: "/images/hero.webp", ref: "CP-0412-01", title: "Sideline, 4th quarter" },
+      { src: "/images/league.jpg", ref: "CP-0388-02", title: "Second period tip-off" },
+      { src: "/images/procession.jpg", ref: "CP-0501-03", title: "Procession crowd" },
+      { src: "/images/demonstration.jpg", ref: "CP-0466-04", title: "Riverfront wide frame" },
+      { src: "/images/placard.jpg", ref: "CP-0473-05", title: "Street placard detail" },
+      { src: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=800&q=80", ref: "CP-0412-06", title: "Stadium light glow" },
+      { src: "https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=800&q=80", ref: "CP-0388-07", title: "Bench celebration" },
+      { src: "https://images.unsplash.com/photo-1758147313461-2ddce195ed50?auto=format&fit=crop&w=800&q=80", ref: "CP-0501-08", title: "Team huddle" },
+      { src: "https://images.unsplash.com/photo-1511898634545-c01af8a54dd5?auto=format&fit=crop&w=800&q=80", ref: "CP-0466-09", title: "Halftime briefing" },
+      { src: "https://images.unsplash.com/photo-1583407723467-9b2d22504831?auto=format&fit=crop&w=800&q=80", ref: "CP-0473-10", title: "Final whistle action" },
+      { src: "/images/hero.webp", ref: "CP-0412-11", title: "Trophy presentation" },
+      { src: "/images/league.jpg", ref: "CP-0388-12", title: "Post-game portraits" }
+    ];
+
+    const clientState = {
+      loggedIn: false,
+      email: 'jordan@jtownathletics.org',
+      code: 'JT4-9QK',
+      tab: 'all',
+      favs: new Set(['CP-0412-01', 'CP-0388-02', 'CP-0501-03']),
+      checkoutModal: null
+    };
+
+    function renderClientView() {
+      const loginCard = document.getElementById('client-login-card');
+      const dashContainer = document.getElementById('client-dashboard-container');
+      const modalContainer = document.getElementById('client-checkout-modal-container');
+
+      if (!loginCard || !dashContainer) return;
+
+      if (!clientState.loggedIn) {
+        loginCard.style.display = 'grid';
+        dashContainer.style.display = 'none';
+        if (modalContainer) modalContainer.innerHTML = '';
+        return;
+      }
+
+      loginCard.style.display = 'none';
+      dashContainer.style.display = 'block';
+
+      const navBtn = (key, label, badgeHtml) => `
+        <button data-client-tab="${key}" class="client-tab-btn" style="text-align:left;background:none;border:0;padding:11px 24px;font-size:13.5px;color:#22242c;border-left:2px solid ${clientState.tab === key ? "#8a6d1f" : "transparent"};cursor:pointer">
+          ${label} ${badgeHtml}
+        </button>`;
+
+      const favCount = clientState.favs.size;
+
+      const galleryGridHtml = CLIENT_PHOTOS.map(it => {
+        const isFav = clientState.favs.has(it.ref);
+        return `
+        <div class="client-photo-card" style="position:relative;background:#e6e0d5;border-radius:4px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)">
+          <img src="${it.src}" alt="${it.ref}" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block">
+          <div style="position:absolute;top:10px;right:10px;display:flex;gap:6px;z-index:2">
+            <button data-client-action="toggleFav" data-ref="${it.ref}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}" style="width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:${isFav ? '#e63946' : '#6b6f7d'};font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)">
+              ${isFav ? '❤️' : '♡'}
+            </button>
+          </div>
+          <div style="padding:10px 12px;background:#ffffff;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eee8dd">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:#6b6f7d">${it.ref}</span>
+            <button data-client-action="openCheckout" data-type="single" data-title="Single High-Res Frame (${it.ref})" data-price="15" data-ref="${it.ref}" style="background:#22242c;color:#f7f5f1;border:none;border-radius:2px;padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">
+              ⬇ High-Res $15
+            </button>
+          </div>
+        </div>`;
+      }).join('');
+
+      const favGridHtml = CLIENT_PHOTOS.filter(it => clientState.favs.has(it.ref)).map(it => `
+        <div class="client-photo-card" style="position:relative;background:#e6e0d5;border-radius:4px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)">
+          <img src="${it.src}" alt="${it.ref}" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block">
+          <div style="position:absolute;top:10px;right:10px;display:flex;gap:6px;z-index:2">
+            <button data-client-action="toggleFav" data-ref="${it.ref}" title="Remove from favorites" style="width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#e63946;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)">❤️</button>
+          </div>
+          <div style="padding:10px 12px;background:#ffffff;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eee8dd">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:#6b6f7d">${it.ref}</span>
+            <button data-client-action="openCheckout" data-type="single" data-title="Single High-Res Frame (${it.ref})" data-price="15" data-ref="${it.ref}" style="background:#22242c;color:#f7f5f1;border:none;border-radius:2px;padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">
+              ⬇ High-Res $15
+            </button>
+          </div>
+        </div>`).join('');
+
+      dashContainer.innerHTML = `
+      <div>
+        <header style="display:flex;justify-content:space-between;align-items:center;padding:20px 40px;border-bottom:1px solid #ddd7cc;background:#fff">
+          <div style="display:flex;align-items:baseline;gap:16px">
+            <span style="font-family:'Bodoni Moda',serif;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:#22242c">Celeste</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#a9a49a">Client area / J-Town Athletics</span>
+          </div>
+          <div style="display:flex;gap:16px;align-items:center">
+            <span style="font-size:12.5px;color:#6b6f7d">${clientState.email}</span>
+            <button data-client-action="logout" style="background:none;border:1px solid #d5cfc4;border-radius:2px;padding:7px 14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d;cursor:pointer">Sign out</button>
+          </div>
+        </header>
+
+        <div class="client-dashboard-layout" style="display:grid;grid-template-columns:236px 1fr;min-height:calc(100vh - 158px)">
+          <aside class="client-aside-nav" style="border-right:1px solid #ddd7cc;padding:28px 0;display:flex;flex-direction:column;gap:2px;background:#fff">
+            <div style="padding:0 24px 14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#a9a49a">Gallery Navigation</div>
+            <div class="client-aside-nav-list" style="display:flex;flex-direction:column;gap:2px">
+              ${navBtn("all", "All Photos", `<span style="color:#a9a49a">142</span>`)}
+              ${navBtn("favorites", "Selected Favorites", `<span style="color:#8a6d1f" id="fav-count-badge">${favCount}</span>`)}
+              ${navBtn("invoice_proofs", "Invoice & Proofs", `<span style="color:#a9a49a">2 open</span>`)}
+            </div>
+            <div style="margin-top:auto;padding:24px;display:flex;flex-direction:column;gap:10px;border-top:1px solid #ddd7cc">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#a9a49a">Link expires</div>
+              <div style="font-size:13px;color:#22242c">14 Nov 2026 &middot; 62 days</div>
+              <div style="height:3px;background:#e6e0d5;border-radius:2px;overflow:hidden"><div style="width:31%;height:100%;background:#8a6d1f"></div></div>
+            </div>
+          </aside>
+
+          <main class="client-main-content" style="padding:30px 40px 60px">
+            ${clientState.tab === 'all' ? `
+            <div>
+              <!-- Upsell Banner -->
+              <div class="upsell-banner" style="background:linear-gradient(135deg,#181a20,#22242c);border:1px solid #d4af37;border-radius:6px;padding:24px 30px;margin-bottom:28px;display:flex;justify-content:space-between;align-items:center;gap:20px;box-shadow:0 10px 30px rgba(0,0,0,.15);color:#f7f5f1">
+                <div>
+                  <h3 style="margin:0 0 6px;font-family:'Bodoni Moda',serif;font-weight:400;font-size:22px;color:#d4af37;display:flex;align-items:center;gap:8px">
+                    <span>✨</span> Unlock Full High-Res Gallery ($150)
+                  </h3>
+                  <p style="margin:0;font-size:13.5px;color:#a3a8b8;line-height:1.55">
+                    Get immediate, unwatermarked high-resolution JPEG downloads of all 142 gallery frames with full personal print rights.
+                  </p>
+                </div>
+                <button data-client-action="openCheckout" data-type="full" data-title="Full High-Res Gallery Unlock" data-price="150" style="background:#d4af37;color:#0f1115;border:0;border-radius:3px;padding:13px 24px;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;cursor:pointer">
+                  Unlock Full Gallery — $150
+                </button>
+              </div>
+
+              <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:24px;flex-wrap:wrap">
+                <div style="display:flex;flex-direction:column;gap:8px">
+                  <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:38px;letter-spacing:.03em;color:#22242c">Homecoming vs. Fern Creek</h1>
+                  <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#a9a49a">Delivered 16 Aug 2026 &middot; 142 frames &middot; full-resolution JPEG + web</div>
+                </div>
+                <div style="display:flex;gap:10px">
+                  <button data-client-tab="favorites" class="hover-border-dark" style="background:none;border:1px solid #d5cfc4;border-radius:2px;padding:11px 18px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#22242c;cursor:pointer">View selects (${favCount})</button>
+                  <button data-client-action="openCheckout" data-type="full" data-title="Full High-Res Gallery Unlock" data-price="150" style="background:#22242c;border:0;border-radius:2px;padding:11px 18px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#f7f5f1;cursor:pointer">Unlock all &middot; zip 2.4&nbsp;GB ($150)</button>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px">${galleryGridHtml}</div>
+            </div>` : ''}
+
+            ${clientState.tab === 'favorites' ? `
+            <div style="display:flex;flex-direction:column;gap:20px">
+              <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:38px;letter-spacing:.03em;color:#22242c">Selected Favorites</h1>
+              <p style="margin:0;font-size:13.5px;color:#6b6f7d;max-width:520px;line-height:1.7">${favCount} frames selected. Selects are what I retouch and what goes to print — send them over when your list is final.</p>
+              ${favCount > 0 ? `
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px">${favGridHtml}</div>
+                <button data-client-action="sendSelects" style="align-self:flex-start;background:#22242c;border:0;border-radius:2px;padding:13px 22px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#f7f5f1;cursor:pointer">Send selects to Celeste</button>
+              ` : `
+                <div style="padding:40px;background:#fff;border:1px solid #ddd7cc;text-align:center;color:#6b6f7d;border-radius:4px">
+                  No favorites selected yet. Click the heart icon on any photo in <a href="#" data-client-tab="all" style="color:#8a6d1f;text-decoration:underline">All Photos</a> to add it here.
+                </div>
+              `}
+            </div>` : ''}
+
+            ${clientState.tab === 'invoice_proofs' ? `
+            <div style="display:flex;flex-direction:column;gap:36px;max-width:900px">
+              <!-- Proofs Section -->
+              <div style="display:flex;flex-direction:column;gap:20px">
+                <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:38px;letter-spacing:.03em;color:#22242c">Proofs awaiting approval</h1>
+                <div style="display:grid;grid-template-columns:260px 1fr;gap:26px;background:#fff;border:1px solid #ddd7cc;padding:22px">
+                  <img src="/images/league.jpg" alt="Proof 1" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block">
+                  <div style="display:flex;flex-direction:column;gap:14px">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Proof 01 &middot; retouch v2 &middot; 20 Aug</div>
+                    <p style="margin:0;font-size:14px;line-height:1.75;color:#22242c">Warmed the highlights and cropped tighter on the shooter. Let me know if you want the scoreboard kept in frame.</p>
+                    <textarea rows="3" placeholder="Leave a comment for Celeste" style="background:#f7f5f1;border:1px solid #ddd7cc;padding:11px 12px;font-family:inherit;font-size:13.5px;color:#22242c;resize:vertical"></textarea>
+                    <div style="display:flex;gap:10px">
+                      <button onclick="alert('Proof 01 approved!')" style="background:#22242c;border:0;border-radius:2px;padding:11px 20px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#f7f5f1;cursor:pointer">Approve</button>
+                      <button onclick="alert('Feedback submitted to Celeste')" style="background:none;border:1px solid #d5cfc4;border-radius:2px;padding:11px 20px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d;cursor:pointer">Request changes</button>
+                    </div>
+                  </div>
+                </div>
+                <div style="display:grid;grid-template-columns:260px 1fr;gap:26px;background:#fff;border:1px solid #ddd7cc;padding:22px">
+                  <img src="/images/hero.webp" alt="Proof 2" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block">
+                  <div style="display:flex;flex-direction:column;gap:14px">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Proof 02 &middot; retouch v1 &middot; 21 Aug</div>
+                    <p style="margin:0;font-size:14px;line-height:1.75;color:#22242c">Black-and-white conversion for the program cover. Colour version is in the gallery if you prefer it.</p>
+                    <div style="display:flex;gap:10px">
+                      <button onclick="alert('Proof 02 approved!')" style="background:#22242c;border:0;border-radius:2px;padding:11px 20px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#f7f5f1;cursor:pointer">Approve</button>
+                      <button onclick="alert('Feedback submitted to Celeste')" style="background:none;border:1px solid #d5cfc4;border-radius:2px;padding:11px 20px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d;cursor:pointer">Request changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Invoice Section -->
+              <div style="display:flex;flex-direction:column;gap:20px;max-width:640px">
+                <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:300;font-size:32px;letter-spacing:.03em;color:#22242c">Invoice #2026-114</h2>
+                <div style="background:#fff;border:1px solid #ddd7cc">
+                  <div style="display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #eee8dd;font-size:14px;color:#22242c"><span>Event coverage &mdash; homecoming, full game</span><span>$450.00</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #eee8dd;font-size:14px;color:#22242c"><span>Additional retouching &mdash; 12 frames</span><span>$180.00</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #eee8dd;font-size:14px;color:#22242c"><span>Program licence &mdash; one season</span><span>$150.00</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:18px 22px;font-family:'Bodoni Moda',serif;font-size:20px;color:#22242c"><span>Balance due</span><span>$780.00</span></div>
+                </div>
+                <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+                  <button data-client-action="openCheckout" data-type="full" data-title="Invoice Balance #2026-114" data-price="780" style="background:#22242c;border:0;border-radius:2px;padding:14px 26px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#f7f5f1;cursor:pointer">Pay invoice ($780)</button>
+                  <button onclick="alert('PDF invoice download initiated.')" style="background:none;border:1px solid #d5cfc4;border-radius:2px;padding:14px 22px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f7d;cursor:pointer">Download PDF</button>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#a9a49a">Due 30 Aug</span>
+                </div>
+              </div>
+            </div>` : ''}
+          </main>
+        </div>
+      </div>`;
+
+      // Render Checkout Modal
+      if (clientState.checkoutModal && modalContainer) {
+        const cm = clientState.checkoutModal;
+        modalContainer.innerHTML = `
+        <div class="checkout-modal-backdrop" style="position:fixed;inset:0;background:rgba(0,0,0,0.78);backdrop-filter:blur(5px);z-index:10050;display:flex;align-items:center;justify-content:center;padding:20px">
+          <div style="background:#181a20;border:1px solid #d4af37;border-radius:8px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;color:#f0f2f5;padding:28px;box-shadow:0 20px 50px rgba(0,0,0,0.8);position:relative">
+            <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #2a2d36;padding-bottom:16px;margin-bottom:20px">
+              <h2 style="font-family:'Bodoni Moda',serif;font-size:22px;color:#d4af37;margin:0">Gallery Checkout</h2>
+              <button data-client-action="closeCheckout" style="background:none;border:none;color:#9ba3af;font-size:24px;cursor:pointer;line-height:1">&times;</button>
+            </div>
+
+            <div style="background:#22242c;border:1px solid #3a3f4d;border-radius:6px;padding:14px 16px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-size:14px;font-weight:500;color:#f0f2f5">${cm.title}</div>
+                <div style="font-size:11px;color:#9ba3af;margin-top:2px">Unwatermarked full-resolution JPEG download</div>
+              </div>
+              <div style="font-family:'Bodoni Moda',serif;font-size:22px;color:#d4af37;font-weight:600">$${cm.price}</div>
+            </div>
+
+            <div style="margin-bottom:18px">
+              <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a;margin-bottom:6px">Delivery Email Address</label>
+              <input type="email" value="${clientState.email}" id="idx-client-email-modal" style="width:100%;background:#0f1115;border:1px solid #2a2d36;padding:12px;font-family:'Jost',sans-serif;font-size:14px;color:#f0f2f5;border-radius:4px">
+            </div>
+
+            <div style="margin-bottom:18px">
+              <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a;margin-bottom:8px">Select Payment Method</label>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+                <a href="https://cash.app/$CelestePhoto/${cm.price}" target="_blank" rel="noopener" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px 8px;background:#0f1115;border:1px solid #2a2d36;border-radius:6px;color:#f0f2f5;font-size:12px;text-decoration:none;transition:all 0.2s">
+                  <span style="font-size:16px;color:#00D632;font-weight:bold">$</span>
+                  <span>CashApp</span>
+                  <span style="font-size:9px;color:#6b6f7d">$CelestePhoto</span>
+                </a>
+                <a href="https://venmo.com/CelestePhoto" target="_blank" rel="noopener" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px 8px;background:#0f1115;border:1px solid #2a2d36;border-radius:6px;color:#f0f2f5;font-size:12px;text-decoration:none;transition:all 0.2s">
+                  <span style="font-size:16px;color:#008CFF;font-weight:bold">V</span>
+                  <span>Venmo</span>
+                  <span style="font-size:9px;color:#6b6f7d">@CelestePhoto</span>
+                </a>
+                <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px 8px;background:#0f1115;border:1px solid #2a2d36;border-radius:6px;color:#f0f2f5;font-size:12px">
+                  <span style="font-size:16px;color:#7414CA;font-weight:bold">Z</span>
+                  <span>Zelle</span>
+                  <span style="font-size:9px;color:#6b6f7d">pay@celestephoto.com</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="background:#0f1115;border:1px dashed #d4af37;border-radius:6px;padding:14px 16px;margin:20px 0;display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#a9a49a">Instant Reference Code</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;letter-spacing:.15em;color:#d4af37;margin-top:2px">${cm.refCode}</div>
+              </div>
+              <button data-client-action="copyRefCode" data-code="${cm.refCode}" style="background:#22242c;border:1px solid #3a3f4d;color:#f0f2f5;border-radius:4px;padding:8px 12px;font-size:11px;font-family:'JetBrains Mono',monospace;cursor:pointer">
+                Copy Code
+              </button>
+            </div>
+
+            <p style="margin:0 0 20px;font-size:11.5px;color:#9ba3af;line-height:1.5">
+              ⚠️ <strong>Important:</strong> Include reference code <strong>${cm.refCode}</strong> in your payment memo/note so our system can instantly verify and unlock your downloads.
+            </p>
+
+            <div style="display:flex;gap:12px;justify-content:flex-end">
+              <button data-client-action="closeCheckout" style="background:none;border:1px solid #2a2d36;color:#9ba3af;border-radius:4px;padding:10px 18px;font-size:12px;cursor:pointer">Cancel</button>
+              <button data-client-action="submitPayment" style="background:#d4af37;color:#0f1115;border:none;border-radius:4px;padding:10px 22px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer">I've Sent Payment</button>
+            </div>
+          </div>
+        </div>`;
+      } else if (modalContainer) {
+        modalContainer.innerHTML = '';
+      }
+    }
+
+    // Attach event listeners for Client Form and Client Dashboard actions
+    const clientForm = document.getElementById('client-form');
+    if (clientForm) {
+      clientForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const emailInput = clientForm.querySelector('input[type="email"]');
+        const codeInput = clientForm.querySelector('input[type="text"]');
+        if (emailInput && emailInput.value) clientState.email = emailInput.value;
+        if (codeInput && codeInput.value) clientState.code = codeInput.value;
+        clientState.loggedIn = true;
+        renderClientView();
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const tabEl = e.target.closest('[data-client-tab]');
+      if (tabEl) {
+        e.preventDefault();
+        clientState.tab = tabEl.dataset.clientTab;
+        renderClientView();
+        return;
+      }
+
+      const actionEl = e.target.closest('[data-client-action]');
+      if (actionEl) {
+        const act = actionEl.dataset.clientAction;
+        if (act === 'logout') {
+          clientState.loggedIn = false;
+          clientState.tab = 'all';
+          clientState.checkoutModal = null;
+          renderClientView();
+        } else if (act === 'toggleFav') {
+          const ref = actionEl.dataset.ref;
+          if (ref) {
+            clientState.favs.has(ref) ? clientState.favs.delete(ref) : clientState.favs.add(ref);
+            renderClientView();
+          }
+        } else if (act === 'openCheckout') {
+          const ds = actionEl.dataset;
+          const hex = Math.floor(1000 + Math.random() * 9000).toString(16).toUpperCase();
+          const refCode = `CEL-${ds.type === 'single' ? 'SNGL' : 'FULL'}-${hex}`;
+          clientState.checkoutModal = {
+            type: ds.type || 'full',
+            title: ds.title || 'Full High-Res Gallery Unlock',
+            price: ds.price || '150',
+            refId: ds.ref || '',
+            refCode
+          };
+          renderClientView();
+        } else if (act === 'closeCheckout') {
+          clientState.checkoutModal = null;
+          renderClientView();
+        } else if (act === 'copyRefCode') {
+          const code = actionEl.dataset.code || (clientState.checkoutModal && clientState.checkoutModal.refCode);
+          if (code) {
+            navigator.clipboard.writeText(code).then(() => {
+              alert("✅ Reference code " + code + " copied to clipboard!");
+            }).catch(() => alert("Reference code: " + code));
+          }
+        } else if (act === 'submitPayment') {
+          alert("✅ Reference Code Recorded!\n\nThank you! Once payment confirmation is received via CashApp/Venmo/Zelle, your high-resolution download links will automatically be sent to " + clientState.email + ".");
+          clientState.checkoutModal = null;
+          renderClientView();
+        } else if (act === 'sendSelects') {
+          alert("✅ " + clientState.favs.size + " selected favorites sent to Celeste Photo Studio for retouching!");
+        }
+      }
+    });
+
+    renderClientView();
   </script>
 
+  <!-- Archive Commercial Licensing Store Modal -->
+  <div id="licensingModal" class="licensing-modal-overlay" aria-hidden="true">
+    <div class="licensing-modal-container" role="dialog" aria-modal="true" aria-labelledby="licensingModalTitle">
+      <button id="licensingModalClose" class="licensing-modal-close" aria-label="Close modal">&times;</button>
+      
+      <!-- Step 1: License Selection Form -->
+      <div id="licensingFormStep" class="licensing-step-content">
+        <div class="licensing-modal-header">
+          <div class="licensing-badge">Archive Commercial Store</div>
+          <h2 id="licensingModalTitle" class="licensing-modal-title">Photo Commercial Licensing</h2>
+          <p class="licensing-modal-sub">Select usage rights and licensing tier for immediate high-resolution clearance.</p>
+        </div>
+
+        <div class="licensing-modal-body">
+          <!-- Photo Info Column -->
+          <div class="licensing-photo-card">
+            <div class="licensing-img-wrapper">
+              <img id="licensingPhotoImg" src="" alt="Photo preview" />
+            </div>
+            <div class="licensing-photo-details">
+              <div id="licensingPhotoTitle" class="licensing-photo-title">Photo Title</div>
+              <div id="licensingPhotoRef" class="licensing-photo-ref">REF: CP-0412</div>
+            </div>
+          </div>
+
+          <!-- Licensing Options Column -->
+          <div class="licensing-options-column">
+            <label class="licensing-section-label">Select Licensing Tier</label>
+            
+            <div class="licensing-tiers-group">
+              <!-- Tier 1 -->
+              <label class="tier-card" data-price="75" data-name="Editorial Press License">
+                <input type="radio" name="licensingTier" value="75" data-tier-name="Editorial Press License" data-tier-desc="Single publication/editorial usage.">
+                <div class="tier-content">
+                  <div class="tier-header">
+                    <span class="tier-name">Editorial Press License</span>
+                    <span class="tier-price">$75</span>
+                  </div>
+                  <div class="tier-desc">Single publication/editorial usage.</div>
+                </div>
+              </label>
+
+              <!-- Tier 2 (Default Selected) -->
+              <label class="tier-card active" data-price="250" data-name="Commercial / Brand License">
+                <input type="radio" name="licensingTier" value="250" data-tier-name="Commercial / Brand License" data-tier-desc="Non-exclusive marketing &amp; web usage." checked>
+                <div class="tier-content">
+                  <div class="tier-header">
+                    <span class="tier-name">Commercial / Brand License</span>
+                    <span class="tier-price">$250</span>
+                  </div>
+                  <div class="tier-desc">Non-exclusive marketing &amp; web usage.</div>
+                </div>
+              </label>
+
+              <!-- Tier 3 -->
+              <label class="tier-card" data-price="650" data-name="Full Commercial Buyout">
+                <input type="radio" name="licensingTier" value="650" data-tier-name="Full Commercial Buyout" data-tier-desc="Exclusive buyout rights.">
+                <div class="tier-content">
+                  <div class="tier-header">
+                    <span class="tier-name">Full Commercial Buyout</span>
+                    <span class="tier-price">$650</span>
+                  </div>
+                  <div class="tier-desc">Exclusive buyout rights.</div>
+                </div>
+              </label>
+            </div>
+
+            <!-- License Terms Checkbox -->
+            <div class="licensing-terms-box">
+              <label class="licensing-terms-label">
+                <input type="checkbox" id="licensingTermsCheckbox" />
+                <span>I accept the documentary usage terms</span>
+              </label>
+              <p class="licensing-terms-note">Digital delivery upon payment verification. No manipulative editing.</p>
+            </div>
+
+            <!-- Direct Pay Button -->
+            <button id="licensingPayBtn" class="licensing-pay-btn" disabled>
+              <span>Request License &amp; Pay (<span id="licensingPayAmount">$250</span>)</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Direct Payment Modal -->
+      <div id="licensingPayStep" class="licensing-step-content" style="display: none;">
+        <div class="licensing-modal-header">
+          <div class="licensing-badge gold">Direct Payment</div>
+          <h2 class="licensing-modal-title">Payment &amp; Clearance Reference</h2>
+          <p class="licensing-modal-sub">Send payment using the reference code below to complete your license request.</p>
+        </div>
+
+        <div class="licensing-pay-body">
+          <div class="pay-summary-card">
+            <div class="pay-summary-row">
+              <span class="pay-summary-label">Photo:</span>
+              <span id="paySummaryTitle" class="pay-summary-val">Sideline, 4th quarter</span>
+            </div>
+            <div class="pay-summary-row">
+              <span class="pay-summary-label">Reference Code:</span>
+              <span id="paySummaryRef" class="pay-summary-val ref-code">CP-0412-1</span>
+            </div>
+            <div class="pay-summary-row">
+              <span class="pay-summary-label">Licensing Tier:</span>
+              <span id="paySummaryTier" class="pay-summary-val">Commercial / Brand License ($250)</span>
+            </div>
+          </div>
+
+          <div class="pay-methods-title">Instant Payment Options</div>
+          
+          <div class="pay-methods-grid">
+            <!-- CashApp -->
+            <a href="https://cash.app/$celestephoto" target="_blank" rel="noopener noreferrer" class="pay-method-card">
+              <div class="pay-method-icon">💵</div>
+              <div class="pay-method-info">
+                <div class="pay-method-name">CashApp</div>
+                <div class="pay-method-handle">$celestephoto</div>
+              </div>
+              <span class="pay-method-action">Open CashApp &rarr;</span>
+            </a>
+
+            <!-- Venmo -->
+            <a href="https://venmo.com/celestephoto" target="_blank" rel="noopener noreferrer" class="pay-method-card">
+              <div class="pay-method-icon">✌️</div>
+              <div class="pay-method-info">
+                <div class="pay-method-name">Venmo</div>
+                <div class="pay-method-handle">@celestephoto</div>
+              </div>
+              <span class="pay-method-action">Open Venmo &rarr;</span>
+            </a>
+
+            <!-- Zelle -->
+            <div class="pay-method-card">
+              <div class="pay-method-icon">⚡</div>
+              <div class="pay-method-info">
+                <div class="pay-method-name">Zelle</div>
+                <div class="pay-method-handle">hello@celestephoto.com</div>
+              </div>
+              <button type="button" id="copyZelleBtn" class="pay-method-action-btn">Copy Email</button>
+            </div>
+          </div>
+
+          <div class="pay-instruction-box">
+            <div class="pay-instruction-header">💡 Payment Memo / Reference</div>
+            <p>Please include reference code <strong id="payInstructionRef">CP-0412-1</strong> in your payment note. High-res file and license certificate will be sent immediately upon verification.</p>
+            <div class="pay-ref-copy-bar">
+              <span>Reference Code: <strong id="payCopyRefText">CP-0412-1</strong></span>
+              <button type="button" id="copyRefBtn" class="copy-ref-btn">Copy Code</button>
+            </div>
+          </div>
+
+          <div class="pay-actions-row">
+            <button id="licensingBackBtn" class="licensing-btn-secondary">&larr; Back to Tiers</button>
+            <button id="licensingDoneBtn" class="licensing-btn-primary">Done / Close</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module">
+    function initArchiveLicensing() {
+      const modal = document.getElementById('licensingModal');
+      if (!modal) return;
+
+      const closeBtn = document.getElementById('licensingModalClose');
+      const formStep = document.getElementById('licensingFormStep');
+      const payStep = document.getElementById('licensingPayStep');
+      
+      const photoImg = document.getElementById('licensingPhotoImg');
+      const photoTitle = document.getElementById('licensingPhotoTitle');
+      const photoRef = document.getElementById('licensingPhotoRef');
+      
+      const tierCards = modal.querySelectorAll('.tier-card');
+      const termsCheckbox = document.getElementById('licensingTermsCheckbox');
+      const payBtn = document.getElementById('licensingPayBtn');
+      const payAmountSpan = document.getElementById('licensingPayAmount');
+      
+      const paySummaryTitle = document.getElementById('paySummaryTitle');
+      const paySummaryRef = document.getElementById('paySummaryRef');
+      const paySummaryTier = document.getElementById('paySummaryTier');
+      const payInstructionRef = document.getElementById('payInstructionRef');
+      const payCopyRefText = document.getElementById('payCopyRefText');
+      
+      const backBtn = document.getElementById('licensingBackBtn');
+      const doneBtn = document.getElementById('licensingDoneBtn');
+      const copyRefBtn = document.getElementById('copyRefBtn');
+      const copyZelleBtn = document.getElementById('copyZelleBtn');
+
+      let currentPhoto = { src: '', title: '', ref: '' };
+      let selectedTier = { name: 'Commercial / Brand License', price: '250' };
+
+      function openLicensingModal(src, title, ref) {
+        currentPhoto = { src, title, ref };
+        photoImg.src = src;
+        photoTitle.textContent = title || 'Frame';
+        photoRef.textContent = 'REF: ' + (ref || 'CP-0412');
+        
+        formStep.style.display = 'block';
+        payStep.style.display = 'none';
+        termsCheckbox.checked = false;
+        payBtn.disabled = true;
+        
+        tierCards.forEach(card => {
+          const radio = card.querySelector('input[type="radio"]');
+          if (radio.value === '250') {
+            radio.checked = true;
+            card.classList.add('active');
+            selectedTier = { name: radio.dataset.tierName, price: '250' };
+            payAmountSpan.textContent = '$250';
+          } else {
+            radio.checked = false;
+            card.classList.remove('active');
+          }
+        });
+
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeModal() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      document.addEventListener('click', (e) => {
+        const fig = e.target.closest('#preset-archive figure, .archive-grid figure');
+        if (!fig) return;
+
+        const img = fig.querySelector('img');
+        const spans = fig.querySelectorAll('figcaption span');
+        
+        const src = img ? img.getAttribute('src') : '';
+        const title = (spans.length > 0 && spans[0].textContent.trim()) || img?.alt || 'Frame';
+        const ref = (spans.length > 1 && spans[1].textContent.trim()) || 'CP-0412';
+
+        openLicensingModal(src, title, ref);
+      });
+
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+
+      tierCards.forEach(card => {
+        card.addEventListener('click', () => {
+          tierCards.forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+          const radio = card.querySelector('input[type="radio"]');
+          radio.checked = true;
+          selectedTier = {
+            name: radio.dataset.tierName,
+            price: radio.value
+          };
+          payAmountSpan.textContent = '$' + selectedTier.price;
+        });
+      });
+
+      if (termsCheckbox) {
+        termsCheckbox.addEventListener('change', () => {
+          payBtn.disabled = !termsCheckbox.checked;
+        });
+      }
+
+      if (payBtn) {
+        payBtn.addEventListener('click', () => {
+          if (!termsCheckbox.checked) return;
+          
+          paySummaryTitle.textContent = currentPhoto.title;
+          paySummaryRef.textContent = currentPhoto.ref;
+          paySummaryTier.textContent = `${selectedTier.name} ($${selectedTier.price})`;
+          payInstructionRef.textContent = currentPhoto.ref;
+          payCopyRefText.textContent = currentPhoto.ref;
+
+          formStep.style.display = 'none';
+          payStep.style.display = 'block';
+        });
+      }
+
+      if (backBtn) {
+        backBtn.addEventListener('click', () => {
+          payStep.style.display = 'none';
+          formStep.style.display = 'block';
+        });
+      }
+
+      if (doneBtn) {
+        doneBtn.addEventListener('click', closeModal);
+      }
+
+      if (copyRefBtn) {
+        copyRefBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText(currentPhoto.ref).then(() => {
+            const orig = copyRefBtn.textContent;
+            copyRefBtn.textContent = 'Copied!';
+            setTimeout(() => copyRefBtn.textContent = orig, 2000);
+          }).catch(() => {});
+        });
+      }
+
+      if (copyZelleBtn) {
+        copyZelleBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText('hello@celestephoto.com').then(() => {
+            const orig = copyZelleBtn.textContent;
+            copyZelleBtn.textContent = 'Copied!';
+            setTimeout(() => copyZelleBtn.textContent = orig, 2000);
+          }).catch(() => {});
+        });
+      }
+    }
+
+    initArchiveLicensing();
+  </script>
 </body>
 </html>
 

@@ -252,8 +252,49 @@
     }
 
     @media (max-width: 850px) {
+      header {
+        padding: 1rem;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .user-controls {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .nav-tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+      .nav-tab {
+        flex-shrink: 0;
+        padding: 0.5rem 1rem;
+      }
       .master-detail-grid {
         grid-template-columns: 1fr;
+      }
+      .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 1rem;
+        margin: 1rem auto;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .card {
+        padding: 1.25rem;
+      }
+      .login-card {
+        padding: 2rem 1.25rem;
+        margin: 2rem auto;
       }
     }
 
@@ -593,6 +634,36 @@
           </div>
         </div>
 
+        <!-- Direct Payout & Payment Handles Editor -->
+        <div class="card">
+          <div class="card-title">
+            <span>💳 Direct Payout &amp; Payment Handles</span>
+          </div>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1.25rem;">
+            Manage payment handles displayed to clients when placing bespoke print orders at checkout.
+          </p>
+          <div class="grid-2">
+            <div class="form-group">
+              <label>CashApp $cashtag</label>
+              <input type="text" id="payCashAppTag" class="form-control" placeholder="e.g. $celestephoto">
+            </div>
+            <div class="form-group">
+              <label>Venmo @handle</label>
+              <input type="text" id="payVenmoHandle" class="form-control" placeholder="e.g. @celestephoto">
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="form-group">
+              <label>Zelle Email Address</label>
+              <input type="email" id="payZelleEmail" class="form-control" placeholder="e.g. celeste@photo.com">
+            </div>
+            <div class="form-group">
+              <label>Square Payment Link URL</label>
+              <input type="url" id="paySquareLink" class="form-control" placeholder="e.g. https://square.link/u/celestephoto">
+            </div>
+          </div>
+        </div>
+
         <div style="text-align: right;">
           <button class="btn btn-primary" id="btnSaveAllBottom" style="padding: 0.85rem 2.5rem; font-size: 1.05rem;">💾 Save All Changes</button>
         </div>
@@ -926,6 +997,11 @@
       portfolioItems = content.portfolio || [];
       serviceItems = content.services || [];
 
+      document.getElementById('payCashAppTag').value = content.cashAppTag || content.paymentHandles?.cashAppTag || '$celestephoto';
+      document.getElementById('payVenmoHandle').value = content.venmoHandle || content.paymentHandles?.venmoHandle || '@celestephoto';
+      document.getElementById('payZelleEmail').value = content.zelleEmail || content.paymentHandles?.zelleEmail || 'celeste@photo.com';
+      document.getElementById('paySquareLink').value = content.squareLink || content.paymentHandles?.squareLink || 'https://square.link/u/celestephoto';
+
       renderPortfolioList();
       renderServicesList();
     }
@@ -1013,6 +1089,16 @@
         if (descEl) item.desc = descEl.value;
       });
 
+      const cashAppTag = document.getElementById('payCashAppTag')?.value || '$celestephoto';
+      const venmoHandle = document.getElementById('payVenmoHandle')?.value || '@celestephoto';
+      const zelleEmail = document.getElementById('payZelleEmail')?.value || 'celeste@photo.com';
+      const squareLink = document.getElementById('paySquareLink')?.value || 'https://square.link/u/celestephoto';
+
+      const paymentHandles = { cashAppTag, venmoHandle, zelleEmail, squareLink };
+      try {
+        localStorage.setItem('celeste_payment_handles', JSON.stringify(paymentHandles));
+      } catch (e) {}
+
       return {
         heroTag: document.getElementById('heroTag').value,
         heroTitle: document.getElementById('heroTitle').value,
@@ -1022,7 +1108,12 @@
         services: serviceItems,
         contactEmail: document.getElementById('contactEmail').value,
         contactPhone: document.getElementById('contactPhone').value,
-        footerText: document.getElementById('footerText').value
+        footerText: document.getElementById('footerText').value,
+        cashAppTag,
+        venmoHandle,
+        zelleEmail,
+        squareLink,
+        paymentHandles
       };
     }
 
